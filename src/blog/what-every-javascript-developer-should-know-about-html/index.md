@@ -3,7 +3,7 @@ title: "What every JavaScript developer should know about HTML and CSS"
 twitter: "A list of HTML/CSS tips and concepts every JS developer should know"
 tags: ["Accessibility", "Frontend", "HTML", "CSS"]
 excerpt: "A list of a few HTML/CSS tips and concepts I believe every JavaScript frontend developer should know."
-date: 2020-01-30
+date: 2020-02-10
 published: true
 ---
 
