@@ -1,0 +1,11 @@
+---
+title: Projects
+layout: layouts/page.njk
+eleventyNavigation:
+  key: Projects
+  order: 3
+---
+<h1>Projects</h1>
+{% set listing = collections.featuredProjects %}
+{% set headingLevel = 'h2' %}
+{% include 'project_listing.njk' %}

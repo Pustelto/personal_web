@@ -1,0 +1,22 @@
+<ul class="listing">
+{% for project in listing %}
+  <li class="listing__item">
+    <article class="article">
+      <{{headingLevel if headingLevel else 'h3'}} class="h3 article__header">
+        <a href="{{ project.data.url }}" class="article__link">
+          {{ project.data.title }}
+        </a>
+      </{{headingLevel if headingLevel else 'h3'}}>
+
+      <div class="article__excerpt">
+        {{ project.templateContent | safe }}
+      </div>
+
+      <div class="article__meta">
+        {% set tags = project.data.tags %}
+        {% include 'tags.njk' %}
+      </div>
+    </article>
+  </li>
+{% endfor %}
+</ul>

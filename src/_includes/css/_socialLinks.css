@@ -1,0 +1,14 @@
+.socialLinks {
+  display: flex;
+  list-style: none;
+}
+
+.socialLinks__link {
+  color: $gray;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--gapOne);
+  width: var(--gapOne);
+  margin: 0 calc(0.25 * var(--gapHalf));
+}

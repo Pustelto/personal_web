@@ -1,0 +1,51 @@
+---
+layout: layouts/page.njk
+---
+<h1 class="h1 article__header">{{title}}</h1>
+<div class="article__meta u-margin-b-1">
+  {% set tags = tags %}
+  <div class="article__tags">
+    {% include 'tags.njk' %}
+  </div>
+  <span class="article__date">
+    Published on <time datetime="{{date | isoDate}}"> {{date | readableDate}}</time>
+  </span>
+</div>
+
+<div class="article__content u-margin-b-2">
+  {{content | safe}}
+</div>
+
+<div class="sharing">
+  <p>Thanks for reading the article. If you have any suggestions or ideas how to make the article better or you simply like it, feel free to share and discuss it on Twitter.</p>
+  <div class="sharing__buttons">
+    <a class="twitter-share-button" href="{{page.url | twitterShare(twitter)}}"><i></i><span>Tweet</span></a>
+  </div>
+</div>
+
+<section class="author" aria-label="About the author">
+  <div class="author__imgWrapper">
+    <picture>
+      <source
+        type="image/webp"
+        srcset="/images/me.webp 200w, /images/me@2x.webp 400w"
+        sizes="(max-width: 44.9375rem): 8rem, 10rem"
+      >
+      <img
+      class="author__img"
+        src="/images/me.jpg"
+        alt=""
+        srcset="/images/me.jpg 200w, /images/me@2x.jpg 400w"
+        sizes="(max-width: 44.9375rem): 8rem, 10rem"
+      >
+    </picture>
+  </div>
+  <div class="author__data">
+    <p class="h6 author__name">
+      Tomas Pustelnik
+    </p>
+    <p class="author__bio">
+    Frontend developer with focus on semantic HTML, CSS, performance and accessibility. Fan of great and clever design, tooling addict and neverending learner. Building <a href="https://qjub.app?ref=pustelto">Qjub</a> in my free time and writing on this blog.
+    </p>
+  </div>
+</section>

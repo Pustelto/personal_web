@@ -1,0 +1,34 @@
+.author {
+  display: flex;
+  align-items: center;
+  padding: var(--gapOne) 0;
+  border-top: 1px solid $light-gray;
+  border-bottom: 1px solid $light-gray;
+}
+
+.author__imgWrapper {
+  flex: 0 0 auto;
+  width: 5rem;
+  height: 5rem;
+  margin-right: var(--gapOne);
+  display: none;
+
+  @media (--tablet) {
+    display: block;
+    margin-bottom: 0;
+  }
+}
+
+.author__img {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+}
+
+.author__name {
+  margin-bottom: 0;
+}
+
+.author__bio {
+  font-size: $font-S;
+}

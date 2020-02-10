@@ -1,0 +1,3 @@
+@mixin getFontSize($minSize, $maxSize) {
+  font-size: calc($minSize + ((strip($maxSize) - strip($minSize)) * 16) * ((100vw - 20rem) / 400));
+}

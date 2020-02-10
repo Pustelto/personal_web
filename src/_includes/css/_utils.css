@@ -1,0 +1,21 @@
+.u-margin-b-0 {
+  margin-bottom: 0;
+}
+
+.u-margin-b-1 {
+  margin-bottom: calc(var(--gapOne) * 1);
+}
+
+.u-margin-b-2 {
+  margin-bottom: calc(var(--gapOne) * 2);
+}
+
+.u-margin-b-3 {
+  margin-bottom: calc(var(--gapOne) * 3);
+}
+
+@media (--tablet) {
+  .tablet-u-margin-b-4 {
+    margin-bottom: calc(var(--gapOne) * 4);
+  }
+}

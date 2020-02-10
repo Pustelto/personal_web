@@ -1,0 +1,9 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: calc(var(--gapOne) * 3);
+  padding: var(--gapHalf) 0;
+  text-align: center;
+}

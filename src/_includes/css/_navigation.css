@@ -1,0 +1,12 @@
+.menu__item {
+  text-decoration: none;
+  color: $gray;
+  margin-left: calc(0.25 * var(--gapHalf));
+  margin-right: calc(0.25 * var(--gapHalf));
+}
+
+.menu__item.is-active {
+  color: $black;
+  text-decoration: underline;
+  font-weight: 500;
+}

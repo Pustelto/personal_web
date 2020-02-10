@@ -1,0 +1,14 @@
+.toc ol {
+  list-style-position: inside;
+  margin-left: 0;
+  padding: 0;
+}
+
+.toc > ol > li {
+  padding-left: 0;
+}
+
+.toc li {
+  padding-left: var(--gapOne);
+  margin-bottom: calc(var(--gapHalf) / 2);
+}

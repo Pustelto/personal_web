@@ -1,0 +1,10 @@
+.more {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.more__link {
+  display: inline-block;
+  text-decoration: underline;
+}

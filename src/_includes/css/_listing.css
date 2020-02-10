@@ -1,0 +1,17 @@
+.listing {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.listing:not(:last-child) {
+  margin-bottom: var(--gapOne);
+}
+
+.listing__item {
+  margin-bottom: calc(var(--gapOne) * 2);
+}
+
+.listing__item:last-of-type {
+  margin-bottom: 0;
+}

@@ -1,0 +1,30 @@
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-L;
+  margin: 0;
+  margin-bottom: var(--gapOne);
+  font-weight: 700;
+
+  & > a {
+    text-decoration: none;
+
+    &:hover {
+      color: inherit;
+    }
+  }
+
+  @media (--tablet) {
+    margin-bottom: 0;
+    height: var(--gapOne);
+
+    &:after {
+      content: "";
+      width: 1px;
+      height: 100%;
+      background-color: $gray;
+      margin: 0 var(--gapHalf);
+    }
+  }
+}

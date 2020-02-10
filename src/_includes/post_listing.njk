@@ -1,0 +1,29 @@
+<ul class="listing">
+{% for post in listing %}
+  <li class="listing__item">
+    <article class="article">
+      <{{headingLevel if headingLevel else 'h3'}} class="h3 article__header">
+        <a href="{{ post.url }}" class="article__link">
+          {{ post.data.title }}
+        </a>
+      </{{headingLevel if headingLevel else 'h3'}}>
+
+      <div class="article__excerpt">
+        <p>
+          {{post.data.excerpt}}
+        </p>
+      </div>
+
+      <div class="article__meta">
+        {% set tags = post.data.tags %}
+        <div class="article__tags">
+          {% include 'tags.njk' %}
+        </div>
+        <span class="article__date">
+          Published on <time datetime="{{post.data.page.date | isoDate}}">{{post.data.page.date | readableDate}}</time>
+        </span>
+      </div>
+    </article>
+  </li>
+{% endfor %}
+</ul>

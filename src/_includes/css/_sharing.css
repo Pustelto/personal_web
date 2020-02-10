@@ -1,0 +1,9 @@
+.sharing {
+  margin-bottom: var(--gapOne);
+}
+
+.sharing__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

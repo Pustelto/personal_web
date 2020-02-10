@@ -1,0 +1,20 @@
+<header class="header">
+  <div class="header__left">
+    <a href="#main" class="skip-content">Skip to main content</a>
+    <span class="logo"><a href="{{'/' | url}}">Tomas Pustelnik</a></span>
+
+    {% include 'navigation.njk' %}
+  </div>
+
+  <div class="header__right">
+    {% if socialNetworks | length > 0%}
+      <nav class="socialLinks" aria-label="social media">
+        {% for network in socialNetworks %}
+            <a class="socialLinks__link" href="{{network.url}}" aria-label="{{network.name}}">
+              <svg class="icon"><use xlink:href="#{{network.name | lower}}"></use></svg>
+            </a>
+        {% endfor %}
+      </nav>
+    {% endif %}
+  </div>
+</header>

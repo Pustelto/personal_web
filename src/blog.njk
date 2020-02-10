@@ -1,0 +1,11 @@
+---
+title: Blog
+layout: layouts/page.njk
+eleventyNavigation:
+  key: Blog
+  order: 2
+---
+<h1>Blog posts</h1>
+{% set listing = collections.blogposts | reverse %}
+{% set headingLevel = 'h2' %}
+{% include 'post_listing.njk' %}

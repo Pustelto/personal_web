@@ -1,0 +1,67 @@
+.article__link {
+  text-decoration: none;
+}
+
+.article__header {
+  margin-bottom: var(--gapHalf);
+}
+
+.article__excerpt {
+  margin-bottom: var(--gapHalf);
+}
+
+.article__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  @media (--tablet) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.article__tags {
+  line-height: 1.72;
+}
+
+.article__date {
+  display: inline-block;
+  font-size: $font-S;
+  line-height: 1.72;
+  color: $gray;
+  margin-bottom: calc(var(--gapHalf) / 3);
+}
+
+/* Extra styles needed for styling of header links */
+.article__content h2,
+.article__content h3,
+.article__content h4,
+.article__content h5,
+.article__content h6 {
+  position: relative;
+}
+
+.article__content h2 {
+  margin-top: calc(var(--gapOne) * 3);
+}
+
+.article__content h3 {
+  margin-top: calc(var(--gapOne) * 1.5);
+}
+
+/* Styles for codepen embeds */
+.cp_embed_wrapper {
+  margin-bottom: 1.5em;
+}
+
+.article__content aside {
+  @include getFontSize($font-S, $font-M);
+  padding: var(--gapHalf);
+  border: 2px solid $light-gray;
+
+  @media (--tablet) {
+    font-size: $font-M;
+  }
+}

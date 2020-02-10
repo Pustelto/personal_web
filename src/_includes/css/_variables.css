@@ -1,0 +1,30 @@
+$scale: 1.5;
+
+/* Colors */
+$black: #0b0d0d;
+$light-gray: #dedcdc;
+$gray: #757575;
+$brand: #30a5bf;
+$white: #ffffff;
+
+/* Font sizes */
+$font-S: 0.875rem;
+$font-M: 1rem;
+$font-L: 1.125rem;
+$font-XL: 1.5rem;
+$font-XXL: 1.75rem;
+$font-XXXL: 2rem;
+$font-Display: 3.375rem;
+
+/* Media queries */
+@custom-media --mobile screen and (min-width: 30rem);
+@custom-media --tablet screen and (min-width: 45rem);
+@custom-media --onlyTablet screen and (max-width: 44.9375rem);
+
+/* z-index */
+$zBelow: -1;
+$zBase: 0;
+$zAbove: 1;
+$zCover: 5;
+$zHeader: 75;
+$zModal: 100;

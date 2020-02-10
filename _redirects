@@ -1,0 +1,4 @@
+# Redirect domain aliases to primary domain
+https://pustelto.cz/* https://pustelto.com/:splat 301!
+https://www.pustelto.cz/* https://pustelto.com/:splat 301!
+https://www.pustelto.com/* https://pustelto.com/:splat 301!

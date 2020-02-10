@@ -1,0 +1,21 @@
+.welcome {
+}
+
+.welcome__subheading {
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: $gray;
+  font-weight: 500;
+  @include getFontSize($font-M, $font-L);
+
+  @media (--tablet) {
+    font-size: $font-L;
+  }
+}
+
+.welcome__title {
+  display: block;
+  text-align: center;
+}

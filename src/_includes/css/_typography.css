@@ -1,0 +1,78 @@
+h1,
+.h1 {
+  @include getFontSize($font-XXXL, $font-Display);
+  line-height: 1.2;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: var(--gapOne);
+
+  @media (--tablet) {
+    font-size: $font-Display;
+    /* line-height: 1.2; */
+  }
+}
+
+h2,
+.h2 {
+  @include getFontSize($font-XXL, $font-XXXL);
+  font-weight: 700;
+  line-height: 1.4;
+  margin-top: 0;
+  margin-bottom: var(--gapOne);
+
+  @media (--tablet) {
+    font-size: $font-XXXL;
+  }
+}
+
+h3,
+.h3 {
+  @include getFontSize($font-XL, $font-XXL);
+  font-weight: 600;
+  line-height: 1.3;
+  margin-top: 0;
+  margin-bottom: var(--gapHalf);
+
+  @media (--tablet) {
+    font-size: $font-XXL;
+  }
+}
+
+h4,
+.h4 {
+  @include getFontSize($font-L, $font-XL);
+  font-weight: 800;
+  line-height: 1.333;
+  margin-top: 0;
+  margin-bottom: var(--gapHalf);
+
+  @media (--tablet) {
+    font-size: $font-XL;
+  }
+}
+
+h5,
+.h5 {
+  @include getFontSize($font-M, $font-L);
+  line-height: 1.5;
+  margin-top: 0;
+  margin-bottom: var(--gapHalf);
+
+  @media (--tablet) {
+    font-size: $font-L;
+  }
+}
+
+h6,
+.h6 {
+  @include getFontSize($font-M, $font-L);
+  line-height: 1.5;
+  font-variant-caps: all-small-caps;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: var(--gapHalf);
+
+  @media (--tablet) {
+    font-size: $font-L;
+  }
+}
