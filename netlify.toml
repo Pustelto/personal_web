@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "https://pustelto.cz"
+  to = "https://pustelto.com"
+  status = 301
+  force = true
