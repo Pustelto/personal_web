@@ -1,6 +1,5 @@
 {
   "tags": ["project"],
   "featured": 0,
-  "permalink": false,
-  "eleventyExcludeFromCollections": true
+  "permalink": false
 }
