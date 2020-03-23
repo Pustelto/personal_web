@@ -1,6 +1,5 @@
 <div>
-  <span id="tags-label" aria-hidden hidden>Tags:</span>
-  <ul class="tags" aria-labeledby="tags-label">
+  <ul class="tags" aria-label="Tags">
     {% for tag in tags %}
       {% if tag != 'posts' and tag != 'project' %}
       <li class="tags__tag">{{tag}}</li>
