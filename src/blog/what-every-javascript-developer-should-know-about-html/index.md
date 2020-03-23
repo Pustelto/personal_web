@@ -1,6 +1,6 @@
 ---
 title: "What every JavaScript developer should know about HTML and CSS"
-twitter: "A list of HTML/CSS tips and concepts every JS developer should know"
+twitter: "A list of HTML/CSS tips and concepts every JS developer should know from @pustelto, check it out."
 tags: ["Accessibility", "Frontend", "HTML", "CSS"]
 excerpt: "A list of a few HTML/CSS tips and concepts I believe every JavaScript frontend developer should know."
 date: 2020-02-10
@@ -121,11 +121,7 @@ Box-sizing property controls how the final size of the HTML element will be calc
 
 If you add padding or border to the element, it will increase its size. That may result in the element overflowing from its container and can be a cause of some confusion for people who do not know about this (especially if they use some CSS reset without knowing what it does exactly). To see the difference between `box-sizing` set to `content-box` and `border-box` have a look at the codepen below.
 
-<p class="codepen" data-height="324" data-theme-id="dark" data-default-tab="css,result" data-user="Pustelto" data-slug-hash="MWYdRKj" data-preview="true" style="height: 324px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Box sizing comparison">
- <span>See the Pen <a href="https://codepen.io/Pustelto/pen/MWYdRKj">
- Box sizing comparison</a> by Tomas Pustelnik (<a href="https://codepen.io/Pustelto">@Pustelto</a>)
- on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
+{% codepen 'MWYdRKj', 'Box sizing comparison' %}
 
 To make `width` and `height` properties affect the padding and border of the element as well set value of `box-sizing` to `border-box`. Here is a suggested way of doing this.
 
@@ -160,11 +156,7 @@ When two vertical margins meet, they will collapse. This happens between sibling
 
 You may play with the codepen below to see how margin collapsing changes with different CSS properties.
 
-<p class="codepen" data-height="324" data-theme-id="dark" data-default-tab="css,result" data-user="Pustelto" data-slug-hash="yLypxGr" data-preview="true" style="height: 324px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Margin collapsing">
-  <span>See the Pen <a href="https://codepen.io/Pustelto/pen/yLypxGr">
-  Margin collapsing</a> by Tomas Pustelnik (<a href="https://codepen.io/Pustelto">@Pustelto</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
+{% codepen 'yLypxGr', 'Margin collapsing' %}
 
 For a more detailed explanation, do check the [MDN page about margin collapsing](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing).
 
@@ -180,11 +172,7 @@ Instead of pixels, it's best practice to use `rem` (rem stand for root em). More
 
 `rem` works similarly to `em` unit except its size is calculated from the font-size of the root element (`<html>`). Unlike with `em`, there isn't a problem with the multiplication of the sizes -- if you nest elements inside each other, font-sizes with `em` units will infer it's size from the parent. See the codepen below for an example (I have shamelessly copied the code from [Codedrops CSS reference](https://tympanus.net/codrops/css_reference/))
 
-<p class="codepen" data-height="324" data-theme-id="dark" data-default-tab="css,result" data-user="Pustelto" data-slug-hash="jOEJmgN" data-preview="true" style="height: 324px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Em cascade">
-  <span>See the Pen <a href="https://codepen.io/Pustelto/pen/jOEJmgN">
-  Em cascade</a> by Tomas Pustelnik (<a href="https://codepen.io/Pustelto">@Pustelto</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
+{% codepen 'jOEJmgN', 'Em units cascade' %}
 
 If we are talking about font sizes, we have to mention `line-height` property as well. Always define it as a unitless number (eg. 1.5). This way browser will calculate `line-height` as a multiple of the `font-size`. Again this is important for accessibility to ensure enlarged texts are readable. For a detailed explanation of this (and with examples) check [Kathleen McMahon's article](https://www.24a11y.com/2019/pixels-vs-relative-units-in-css-why-its-still-a-big-deal/).
 
@@ -196,11 +184,7 @@ Sometimes you may encounter an issue where the element with high `z-index` is co
 
 There isn't usually one but several stacking contexts at the same time. And element with stacking context works like a container for its children with the `z-index` property. `z-index` has an effect only inside of this stacking context, but not outside. Which in practice means that element with `z-index` value of `999` can be cover with another element with `z-index` value `1`. Check the codepen below for a concrete example.
 
-<p class="codepen" data-height="324" data-theme-id="dark" data-default-tab="css,result" data-user="Pustelto" data-slug-hash="abzMwvw" data-preview="true" style="height: 324px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Stacking context example">
-  <span>See the Pen <a href="https://codepen.io/Pustelto/pen/abzMwvw">
-  Stacking context example</a> by Tomas Pustelnik (<a href="https://codepen.io/Pustelto">@Pustelto</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
+{% codepen 'abzMwvw', 'Stacking context example' %}
 
 What you usually want to do in such a case is to add or update `z-index` on the element which creates stacking context (`header` and `main` in the example codepen). Check [this article on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context) if you want to see when exactly is stacking context created.
 
