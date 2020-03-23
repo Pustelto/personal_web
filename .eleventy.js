@@ -1,8 +1,8 @@
 const htmlMinTransform = require("./src/transforms/html-min-transform.js");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
-const pluginRss = require("@11ty/eleventy-plugin-rss");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const readingTime = require("eleventy-plugin-reading-time");
+const pluginRss = require("@11ty/eleventy-plugin-rss");
+// const readingTime = require("eleventy-plugin-reading-time");
 const format = require("date-fns/format");
 
 module.exports = function(eleventyConfig) {
@@ -11,9 +11,9 @@ module.exports = function(eleventyConfig) {
 
   // Plugins
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
-  eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(syntaxHighlight);
-  eleventyConfig.addPlugin(readingTime);
+  eleventyConfig.addPlugin(pluginRss);
+  // eleventyConfig.addPlugin(readingTime);
 
   // Custom collections
   eleventyConfig.addCollection("blogposts", function(collection) {
@@ -51,12 +51,25 @@ module.exports = function(eleventyConfig) {
   // generate text param for Twitter share button
   eleventyConfig.addFilter("twitterShare", (path, quote) => {
     return `https://twitter.com/intent/tweet?text=${encodeURI(
-      `${quote} from @pustelto, check it out. https://pustelto.com${path} `
+      `${quote} https://pustelto.com${path}`
     )}`;
   });
   // Add ` - Tomas Pustelnik` to head title
   eleventyConfig.addFilter("withAuthor", title => {
     return title ? `${title} - Tomas Pustelnik's personal website` : undefined;
+  });
+
+  // Custom shortcodes
+  eleventyConfig.addShortcode("codepen", function(penId, title, tabs = ["css", "result"]) {
+    return `<p class="codepen" data-height="324" data-theme-id="dark" data-default-tab="${tabs.join(
+      ","
+    )}" data-user="Pustelto" data-slug-hash="${penId}" data-preview="true" style="height: 324px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="${title}">
+    <span>See the Pen <a href="https://codepen.io/Pustelto/pen/${penId}">
+    ${title}</a> by Tomas Pustelnik (<a href="https://codepen.io/Pustelto">@Pustelto</a>)
+    on <a href="https://codepen.io">CodePen</a>.</span>
+   </p>
+   <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+   `;
   });
 
   // Copy assets
