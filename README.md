@@ -8,7 +8,7 @@ Source code of my personal webpage
 
 - [ ] shortcode for extra notes (aside) (md templates)
 - [ ] shortcode for responsive images (md templates)
-
+- [ ] on mobile main image is larger than od desktop - better image optimalizations
 - [ ] image pipeline - optimization, resizing, webp
   - https://lazy-load-nlm.netlify.com/
   - https://github.com/edwardhorsford/eleventyone/blob/master/gulp-tasks/images.js
