@@ -2,10 +2,10 @@ const htmlMinTransform = require("./src/transforms/html-min-transform.js");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
-// const readingTime = require("eleventy-plugin-reading-time");
+const readingTime = require("eleventy-plugin-reading-time");
 const format = require("date-fns/format");
 
-module.exports = function(eleventyConfig) {
+module.exports = function (eleventyConfig) {
   // Activate deep merge for data cascade
   eleventyConfig.setDataDeepMerge(true);
 
@@ -13,23 +13,23 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
   eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addPlugin(pluginRss);
-  // eleventyConfig.addPlugin(readingTime);
+  eleventyConfig.addPlugin(readingTime);
 
   // Custom collections
-  eleventyConfig.addCollection("blogposts", function(collection) {
-    return collection.getFilteredByTag("posts").filter(post => post.data.published);
+  eleventyConfig.addCollection("blogposts", function (collection) {
+    return collection.getFilteredByTag("posts").filter((post) => post.data.published);
   });
 
-  eleventyConfig.addCollection("featuredProjects", function(collection) {
+  eleventyConfig.addCollection("featuredProjects", function (collection) {
     return collection.getFilteredByTag("project").sort((a, b) => a.data.featured < b.data.featured);
   });
 
   // Custom filters
   // First three are taken from taken from https://github.com/11ty/eleventy-base-blog/blob/master/.eleventy.js
-  eleventyConfig.addFilter("readableDate", dateObj => {
+  eleventyConfig.addFilter("readableDate", (dateObj) => {
     return format(dateObj, "MMMM d', 'yyyy");
   });
-  eleventyConfig.addFilter("isoDate", dateObj => {
+  eleventyConfig.addFilter("isoDate", (dateObj) => {
     return format(dateObj, "yyyy-MM-dd");
   });
   // Get the first `n` elements of a collection.
@@ -39,14 +39,9 @@ module.exports = function(eleventyConfig) {
     }
     return array.slice(0, n);
   });
-  // Return first segment of url path - used to highlight menu item fro nested pages
-  eleventyConfig.addFilter("urlHead", path => {
-    return path !== "/"
-      ? path
-          .split("/")
-          .slice(0, 2)
-          .join("/") + `/`
-      : path; // url paths in 11ty ends with trailing slash
+  // Return first segment of url path - used to highlight menu item for nested pages
+  eleventyConfig.addFilter("urlHead", (path) => {
+    return path !== "/" ? path.split("/").slice(0, 2).join("/") + `/` : path; // url paths in 11ty ends with trailing slash
   });
   // generate text param for Twitter share button
   eleventyConfig.addFilter("twitterShare", (path, quote) => {
@@ -55,12 +50,12 @@ module.exports = function(eleventyConfig) {
     )}`;
   });
   // Add ` - Tomas Pustelnik` to head title
-  eleventyConfig.addFilter("withAuthor", title => {
+  eleventyConfig.addFilter("withAuthor", (title) => {
     return title ? `${title} - Tomas Pustelnik's personal website` : undefined;
   });
 
   // Custom shortcodes
-  eleventyConfig.addShortcode("codepen", function(penId, title, tabs = ["css", "result"]) {
+  eleventyConfig.addShortcode("codepen", function (penId, title, tabs = ["css", "result"]) {
     return `<p class="codepen" data-height="324" data-theme-id="dark" data-default-tab="${tabs.join(
       ","
     )}" data-user="Pustelto" data-slug-hash="${penId}" data-preview="true" style="height: 324px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="${title}">
@@ -88,7 +83,7 @@ module.exports = function(eleventyConfig) {
     xhtmlOut: true,
     breaks: true,
     linkify: false,
-    typographer: true
+    typographer: true,
   };
 
   // Markdown Parsing
@@ -97,10 +92,10 @@ module.exports = function(eleventyConfig) {
     markdownIt(options)
       .use(require("markdown-it-anchor"), {
         permalink: true,
-        permalinkSymbol: "#"
+        permalinkSymbol: "#",
       })
       .use(require("markdown-it-toc-done-right"), {
-        containerClass: "toc"
+        containerClass: "toc",
       })
       .use(require("markdown-it-kbd"))
       .use(require("markdown-it-abbr"))
@@ -110,11 +105,11 @@ module.exports = function(eleventyConfig) {
   // You can return your Config object (optional).
   return {
     dir: {
-      input: "src"
+      input: "src",
     },
     templateFormats: ["njk", "md", "html", "11ty.js", "css"],
     htmlTemplateEngine: "njk",
     markdownTemplateEngine: "njk",
-    passthroughFileCopy: true
+    passthroughFileCopy: true,
   };
 };
