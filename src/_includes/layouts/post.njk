@@ -2,7 +2,7 @@
 layout: layouts/page.njk
 ---
 <h1 class="h1 article__header">{{title}}</h1>
-<div class="article__meta u-margin-b-1">
+<div class="article__meta u-margin-b-0">
   {% set tags = tags %}
   <div class="article__tags">
     {% include 'tags.njk' %}
@@ -10,6 +10,9 @@ layout: layouts/page.njk
   <span class="article__date">
     Published on <time datetime="{{date | isoDate}}"> {{date | readableDate}}</time>
   </span>
+</div>
+<div class="article__meta u-margin-b-1">
+  <div class="article__date article__readingTime"><span aria-hidden>~</span>{{ content | readingTime }} reading time</div>
 </div>
 
 <div class="article__content u-margin-b-2">
