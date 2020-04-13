@@ -1,7 +1,7 @@
 ---
 title: "Don't ignore Fieldset and Legend HTML elements"
 twitter: "Fieldset and Legend are very underrated HTML tags. Check out this article from @Pustelto to see why you should use them."
-tags: ["Accessibility", "Frontend", "HTML"]
+tags: ["Accessibility", "Front-end", "HTML"]
 excerpt: "Fieldset and Legend are in my opinion very underrated HTML tags. In this article I will explain you why is it good idea to use them in your forms."
 date: 2020-03-23
 published: true
