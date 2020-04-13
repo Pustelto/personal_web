@@ -1,15 +1,15 @@
 ---
-title: "Tools & resources I use for frontend development"
-twitter: "A list of tools and resources to help you with frontend development"
-tags: ["Tooling", "Productivity", "Frontend"]
-excerpt: "A list of a tools and resources I use for frontend development to be productive and deliver high quality work."
+title: "Tools & resources I use for front-end development"
+twitter: "A list of tools and resources to help you with front-end development"
+tags: ["Tooling", "Productivity", "Front-end"]
+excerpt: "A list of a tools and resources I use for front-end development to be productive and deliver high quality work."
 date: 2020-04-13
 published: true
 ---
 
 *[a11y]: accessibility
 
-Frontend development is quite a complex discipline and you will hardly ever need only a browser and code editor (at least for bigger projects). I have decided to post a list of the tools I use for development. I hope this will help others to find some great tools they can use in their workflow.
+Front-end development is quite a complex discipline and you will hardly ever need only a browser and code editor (at least for bigger projects). I have decided to post a list of the tools I use for development. I hope this will help others to find some great tools they can use in their workflow.
 
 ## Basic stuff
 

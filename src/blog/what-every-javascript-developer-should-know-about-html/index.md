@@ -1,15 +1,15 @@
 ---
 title: "What every JavaScript developer should know about HTML and CSS"
 twitter: "A list of HTML/CSS tips and concepts every JS developer should know from @pustelto, check it out."
-tags: ["Accessibility", "Frontend", "HTML", "CSS"]
-excerpt: "A list of a few HTML/CSS tips and concepts I believe every JavaScript frontend developer should know."
+tags: ["Accessibility", "Front-end", "HTML", "CSS"]
+excerpt: "A list of a few HTML/CSS tips and concepts I believe every JavaScript front-end developer should know."
 date: 2020-02-10
 published: true
 ---
 
 Writing web apps in React or other JS frameworks doesn't mean you don't need to have a solid foundation of HTML and CSS. While you may be fine most of the time with basic knowledge, having more in-depth knowledge will help you create a much more accessible, robust and maintainable code. And in the end, deliver better products to your users.
 
-I have put together several concepts and practices I believe every frontend developer should know (not just JavaScript developers, but I often see the biggest lack of knowledge there).
+I have put together several concepts and practices I believe every front-end developer should know (not just JavaScript developers, but I often see the biggest lack of knowledge there).
 
 To avoid the article to be too long, I introduce only the necessary basics in each area and provide links to more resources on the web if you wish to learn more. There are many great articles about each of the topics mentioned here, but I found it useful to have it in one place like this.
 
