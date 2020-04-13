@@ -16,7 +16,7 @@ Frontend development is quite a complex discipline and you will hardly ever need
 Those are the tools I use daily and I couldn't literary produce much of my work without them.
 
 - [VS Code](https://code.visualstudio.com) - You need to write your code somewhere. My editor of choice is VS Code from Microsoft. It's free, lightweight (compared to IDEs like WebStorm), has a ton of functionality out of the box and extensions which can give it even more powers.
-- Browsers - I use Firefox as my default browser, sometimes switching to Chrome for development. But I have also installed other browsers for testing.
+- Browsers - I use Firefox as my default browser, sometimes switching to Chrome for development. But I have installed other browsers for testing as well.
 - [DevDocs](https://devdocs.io) - Web app which aggregates documentation from different projects. It can also work in offline mode. This my go-to page when I need to look for some documentation.
 Using it mainly for JS and DOM/Browser related stuff. As I really couldn't find anything similar (easy to search and detailed). You should check it out.
 - [Google](https://google.com) - Yes, I google things very often. Bugs, how to do stuff (sometimes pretty basic) or examples and documentations for packages and libraries (if they aren't on DevDocs).
