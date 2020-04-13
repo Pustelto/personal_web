@@ -8,17 +8,12 @@ Source code of my personal webpage
 
 - [ ] shortcode for extra notes (aside) (md templates)
 - [ ] shortcode for responsive images (md templates)
-- [ ] on mobile main image is larger than od desktop - better image optimalizations
 - [ ] image pipeline - optimization, resizing, webp
   - https://lazy-load-nlm.netlify.com/
   - https://github.com/edwardhorsford/eleventyone/blob/master/gulp-tasks/images.js
 - [ ] about page
-- [ ] [reading time](https://www.npmjs.com/package/eleventy-plugin-reading-time) - plugin added, need to style it
 - [ ] RSS feed
-- [ ] newsletter subscription (once I have enough trafic)
-- [ ] services page - consultancy etc. - not now
-- [ ] books page (later, put it in qjub)
-- [ ] easter egg do console - něco jako give me feedback or suggest imrpovements.
+- [ ] books page (later, put it in Qjub)
 - [ ] function to generate og/twitter image for each article
 - [ ] contact form
 - [ ] explore web mentions
