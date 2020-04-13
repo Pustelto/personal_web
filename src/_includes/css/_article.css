@@ -31,7 +31,11 @@
   font-size: $font-S;
   line-height: 1.72;
   color: $gray;
-  margin-bottom: calc(var(--gapHalf) / 3);
+}
+.article__readingTime {
+  @media (--tablet) {
+    margin-left: auto;
+  }
 }
 
 /* Extra styles needed for styling of header links */
@@ -64,4 +68,16 @@
   @media (--tablet) {
     font-size: $font-M;
   }
+}
+
+/*
+* [1]  we use `em` instead of `rem` in order to ensure spacing between paragraphs is consistent
+*      with the line-height when used with fluid typography.
+*/
+.article__content li {
+  margin-bottom: calc(1.65em / 4); /* [1] */
+}
+
+.article__content li:last-child {
+  margin-bottom: 0;
 }
