@@ -27,7 +27,7 @@ I use it mainly when I need to check some a11y related stuff as they have there 
 
 ## CSS
 
-- [CSS-Tricks](https://caniuse.com) - You can find a ton of interesting articles and tips on their blog. There is also a Guides section with in-depth articles about certain HTML/CSS and JS concepts. I usually go there if I need to refresh my Grid knowledge. But other guides are great as well, so definitely worth checking it out.
+- [CSS-Tricks](https://css-tricks.com/) - You can find a ton of interesting articles and tips on their blog. There is also a Guides section with in-depth articles about certain HTML/CSS and JS concepts. I usually go there if I need to refresh my Grid knowledge. But other guides are great as well, so definitely worth checking it out.
 - [CSS Reference](http://tympanus.net/codrops/css_reference) - If I need to refresh some of my CSS knowledge or use some property I do not know/use very often, this is my go-to resource. It contains an in-depth explanation of every CSS property with clear examples so it's easy to understand and use in your project. Written by excellent [Sara Soudain](https://www.sarasoueidan.com).
 - [Can I Use](https://caniuse.com) - A must-have tool if you care about browser support and using cutting edge features responsibly (aka progressive enhancement).
 
