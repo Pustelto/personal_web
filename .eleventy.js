@@ -21,7 +21,7 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addCollection("featuredProjects", function (collection) {
-    return collection.getFilteredByTag("project").sort((a, b) => a.data.featured < b.data.featured);
+    return collection.getFilteredByTag("project").sort((a, b) => b.data.featured - a.data.featured);
   });
 
   // Custom filters
