@@ -20,7 +20,9 @@ For those who do not have time or do not want to read the entire article:
 
 ## Full story
 
-Let's start with a little background. When I start my current job I had to learn a lot of new stuff and I wanted to get better. So I start building Qjub. To learn in-depth all the new stuff I used in my work and eventually to build something I would love to use myself. To Kill to birds with one stone.
+Let's start with a little background. When I start my current job I had to learn a lot of new stuff and I wanted to get better. So I start building Qjub. To learn in-depth all the new stuff I used in my work and eventually to build something I would help me.
+
+You see, I tend to collect a lot of resources across the web. Web development tips, books I want to read, cooking recipes, and design inspiration. But I had always had those things at different locations. Finding that one thing I was looking for was difficult. None of the products I tried worked for me, so I decided to build my own solution. Building Qjub was like to kill to birds with one stone.
 
 While Qjub was slowly taking shape it was still mainly learning project - I experiment and play with different technologies and frameworks - without any pressure to release it. Somewhere along the way, I decided to go all-in and make Qjub available to everyone as an app. With the eventual prospect of getting some income from it (and ideally building it full time).
 
