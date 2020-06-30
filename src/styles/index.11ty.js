@@ -13,25 +13,24 @@ module.exports = class {
       permalink: `styles/${fileName}`,
       rawFilepath,
       rawCss: await fs.readFileSync(rawFilepath),
-      eleventyExcludeFromCollections: true
+      eleventyExcludeFromCollections: true,
     };
   }
 
   async render({ rawCss, rawFilepath }) {
     return await postcss([
-      // require('postcss-comment'),
-      require("precss"),
+      require("precss")({
+        stage: 4,
+      }),
       require("postcss-import"),
       require("postcss-custom-media"),
-      // require('postcss-color-mix'),
-      // postCssColors(),
-      // require('postcss-color-function'),
       require("postcss-strip-units"),
+      // require('autoprefixer')
       require("cssnano")({
-        preset: "advanced"
-      })
+        preset: "advanced",
+      }),
     ])
       .process(rawCss, { from: rawFilepath })
-      .then(result => result.css);
+      .then((result) => result.css);
   }
 };
