@@ -21,6 +21,7 @@ module.exports = class {
     return await postcss([
       require("precss")({
         stage: 4,
+        autoprefixer: { flexbox: false },
       }),
       require("postcss-import"),
       require("postcss-custom-media"),

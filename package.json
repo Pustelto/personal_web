@@ -43,6 +43,11 @@
     "webpack": "4.41.5"
   },
   "browserslist": [
-    "defaults"
+    "defaults",
+    "not ie 11",
+    "not ie_mob 11",
+    "not baidu >= 7.12",
+    "not and_qq >= 1.2",
+    "not op_mini all"
   ]
 }
