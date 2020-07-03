@@ -3,16 +3,3 @@
   to = "https://pustelto.com"
   status = 301
   force = true
-
-[[plugins]]
-  package = "netlify-plugin-inline-critical-css"
-
-  [plugins.inputs]
-    minify = true
-    # Whether to remove the inlined styles from any stylesheets referenced in the HTML. Use with caution. Removing the critical CSS per page results in a unique async loaded CSS file for every page, meaning you can’t rely on cache across multiple pages.
-    extract = false
-
-    # An array of objects containing `width` and `height` to deliver critical CSS for multiple screen resolutions.
-    [[plugins.inputs.dimensions]]
-      width = 920
-      height = 960
