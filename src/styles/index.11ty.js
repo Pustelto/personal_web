@@ -26,9 +26,20 @@ module.exports = class {
       require("postcss-import"),
       require("postcss-custom-media"),
       require("postcss-strip-units"),
-      // require('autoprefixer')
+      require("@hail2u/css-mqpacker"),
       require("cssnano")({
         preset: "advanced",
+      }),
+      require("postcss-extract-media-query")({
+        output: {
+          path: path.join(__dirname, "../../_site/styles"),
+          name: "[name]-[query].[ext]",
+        },
+        queries: {
+          "screen and (min-width:30rem)": "mobile",
+          "screen and (min-width:45rem)": "tablet",
+          "screen and (max-width:44.9375rem)": "onlyTablet",
+        },
       }),
     ])
       .process(rawCss, { from: rawFilepath })
