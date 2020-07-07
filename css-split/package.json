@@ -1,0 +1,16 @@
+{
+  "name": "css-split",
+  "version": "1.0.0",
+  "description": "",
+  "main": "css-split.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "glob": "^7.1.6",
+    "jsdom": "^16.2.2",
+    "purgecss": "^2.3.0"
+  }
+}
