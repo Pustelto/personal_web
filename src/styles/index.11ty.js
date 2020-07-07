@@ -10,7 +10,7 @@ module.exports = class {
   async data() {
     const rawFilepath = path.join(__dirname, `../_includes/css/${fileName}`);
     return {
-      permalink: `styles/${fileName}`,
+      permalink: `styles/main.css`,
       rawFilepath,
       rawCss: await fs.readFileSync(rawFilepath),
       eleventyExcludeFromCollections: true,
