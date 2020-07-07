@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "npx @11ty/eleventy --serve",
-    "build": "npx @11ty/eleventy"
+    "build": "cd css-split && npm i && cd .. && npx @11ty/eleventy && node ./css-split/css-split.js"
   },
   "author": "",
   "license": "MIT",
