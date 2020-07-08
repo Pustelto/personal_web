@@ -6,12 +6,14 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "npx @11ty/eleventy --serve",
-    "build": "npx @11ty/eleventy"
+    "build": "npx @11ty/eleventy && node split-css.js"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
     "@11ty/eleventy": "0.10.0",
+    "@hail2u/css-mqpacker": "8.0.1",
+    "@pustelto/css-split": "0.1.0",
     "cssnano": "4.1.10",
     "cssnano-preset-advanced": "4.0.7",
     "date-fns": "2.9.0",
@@ -41,5 +43,13 @@
     "copy-webpack-plugin": "5.1.1",
     "terser-webpack-plugin": "2.3.1",
     "webpack": "4.41.5"
-  }
+  },
+  "browserslist": [
+    "defaults",
+    "not ie 11",
+    "not ie_mob 11",
+    "not baidu >= 7.12",
+    "not and_qq >= 1.2",
+    "not op_mini all"
+  ]
 }

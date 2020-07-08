@@ -10,28 +10,28 @@ module.exports = class {
   async data() {
     const rawFilepath = path.join(__dirname, `../_includes/css/${fileName}`);
     return {
-      permalink: `styles/${fileName}`,
+      permalink: `styles/main.css`,
       rawFilepath,
       rawCss: await fs.readFileSync(rawFilepath),
-      eleventyExcludeFromCollections: true
+      eleventyExcludeFromCollections: true,
     };
   }
 
   async render({ rawCss, rawFilepath }) {
     return await postcss([
-      // require('postcss-comment'),
-      require("precss"),
+      require("precss")({
+        stage: 4,
+        autoprefixer: { flexbox: false },
+      }),
       require("postcss-import"),
       require("postcss-custom-media"),
-      // require('postcss-color-mix'),
-      // postCssColors(),
-      // require('postcss-color-function'),
       require("postcss-strip-units"),
+      require("@hail2u/css-mqpacker"),
       require("cssnano")({
-        preset: "advanced"
-      })
+        preset: "advanced",
+      }),
     ])
       .process(rawCss, { from: rawFilepath })
-      .then(result => result.css);
+      .then((result) => result.css);
   }
 };
