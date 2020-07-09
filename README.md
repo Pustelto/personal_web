@@ -2,26 +2,18 @@
 
 Source code of my personal webpage
 
-## TODO
-
 ## Future updates
 
 - [ ] shortcode for extra notes (aside) (md templates)
-- [ ] shortcode for responsive images (md templates)
-- [ ] image pipeline - optimization, resizing, webp
-  - https://lazy-load-nlm.netlify.com/
-  - https://github.com/edwardhorsford/eleventyone/blob/master/gulp-tasks/images.js
 - [ ] about page
 - [ ] RSS feed
 - [ ] books page (later, put it in Qjub)
 - [ ] function to generate og/twitter image for each article
-- [ ] contact form
-- [ ] explore web mentions
 - [ ] microdata - https://www.brucelawson.co.uk/2018/the-practical-value-of-semantic-html/
+- [ ] explore web mentions
+- [ ] contact form
 - [ ] perf optimalizations
   - embed content only on good connection
-  - split CSS to more bundles to decrease unused code (need to meassure if it is worthy of the effort, probably would have to figure out some automatic process for css splitting)
-  - is it possible/worth it to split css by media queries (to get smaller css on mobile)
   - consider adding service worker
 - [ ] consider some design updates and tweaking
   - https://public-sans.digital.gov/public-sans-600/
