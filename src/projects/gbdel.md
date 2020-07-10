@@ -1,6 +1,6 @@
 ---
 title: gbdel
-url: https://www.npmjs.com/package/gbdel
+url: https://github.com/Pustelto/gbdel
 tags: ["Open source", "Git", "Tooling", "Node.js", "CLI"]
 featured: 40
 ---
