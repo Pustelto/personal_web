@@ -117,7 +117,7 @@ I want to go through a few basic things to keep in mind.
 
 Box-sizing property controls how the final size of the HTML element will be calculated. By default it values is `content-box` which means that width and height attributes (and their min and max variants) affect only a content area of the element (blue part in the picture below).
 
-![Box model schema showing content, paddding, border and margin areas](./box-model.png)
+{% image "box-model.png", "Box model schema showing content, paddding, border and margin areas" %}
 
 If you add padding or border to the element, it will increase its size. That may result in the element overflowing from its container and can be a cause of some confusion for people who do not know about this (especially if they use some CSS reset without knowing what it does exactly). To see the difference between `box-sizing` set to `content-box` and `border-box` have a look at the codepen below.
 
@@ -212,7 +212,7 @@ However, with multiple selectors targeting one element, there is another factor 
 
 You can see in the image below how is the specificity calculated.
 
-![Schema showing how CSS specificity is calculated](./specificity@2x.jpg)
+{% image "specificity.jpg", "Schema showing how CSS specificity is calculated" %}
 
 When you compare the specificity of two selectors, the higher one wins and its rules will be applied. In our case `.red.blue` has specificity _0-2-0_ (we have two classes there) and the `p.blue` has _0-1-1_ (one class and one element selector).
 
