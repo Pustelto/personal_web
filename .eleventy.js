@@ -4,6 +4,7 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const readingTime = require("eleventy-plugin-reading-time");
 const format = require("date-fns/format");
+const Image = require("@11ty/eleventy-img");
 
 module.exports = function (eleventyConfig) {
   // Activate deep merge for data cascade
@@ -67,10 +68,77 @@ module.exports = function (eleventyConfig) {
    `;
   });
 
+  async function optimImg(src, opts) {
+    const finalOpts = {
+      widths: [296, 608, 888, 1216, 1824],
+      formats: ["webp", "jpg"],
+      urlPath: "./",
+      outputDir: "_site/images",
+      ...opts,
+    };
+    let stats = await Image(src, finalOpts);
+    if (finalOpts.widths.length > 1) return stats;
+    else return stats["jpg"].pop();
+  }
+
+  eleventyConfig.addNunjucksAsyncShortcode("image", async function (src, alt, options) {
+    if (alt === undefined) {
+      throw new Error(`Missing \`alt\` on resImage from: ${src}`);
+    }
+
+    let stats = await optimImg("src" + this.page.url + src, { outputDir: "_site" + this.page.url });
+    let lowestSrc = stats.jpg[0];
+    let sizes = "100vw, (min-width: 39.5rem) 608px";
+
+    // Iterate over formats and widths
+    return `<picture>
+      ${Object.values(stats)
+        .map((imageFormat) => {
+          return `  <source type="image/${imageFormat[0].format}" srcset="${imageFormat
+            .map((entry) => `${entry.url} ${entry.width}w`)
+            .join(", ")}" sizes="${sizes}">`;
+        })
+        .join("\n")}
+        <img
+          alt="${alt}"
+          src="${lowestSrc.url}"
+          width="${lowestSrc.width}"
+          height="${lowestSrc.height}"
+          loading="lazy">
+      </picture>`;
+  });
+
+  eleventyConfig.addNunjucksAsyncShortcode("figure", async function (src, alt, caption, options) {
+    if (alt === undefined) {
+      throw new Error(`Missing \`alt\` on resImage from: ${src}`);
+    }
+
+    let stats = await optimImg("src" + this.page.url + src, { outputDir: "_site" + this.page.url });
+    let lowestSrc = stats.jpg[0];
+    let sizes = "100vw, (min-width: 39.5rem) 608px";
+
+    // Iterate over formats and widths
+    return `<figure><picture>
+      ${Object.values(stats)
+        .map((imageFormat) => {
+          return `  <source type="image/${imageFormat[0].format}" srcset="${imageFormat
+            .map((entry) => `${entry.url} ${entry.width}w`)
+            .join(", ")}" sizes="${sizes}">`;
+        })
+        .join("\n")}
+        <img
+          alt="${alt}"
+          src="${lowestSrc.url}"
+          width="${lowestSrc.width}"
+          height="${lowestSrc.height}"
+          loading="lazy">
+      </picture><figcaption>${caption}</figcaption></figure>`;
+  });
+
   // Copy assets
   eleventyConfig.addPassthroughCopy("src/fonts");
   eleventyConfig.addPassthroughCopy("src/images");
-  eleventyConfig.addPassthroughCopy("src/blog/**/*.{jpg,png,webp,gif}");
+  eleventyConfig.addPassthroughCopy("src/blog/**/*.{gif}");
   eleventyConfig.addPassthroughCopy("src/favicon*");
 
   // Code transforms
