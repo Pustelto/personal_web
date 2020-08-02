@@ -21,7 +21,7 @@ So if you want to build a profitable business, you shouldn't underestimate your 
 
 To see how CSS affects the load time of a webpage we first have to know how the browser converts an HTML document into a functional webpage.
 
-First, it has to download an HTML document and parse it to create DOM (Document Object Model). Any time it encounters any external resource (CSS, JS, images, etc.) it will assign it a download priority and initiate its download. Priorities are important because some resources are critical to render a page (eg. main CSS and JS files) while others may be less important (like images or stylesheets for other media types).
+First, it has to download an HTML document and parse it to create DOM (Document Object Model). Any time it encounters any external resource (CSS, JS, images, etc.) it will assign it a download priority and initiate its download. Priorities are important because some resources are critical to render a page (eg. main stylesheet and JS files) while others may be less important (like images or stylesheets for other media types).
 
 <aside>HTTP/1.1 has also a hard limit on the number of connections per one domain (the exact number depends on the browser, it's usually 6 these days). So if you want to download a large number of resources from one domain some of them have to wait in a queue until resources with higher priorities finish downloading. So keep the number of requests small when using HTTP/1.1. HTTP/2 doesn't have this limitation, but not all sites are using HTTP/2 so far.</aside>
 
@@ -37,7 +37,7 @@ Let's see in detail how we can improve those.
 
 **TLDR:** Configure your tools correctly to use modern code whenever possible.
 
-If you want to faster load times, making your CSS files smaller is a good idea. These days it's pretty common to use some tool to modify the CSS on build time (either post processor or [PostCSS](https://postcss.org/) and Autoprefixer) to provide fallbacks for older browsers or some other enhancements.
+If you want to faster load times, making your CSS files smaller is a good idea. These days it's pretty common to use some tool to modify the CSS on build time (either post processor or [PostCSS](https://postcss.org/)) to provide fallbacks for older browsers or some other enhancements.
 
 I would suggest checking the result code for unnecessary bloat. Especially if you are using PostCSS with multiple plugins. In my case, I had CSS with generated fallbacks for CSS variables and with prefixes for older flexbox syntax. That may seem like a trivial issue with very little effect, but resulting savings were around 3 kB for small stylesheet like mine. I think that is a great improvement for very little work. And for large CSS it has the potential to have an even bigger impact.
 
@@ -50,7 +50,7 @@ All I had to do was to update a [browserslist](https://github.com/browserslist/b
 
 ## Use critical CSS
 
-So we shrank our CSS file, but we still need to download it. We can speed up the web page load time by reducing network requests. And best network requests are no requests at all. We can inline our styles directly into the HTML to avoid the need for downloading any external stylesheets and thus saving some time.
+So we shrank our CSS file, but we still need to download it. We can speed up the webpage load time by reducing network requests. And best network requests are no requests at all. We can inline our styles directly into the HTML to avoid the need for downloading any external stylesheets and thus saving some time.
 
 Of course, including an entire 9kb stylesheet (or large for bigger projects) on every page is not very effective. So we will include only the styles necessary to render the part of the page *above the fold* and lazy-load the rest of the styles. That way we can still leverage browser caching for other pages and make our webpage load faster. Since we include styles that are critical for page rendering this technique is called *Critical CSS*.
 
@@ -77,15 +77,15 @@ You may want to include fallback when JS is disabled. That way your styles will 
 </noscript>
 ```
 
-In the waterfall diagrams below you can see that page with critical CSS starts rendering right away (violet graph in *Browser main thread* row) and is interactive much sooner compared to the old version where CSS file has to be downloaded first.
+In the waterfall diagrams below you can see that page with critical CSS starts rendering right away (violet portion of the graph in *Browser main thread* row) and is interactive much sooner compared to the old version where CSS file has to be downloaded first.
 
-{% figure "comparison_projects_old.png", "Page starts rendering after 3.6 seconds and is interactive after 3.8 seconds.", "Waterfall chart for projects page without critical CSS." %}
+{% figure "comparison_projects_old.png", "Page starts rendering after 3.6 seconds and is interactive after 3.8 seconds.", "Waterfall chart for projects page <strong>without</strong> critical CSS." %}
 
-{% figure "comparison_projects_new.png", "Page starts rendering after 3.2 seconds and is interactive after 3.3 seconds.", "Waterfall chart for projects page with critical CSS." %}
+{% figure "comparison_projects_new.png", "Page starts rendering after 3.2 seconds and is interactive after 3.3 seconds.", "Waterfall chart for projects page <strong>with</strong> critical CSS." %}
 
 ## Use code-splitting for your stylesheets
 
-We have CSS with only properties we need for modern browsers and we use critical CSS and lazy-load the rest. But we can probably decrease our file size a bit more. In Chrome dev tools there is a tool called Coverage which will show you how much of your CSS and JS are used on the current page. Open dev tools and press [[Ctrl]]+[[Shift]]+[[p]] to open a command pallet and type *Coverage*. Select *Show coverage* option to show the panel. Now reload the page.
+We have CSS with properties we need for modern browsers and we use critical CSS and lazy-load the rest. But we can probably decrease our file size a bit more. In Chrome dev tools there is a tool called Coverage. It can show you what portion of CSS and JS files is used on the current page. Open dev tools and press [[Ctrl]]+[[Shift]]+[[p]] to open a command pallet and type *Coverage*. Select *Show coverage* option to show the panel. Now reload the page.
 
 {% image "coverage_index_old.png", "Coverage report for my home page before any optimizations, over 45% of the CSS is not used on the page." %}
 
@@ -93,11 +93,11 @@ We have CSS with only properties we need for modern browsers and we use critical
 
 I had almost 50% of my CSS code unused on the page. When we check another page we get even more -- almost 54% of unused CSS. That's a lot of unnecessary code. And this number can be even bigger on large legacy apps.
 
-When using JS we often use code-splitting to create multiple smaller files (bundles), which we then download when needed instead of fetching one large JS bundle. We can use a similar approach for CSS as well. Let's discuss the options we have.
+When using JS we often use code-splitting to create multiple smaller files (bundles). We download those bundles when needed them instead of fetching one large JS bundle on page load. We can use a similar approach for CSS as well. We can split our CSS in three different ways.
 
 ### Split CSS based on media queries
 
-In this approach, you split your big CSS into smaller stylesheets based on your media queries (PostCSS have plugin for that) and reference those stylesheets in your HTML.
+In this approach, you split your big CSS into smaller stylesheets based on your media queries (PostCSS have [plugin](https://github.com/hail2u/node-css-mqpacker) for that) and reference those stylesheets in your HTML.
 
 ```html
 <link rel="stylesheet" href="index.css" media="all" />
@@ -105,11 +105,11 @@ In this approach, you split your big CSS into smaller stylesheets based on your 
 <link rel="stylesheet" href="table.css" media="(min-width: 45rem)" />
 ```
 
-Be aware that this approach doesn't make much sense when using Critical CSS and lazy-loading of the stylesheet. The browser will download all the stylesheets anyway, it will use media attribute to prioritize the downloads. So basically it will download CSS with a high priority for active media query and lazy-load the rest of the stylesheets.
+Be aware that this approach doesn't make much sense when using Critical CSS and lazy-loading of the stylesheet. The browser will download all stylesheets no matter what media query is used. It will only use media attribute to prioritize the downloads. So basically it will download CSS with a high priority for active media query and lazy-load the rest of the stylesheets.
 
 ### Page based code-splitting
 
-Another approach is to use have separate CSS for each page. As we have seen above there is a lot of unused styles for different pages. It would be great if we could remove those unused styles and keep only what is necessary for a given page. This is what I choose to do. Sadly I couldn't find any tools which would be able to do this. Take one large CSS file and generate a smaller bundle for each page based on its content.
+Another approach is to use separate CSS for each page. As we have seen above there is a lot of unused styles for different pages. It would be great if we could remove those unused styles and keep only what is necessary for a given page. This is what I choose to do. Sadly I couldn't find any tool to do this --- take one large CSS file and generate a smaller bundle for each page based on its content.
 
 Sounds fairly simple so I decided to give it a shot and build a node script which can do this kind of thing. It's called [CSS Split](https://github.com/Pustelto/css-split) and it works great for sites built using static site generator (like [Eleventy](https://www.11ty.dev/) which I use for my site). It uses [PurgeCSS](https://purgecss.com) to remove unused styles so it should work on other non-HTML files as well (based on their documentation). I didn't test it for anything else than HTML so when using it this way, be sure to double-check the results.
 
@@ -125,7 +125,7 @@ CSS file for projects:               4.4kB (without GZip)
 
 {% image "coverage_projects_new.png", "Coverage report for my projects page after code-splitting, only around 400 bytes are unused." %}
 
-You can see that there are still some unused bytes. That's ok as Coverage doesn't include hover or focus states or queries. It is unlikely that you will ever geet to 0 unused bytes.
+You can see that there are still some unused bytes. That's ok as Coverage doesn't include hover or focus states or queries. It is unlikely that you will ever get unused bytes to 0.
 
 ### Component based code-splitting
 
@@ -135,7 +135,7 @@ I still didn't test this technique to see how well it will work compared to my c
 
 ## Summary
 
-Even though my site is fairly simple and doesn't have too much room for improvements, by using the techniques mentioned there I was able to speed up the initial load of my webpage and lower the total size of assets. You can use the same process for any web page to improve it's loading performance (probably with better results for larger projects).
+Even though my site is fairly simple and doesn't have too much room for improvements, by using the techniques mentioned there I was able to speed up the initial load of my webpage and lower the total size of assets. You can use the same process for any webpage to improve it's loading performance (probably with better results for larger projects).
 
 Below you can see some final results after the updates. Graphs show what percentage of the page was rendered at what time. Those tests were run on a slow 3G connection, that's why it takes so long to load the page.
 
