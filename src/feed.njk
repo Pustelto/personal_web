@@ -1,7 +1,7 @@
 ---
 permalink: /feed.xml
 eleventyExcludeFromCollections: true,
-feeddata:
+metadata:
   author:
     name: Tomas Pustelnik
 ---
@@ -14,7 +14,7 @@ feeddata:
   <updated>{{ collections.posts | rssLastUpdatedDate }}</updated>
   <id>{{ metadata.url }}</id>
   <author>
-    <name>{{ feeddata.author.name }}</name>
+    <name>{{ metadata.author.name }}</name>
   </author>
   {%- for post in collections.posts %}
   {% set absolutePostUrl %}{{ post.url | url | absoluteUrl(metadata.url) }}{% endset %}

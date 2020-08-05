@@ -6,7 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{(title | withAuthor) or metadata.title}}</title>
   <meta name="description" content="{{description or metadata.description}}">
-  <link  rel="alternate" href="feed.xml" type="application/atom+xml" title="Pustelto.com RSS feed" />
+
+  {# RSS FEED #}
+  <link  rel="alternate" href="{{ '/feed.xml' | url | absoluteUrl(metadata.url) }}" type="application/atom+xml" title="Pustelto.com blog feed" />
 
   {# ANALYTICS SECTION #}
   <link href="https://plausible.io" rel="preconnect" crossorigin>
