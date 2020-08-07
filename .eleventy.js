@@ -4,6 +4,7 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const readingTime = require("eleventy-plugin-reading-time");
 const format = require("date-fns/format");
+const parseISO = require("date-fns/parseISO");
 const Image = require("@11ty/eleventy-img");
 
 module.exports = function (eleventyConfig) {
@@ -27,11 +28,27 @@ module.exports = function (eleventyConfig) {
 
   // Custom filters
   // First three are taken from taken from https://github.com/11ty/eleventy-base-blog/blob/master/.eleventy.js
+  eleventyConfig.addFilter("toDate", (dateString) => {
+    return parseISO(dateString);
+  });
   eleventyConfig.addFilter("readableDate", (dateObj) => {
     return format(dateObj, "MMMM d', 'yyyy");
   });
   eleventyConfig.addFilter("isoDate", (dateObj) => {
     return format(dateObj, "yyyy-MM-dd");
+  });
+  eleventyConfig.addFilter("myRssDate", (dateObj) => {
+    // Fri, 24 Jul 2020 00:00:00 +0000
+    return format(dateObj, "E, dd LLL yyyy HH:mm:ss xx");
+  });
+  eleventyConfig.addFilter("lastUpdated", (collection) => {
+    return new Date(
+      Math.max(
+        ...collection.map((item) => {
+          return item.date;
+        })
+      )
+    );
   });
   // Get the first `n` elements of a collection.
   eleventyConfig.addFilter("head", (array, n) => {
