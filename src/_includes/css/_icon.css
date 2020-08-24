@@ -2,7 +2,12 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: calc(0.75 * var(--gapOne));
-  height: calc(0.75 * var(--gapOne));
+  width: var(--gapOne);
+  height: var(--gapOne);
   fill: currentColor;
+
+  @media (--tablet) {
+    width: calc(0.8 * var(--gapOne));
+    height: calc(0.8 * var(--gapOne));
+  }
 }
