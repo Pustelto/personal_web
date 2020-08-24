@@ -23,7 +23,7 @@ Now let's have a look at why using `<fieldset>` and `<legend>` is a good idea. N
 
 You may argue that you can simply add some text before the inputs (like heading) and give the user the same information. That's not entirely true. First, it may confuse the user as there is no clear connection between the group of form elements and the text you provided. Second, some screen readers have a special mode to work with the forms and in this mode, non-form elements may be ignored (so your heading will not work).
 
-Fieldset has one more great benefit. You can simply put the disabled attribute on it and it will disable all the input fields in it. So no extra delivery address? Sure just put one disabled there and you are done. Isn't that great? And by the way, you can use this trick on the `<form>` element itself to disable the entire form.
+Fieldset has one more great benefit. You can simply put the disabled attribute on it and it will disable all the input fields in it. So no extra delivery address? Sure just put one disabled there and you are done. Isn't that great? ~~And by the way, you can use this trick on the `<form>` element itself to disable the entire form~~ (**EDIT:** This is not a true as I checked based on some comments. `disabled` does not work on `form` like this. I'm sorry for confusion.).
 
 ## Some downsides
 
