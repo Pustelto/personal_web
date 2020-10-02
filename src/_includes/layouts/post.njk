@@ -30,16 +30,22 @@ layout: layouts/page.njk
   <div class="author__imgWrapper">
     <picture>
       <source
+        type="image/avif"
+        srcset="/images/me.avif 80w, /images/me@2x.avif 160w, , /images/me@2x.avif 240w"
+        sizes="5rem"
+      >
+      <source
         type="image/webp"
-        srcset="/images/me.webp 200w, /images/me@2x.webp 400w"
-        sizes="(max-width: 44.9375rem): 8rem, 10rem"
+        srcset="/images/me.webp 80w, /images/me@2x.webp 160w, , /images/me@2x.webp 240w"
+        sizes="5rem"
       >
       <img
       class="author__img"
         src="/images/me.jpg"
         alt=""
-        srcset="/images/me.jpg 200w, /images/me@2x.jpg 400w"
-        sizes="(max-width: 44.9375rem): 8rem, 10rem"
+        srcset="/images/me.jpg 80w, /images/me@2x.jpg 160w, , /images/me@2x.jpg 240w"
+        sizes="5rem"
+        loading="lazy"
       >
     </picture>
   </div>
