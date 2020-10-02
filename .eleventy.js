@@ -105,7 +105,7 @@ module.exports = function (eleventyConfig) {
 
     let stats = await optimImg("src" + this.page.url + src, { outputDir: "_site" + this.page.url });
     let lowestSrc = stats.jpg[0];
-    let sizes = "100vw, (min-width: 39.5rem) 608px";
+    let sizes = "(max-width: 39.4375rem) 100vw, 608px";
 
     // Iterate over formats and widths
     return `<picture>
@@ -132,7 +132,7 @@ module.exports = function (eleventyConfig) {
 
     let stats = await optimImg("src" + this.page.url + src, { outputDir: "_site" + this.page.url });
     let lowestSrc = stats.jpg[0];
-    let sizes = "100vw, (min-width: 39.5rem) 608px";
+    let sizes = "(max-width: 39.4375rem) 100vw, 608px";
 
     // Iterate over formats and widths
     return `<figure><picture>
