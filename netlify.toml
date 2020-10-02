@@ -4,6 +4,12 @@
   status = 301
   force = true
 
+[[headers]]
+  for = "*.avif"
+  [headers.values]
+    Content-Type = "image/avif"
+    Content-Disposition = "inline"
+
 [[plugins]]
   package = "netlify-plugin-inline-critical-css"
 
