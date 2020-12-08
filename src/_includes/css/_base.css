@@ -112,6 +112,9 @@ kbd,
 pre,
 code {
   font-family: monospace, monospace;
+  background: #eceef9;
+  border-radius: 0.2em;
+  padding: 0.2ch;
 }
 
 /*
