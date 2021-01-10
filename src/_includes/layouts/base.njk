@@ -7,18 +7,6 @@
   <title>{{(title | withAuthor) or metadata.title}}</title>
   <meta name="description" content="{{description or metadata.description}}">
 
-  {# RSS FEED #}
-  <link  rel="alternate" href="{{ '/feed.xml' | url | absoluteUrl(metadata.url) }}" type="application/rss+xml" title="Pustelto.com blog feed" />
-
-  {# ANALYTICS SECTION #}
-  <link href="https://plausible.io" rel="preconnect" crossorigin>
-
-  {# FAVICONS AND SOCIAL MEDIA #}
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  {% include 'head_social_media.njk' %}
-
   {# STYLESHEETS #}
   <link rel="stylesheet" href="/styles/main.css?v=2">
   <noscript>
@@ -27,6 +15,23 @@
   {% if tags and "posts" in tags %}
     <link rel="stylesheet" href="/styles/prism-theme.css?v=1" media="print" onload="this.media='all'">
   {% endif %}
+
+  {# ANALYTICS SECTION #}
+  <link href="https://plausible.io" rel="preconnect" crossorigin>
+
+  {# CANONICAL URL #}
+  {% if canonical %}
+    <link rel="canonical" href="{{canonical}}">
+  {% endif %}
+
+  {# RSS FEED #}
+  <link  rel="alternate" href="{{ '/feed.xml' | url | absoluteUrl(metadata.url) }}" type="application/rss+xml" title="Pustelto.com blog feed" />
+
+  {# FAVICONS AND SOCIAL MEDIA #}
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  {% include 'head_social_media.njk' %}
 </head>
 <body>
   {% include 'icons.njk' %}

@@ -37,6 +37,11 @@
     margin-left: auto;
   }
 }
+.article__canonical {
+  display: inline-block;
+  color: $gray;
+  font-style: italic;
+}
 
 /* Extra styles needed for styling of header links */
 .article__content h2,
