@@ -15,6 +15,12 @@ layout: layouts/page.njk
   <div class="article__date article__readingTime"><span aria-hidden>~</span>{{ content | readingTime }} reading time</div>
 </div>
 
+{% if canonical %}
+<div class="article__meta u-margin-b-1">
+  <div class="article__canonical">This article was originaly published at <a href="{{ canonical }}">{{canonical}}</a></div>
+</div>
+{% endif %}
+
 <div class="article__content u-margin-b-2">
   {{content | safe}}
 </div>
