@@ -1,13 +1,15 @@
 ---
 title: Real-world CSS vs. CSS-in-JS performance comparison
-twitter: "If you care about page performance, don't use build-time CSS-in-JS see why in the article from @pustelto"
+twitter: "If you care about page performance, don't use build-time CSS-in-JS, see why in the article from @pustelto"
 tags: ["CSS", "Performance", "Front-end"]
 excerpt: "I took the real app and convert it from Styled Components to Linaria to compare the app performance of CSS-in-JS and normal CSS. Continue reading if you want to know how it went."
 date: 2021-04-09
 published: true
 ---
 
-CSS-in-JS has taken a solid place in front-end tooling, and it seems this trend will continue in the near future. Especially in the React world. For example, out of 11492 people who participate in [State of CSS](https://2020.stateofcss.com/en-US/) survey in 2020 only 14.3% didn't hear of [Styled Components](https://styled-components.com/) (a dominant CSS-in-JS library). And more than 40% of participants use or use the library.
+*[CRA]: Create React App
+
+CSS-in-JS has taken a solid place in front-end tooling, and it seems this trend will continue in the near future. Especially in the React world. For example, out of 11492 people who participate in [State of CSS](https://2020.stateofcss.com/en-US/) survey in 2020 only 14.3% didn't hear of [Styled Components](https://styled-components.com/) (a dominant CSS-in-JS library). And more than 40% of participants used the library.
 
 I wanted to see an in-depth performance comparison of CSS-in-JS libraries like Styled Components and a good old CSS for a long time. Sadly I was unable to found a comparison on a real-world project and not some simple test scenario. So I decided to do it myself. I have migrated the real-world app from Styled Components to [Linaria](https://linaria.dev/), which will extract CSS on build time. No runtime generation of the styles on the user's machine.
 
@@ -40,7 +42,7 @@ We will start with a network. One of the advantages of CSS-in-JS is that there a
 Here is a data comparison of the same home page build with Styled Components and Linaria. Size before the slash is gzipped size, uncompressed size is after it.
 
 <table>
-  <caption>Homepage network stats comparison</caption> <thead> <tr> <th style="text-align:left"></th> <th style="text-align:right">Styled Component</th> <th style="text-align:right">Linaria</th> </tr> </thead> <tbody> <tr> <td style="text-align:left">Total number of requests</td> <td style="text-align:right">11</td> <td style="text-align:right">13</td> </tr> <tr> <td style="text-align:left">Total size</td> <td style="text-align:right">361kB/1.8MB</td> <td style="text-align:right">356kB/1.8MB</td> </tr> <tr> <td style="text-align:left">CSS size</td> <td style="text-align:right">2.3kB/7.2kB</td> <td style="text-align:right">14.7kB/71.5kB</td> </tr> <tr> <td style="text-align:left">No. of CSS requests</td> <td style="text-align:right">1</td> <td style="text-align:right">3</td> </tr> <tr> <td style="text-align:left">JS size</td> <td style="text-align:right">322kB/1.8MB</td> <td style="text-align:right">305kB/1.7MB</td> </tr> <tr> <td style="text-align:left">No. of JS requests</td> <td style="text-align:right">6</td> <td style="text-align:right">6</td> </tr> </tbody>
+  <caption>Home page network stats comparison</caption> <thead> <tr> <th style="text-align:left"></th> <th style="text-align:right">Styled Component</th> <th style="text-align:right">Linaria</th> </tr> </thead> <tbody> <tr> <td style="text-align:left">Total number of requests</td> <td style="text-align:right">11</td> <td style="text-align:right">13</td> </tr> <tr> <td style="text-align:left">Total size</td> <td style="text-align:right">361kB/1.8MB</td> <td style="text-align:right">356kB/1.8MB</td> </tr> <tr> <td style="text-align:left">CSS size</td> <td style="text-align:right">2.3kB/7.2kB</td> <td style="text-align:right">14.7kB/71.5kB</td> </tr> <tr> <td style="text-align:left">No. of CSS requests</td> <td style="text-align:right">1</td> <td style="text-align:right">3</td> </tr> <tr> <td style="text-align:left">JS size</td> <td style="text-align:right">322kB/1.8MB</td> <td style="text-align:right">305kB/1.7MB</td> </tr> <tr> <td style="text-align:left">No. of JS requests</td> <td style="text-align:right">6</td> <td style="text-align:right">6</td> </tr> </tbody>
 </table>
 
 <table><caption>Search page network stats comparison</caption><thead> <tr> <th style="text-align:left"></th> <th style="text-align:right">Styled Component</th> <th style="text-align:right">Linaria</th> </tr> </thead> <tbody> <tr> <td style="text-align:left">Total number of requests</td> <td style="text-align:right">10</td> <td style="text-align:right">12</td> </tr> <tr> <td style="text-align:left">Total size</td> <td style="text-align:right">395kB/1.9MB</td> <td style="text-align:right">391kB/1.9MB</td> </tr> <tr> <td style="text-align:left">CSS size</td> <td style="text-align:right">2.3kB/7.2kB</td> <td style="text-align:right">16.0kB/70.0kB</td> </tr> <tr> <td style="text-align:left">No. of CSS requests</td> <td style="text-align:right">1</td> <td style="text-align:right">3</td> </tr> <tr> <td style="text-align:left">JS size</td> <td style="text-align:right">363kB/1.9MB</td> <td style="text-align:right">345kB/1.8MB</td> </tr> <tr> <td style="text-align:left">No. of JS requests</td> <td style="text-align:right">6</td> <td style="text-align:right">6</td> </tr> </tbody> </table>
@@ -59,25 +61,25 @@ If we compare coverage, we get a lot of unused CSS for Linaria (around 55kB) com
 
 If we are talking about performance, it would be a shame not to use Lighthouse. You can see the comparisons in the charts below (average from 3 LI runs.). Aside from Web Vitals, I have also include Main thread work (time to parse, compile and execute assets, the biggest part of this is JS, but it covers layout and styles calculation, painting, etc.) and JS Execution time. I have omitted Cumulative Layout Shift since it was close to zero, and there was almost no difference between Linaria and Styled Component.
 
-{% image "home_comparison.png", "Lighthouse performance audit comparison of homepage. Linaria has better speed index and larges contentful paint by more that 800 milliseconds. And main thread work is is lower by 1.63 seconds." %}
+{% image "home_comparison.png", "Lighthouse performance audit comparison of home page. Linaria has better speed index and larges contentful paint by more that 800 milliseconds. And main thread work is is lower by 1.63 seconds." %}
 
 {% image "search_comparison.png", "Lighthouse performance audit comparison of search page. Linaria has better speed index by 900 milliseconds and larges contentful paint by 1.2 seconds. Main thread work is is lower by 1.27 seconds." %}
 
-As you can see, Linaria is better in most of the Web Vitals (lost once in CLS). And sometimes by a large margin. For example, LCP is faster by 870ms on the homepage and by 1.2s on the Search page. Not only does the page render with normal CSS much faster, but it requires fewer resources as well. Blocking time and time necessary to execute all the JS are smaller by 300ms and roughly 1.3 seconds respectively.
+As you can see, Linaria is better in most of the Web Vitals (lost once in CLS). And sometimes by a large margin. For example, LCP is faster by 870ms on the home page and by 1.2s on the Search page. Not only does the page render with normal CSS much faster, but it requires fewer resources as well. Blocking time and time necessary to execute all the JS are smaller by 300ms and roughly 1.3 seconds respectively.
 
 ## Performace profiling
 
 Lighthouse can give you many insights on the performance. But to get into the details, the performance tab in the dev tools is the best bet. In this case, the performance tab confirms the Lighthouse results. You can see the details on the charts below.
 
-{% image "home_profiling_comparison.png", "Profiling comparison of the homepage. Rendering and paint are almost identical. But Linaria spend almost 1 second less time on scripting. And have total blocking time smaller by more than 1.5 seconds." %}
+{% image "home_profiling_comparison.png", "Profiling comparison of the home page. Rendering and paint are almost identical. But Linaria spend almost 1 second less time on scripting. And have total blocking time smaller by more than 1.5 seconds." %}
 
 {% image "search_profiling_comparison.png", "Profiling comparison of the search page. Rendering and paint are almost identical. But Linaria spend more than 1 second less time on scripting and have total blocking time smaller almost by than 1.5 seconds." %}
 
 Screens build with Styled Component had more long-running tasks. Those tasks also took longer to complete, compared to the Linaria variant.
 
-To give you another look at the data, here is the visual comparison of the performance charts for loading the homepage with Styled Component (top) and Linaria (bottom).
+To give you another look at the data, here is the visual comparison of the performance charts for loading the home page with Styled Component (top) and Linaria (bottom).
 
-{% image "home.jpg", "Comparison of Chrome dev tools performance minimap chart of homepage build with Styled Components and Linaria. Pages build with Linaria have a visually smaller amount of long-running task, loading finished earlier and had better FPS." %}
+{% image "home.jpg", "Comparison of Chrome dev tools performance minimap chart of home page build with Styled Components and Linaria. Pages build with Linaria have a visually smaller amount of long-running task, loading finished earlier and had better FPS." %}
 
 ### Comparing user interaction
 
