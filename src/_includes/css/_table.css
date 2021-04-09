@@ -1,0 +1,10 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  padding: 0 var(--gapHalf);
+  border: 1px solid #acacac;
+}
