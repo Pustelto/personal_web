@@ -9,7 +9,7 @@ published: true
 
 *[CRA]: Create React App
 
-CSS-in-JS has taken a solid place in front-end tooling, and it seems this trend will continue in the near future. Especially in the React world. For example, out of 11492 people who participate in [State of CSS](https://2020.stateofcss.com/en-US/) survey in 2020 only 14.3% didn't hear of [Styled Components](https://styled-components.com/) (a dominant CSS-in-JS library). And more than 40% of participants used the library.
+CSS-in-JS has taken a solid place in front-end tooling, and it seems this trend will continue in the near future. Especially in the React world. For example, out of 11492 people who participate in [State of CSS](https://2020.stateofcss.com/en-US/) survey in 2020 only 14.3% didn't hear of [Styled Components](https://styled-components.com/) (a dominant CSS-in-JS library). And more than 40% of participants have used the library.
 
 I wanted to see an in-depth performance comparison of CSS-in-JS libraries like Styled Components and a good old CSS for a long time. Sadly I was unable to found a comparison on a real-world project and not some simple test scenario. So I decided to do it myself. I have migrated the real-world app from Styled Components to [Linaria](https://linaria.dev/), which will extract CSS on build time. No runtime generation of the styles on the user's machine.
 
