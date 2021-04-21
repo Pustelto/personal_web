@@ -9,6 +9,8 @@
   [headers.values]
     Content-Type = "image/avif"
     Content-Disposition = "inline"
+
+[[headers]]
   for = "*.html"
   [headers.values]    
     Permissions-Policy = "interest-cohort=()"
