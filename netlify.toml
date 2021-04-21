@@ -9,6 +9,9 @@
   [headers.values]
     Content-Type = "image/avif"
     Content-Disposition = "inline"
+  for = "*.html"
+  [headers.values]    
+    Permissions-Policy: interest-cohort=()
 
 [[plugins]]
   package = "netlify-plugin-inline-critical-css"
