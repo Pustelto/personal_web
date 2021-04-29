@@ -121,7 +121,8 @@ module.exports = function (eleventyConfig) {
           src="${lowestSrc.url}"
           width="${lowestSrc.width}"
           height="${lowestSrc.height}"
-          loading="lazy">
+          loading="lazy"
+          decoding="async">
       </picture>`;
   });
 
@@ -148,7 +149,8 @@ module.exports = function (eleventyConfig) {
           src="${lowestSrc.url}"
           width="${lowestSrc.width}"
           height="${lowestSrc.height}"
-          loading="lazy">
+          loading="lazy"
+          decoding="async">
       </picture><figcaption>${caption}</figcaption></figure>`;
   });
 
