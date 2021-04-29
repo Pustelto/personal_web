@@ -6,7 +6,8 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "npx @11ty/eleventy --serve",
-    "build": "npx @11ty/eleventy && node split-css.js"
+    "build": "npx @11ty/eleventy && node split-css.js",
+    "postbuild": "node critical.js"
   },
   "author": "",
   "license": "MIT",
@@ -42,6 +43,8 @@
     "babel-loader": "8.0.6",
     "babel-plugin-named-asset-import": "0.3.5",
     "copy-webpack-plugin": "5.1.1",
+    "critical": "3.0.1",
+    "readdirp": "3.6.0",
     "terser-webpack-plugin": "2.3.1",
     "webpack": "4.41.5"
   },

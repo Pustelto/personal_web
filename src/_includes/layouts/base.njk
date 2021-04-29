@@ -3,9 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{(title | withAuthor) or metadata.title}}</title>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="description" content="{{description or metadata.description}}">
+
+  {# ANALYTICS SECTION #}
+  {% if not isdevelopment %}
+  <script async defer data-domain="pustelto.com" src="https://plausible.io/js/plausible.js"></script>
+  {% endif %}
 
   {# STYLESHEETS #}
   <link rel="stylesheet" href="/styles/main.css?v=2">
@@ -15,9 +20,6 @@
   {% if tags and "posts" in tags %}
     <link rel="stylesheet" href="/styles/prism-theme.css?v=1" media="print" onload="this.media='all'">
   {% endif %}
-
-  {# ANALYTICS SECTION #}
-  <link href="https://plausible.io" rel="preconnect" crossorigin>
 
   {# CANONICAL URL #}
   {% if canonical %}
