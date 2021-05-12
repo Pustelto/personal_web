@@ -3,7 +3,7 @@ title: "How and why I've migrated from Netlify to Cloudflare"
 tags: ["Front-end", "JAMStack", "Performace"]
 twitter: "How and why I've migrated from Netlify to Cloudflare from @pustelto"
 excerpt: "Given Cloudflare's reputation of super-fast CDN, I decide to move my blog to Cloudflare Pages to found out if this will have some noticeable effect on the performance. Read on if you want to know the results and what I had to do to fully migrate."
-date: 2021-05-11
+date: 2021-05-12
 published: true
 ---
 
