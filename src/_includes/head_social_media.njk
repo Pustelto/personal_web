@@ -6,6 +6,8 @@
 <meta property="og:image" content="https://pustelto.com/images/me_large.jpg" />
 {# Twitter card - basic data are taken from og tags #}
 <meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="{{title or metadata.title}}" />
+<meta property="twitter:description" content="{{excerpt or description or metadata.description}}" />
 <meta name="twitter:site" content="@pustelto">
 <meta name="twitter:creator" content="@pustelto">
 <meta name="twitter:image" content="https://pustelto.com/images/me@2x.jpg">
