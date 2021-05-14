@@ -7,8 +7,6 @@ date: 2021-05-12
 published: true
 ---
 
-## Intro
-
 Up until recently, I have hosted my site on [Netlify][netlify]. They offer free hosting with great Github integration and a smooth developer experience. All this is supported by plenty of other great services. I was super happy with them. But then [Cloudflare][cloudflare] announced their new service [Pages][cloudlfare_pages]. So far, Cloudflare was known for its fast CDN and networking services. Given their reputation, I have decided to give it a shot. I was wondering if changing my hosting could have some noticeable impact on my page load times.
 
 And oh boy, it did.
