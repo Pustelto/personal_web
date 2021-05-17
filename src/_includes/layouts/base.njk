@@ -6,20 +6,8 @@
   <title>{{(title | withAuthor) or metadata.title}}</title>
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="description" content="{{description or metadata.description}}">
-<lin rel="preload" as="image" href="/images/me.avif" imagesrcset="/images/me.avif 80w,
-              /images/me@2x.avif 160w,
-              /images/me@3x.avif 240w,
-              /images/me_large.avif 160w,
-              /images/me_large@2x.avif 320w,
-              /images/me_large@3x.avif 480w" imagesizes="(max-width: 44.9375rem) 8rem,
-             10rem"/>
-<lin rel="preload" as="image" href="/images/me.jpg" imagesrcset="/images/me.jpg 80w,
-              /images/me@2x.jpg 160w,
-              /images/me@3x.jpg 240w,
-              /images/me_large.jpg 160w,
-              /images/me_large@2x.jpg 320w,
-              /images/me_large@3x.jpg 480w" imagesizes="(max-width: 44.9375rem) 8rem,
-             10rem"/>
+<link rel="preload" as="image" href="/images/me.avif" imagesrcset="/images/me.avif 80w, /images/me@2x.avif 160w, /images/me@3x.avif 240w, /images/me_large.avif 160w, /images/me_large@2x.avif 320w, /images/me_large@3x.avif 480w" imagesizes="(max-width: 44.9375rem) 8rem, 10rem"/>
+<link rel="preload" as="image" href="/images/me.jpg" imagesrcset="/images/me.jpg 80w, /images/me@2x.jpg 160w, /images/me@3x.jpg 240w, /images/me_large.jpg 160w, /images/me_large@2x.jpg 320w, /images/me_large@3x.jpg 480w" imagesizes="(max-width: 44.9375rem) 8rem, 10rem"/>
   {# ANALYTICS SECTION #}
   {% if not isdevelopment %}
   <script defer data-domain="pustelto.com" src="https://plausible.io/js/plausible.js"></script>
