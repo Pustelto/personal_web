@@ -37,6 +37,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("isoDate", (dateObj) => {
     return format(dateObj, "yyyy-MM-dd");
   });
+  eleventyConfig.addFilter("isoDuration", (readingTime) => {
+    return `PT${readingTime.split(" ")[0]}M`;
+  });
   eleventyConfig.addFilter("myRssDate", (dateObj) => {
     // Fri, 24 Jul 2020 00:00:00 +0000
     return format(dateObj, "E, dd LLL yyyy HH:mm:ss xx");
