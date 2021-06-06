@@ -1,8 +1,8 @@
 ---
 title: Real-world CSS vs. CSS-in-JS performance comparison
+excerpt: "I took the real app and convert it from Styled Components to Linaria to compare the app performance of CSS-in-JS and normal CSS. Continue reading if you want to know how it went."
 twitter: "If you care about page performance, don't use build-time CSS-in-JS, see why in the article from @pustelto"
 tags: ["CSS", "Performance", "Front-end"]
-excerpt: "I took the real app and convert it from Styled Components to Linaria to compare the app performance of CSS-in-JS and normal CSS. Continue reading if you want to know how it went."
 date: 2021-04-09
 published: true
 ---

@@ -1,4 +1,4 @@
-const htmlMinTransform = require("./src/transforms/html-min-transform.js");
+const fs = require("fs");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
@@ -6,45 +6,58 @@ const readingTime = require("eleventy-plugin-reading-time");
 const format = require("date-fns/format");
 const parseISO = require("date-fns/parseISO");
 const Image = require("@11ty/eleventy-img");
+const htmlMinTransform = require("./src/transforms/html-min-transform.js");
+const createSocialImages = require("./ogImages");
 
-module.exports = function (eleventyConfig) {
+module.exports = function (config) {
   // Activate deep merge for data cascade
-  eleventyConfig.setDataDeepMerge(true);
+  config.setDataDeepMerge(true);
 
   // Plugins
-  eleventyConfig.addPlugin(eleventyNavigationPlugin);
-  eleventyConfig.addPlugin(syntaxHighlight);
-  eleventyConfig.addPlugin(pluginRss);
-  eleventyConfig.addPlugin(readingTime);
+  config.addPlugin(eleventyNavigationPlugin);
+  config.addPlugin(syntaxHighlight);
+  config.addPlugin(pluginRss);
+  config.addPlugin(readingTime);
+
+  // Event listeners
+  config.on("afterBuild", async () => {
+    await createSocialImages();
+  });
 
   // Custom collections
-  eleventyConfig.addCollection("blogposts", function (collection) {
+  config.addCollection("allPages", function (collection) {
+    return collection
+      .getAll()
+      .filter((post) => (post.data.tags ? !post.data.tags.includes("project") : true));
+  });
+
+  config.addCollection("blogposts", function (collection) {
     return collection.getFilteredByTag("posts").filter((post) => post.data.published);
   });
 
-  eleventyConfig.addCollection("featuredProjects", function (collection) {
+  config.addCollection("featuredProjects", function (collection) {
     return collection.getFilteredByTag("project").sort((a, b) => b.data.featured - a.data.featured);
   });
 
   // Custom filters
   // First three are taken from taken from https://github.com/11ty/eleventy-base-blog/blob/master/.eleventy.js
-  eleventyConfig.addFilter("toDate", (dateString) => {
+  config.addFilter("toDate", (dateString) => {
     return parseISO(dateString);
   });
-  eleventyConfig.addFilter("readableDate", (dateObj) => {
+  config.addFilter("readableDate", (dateObj) => {
     return format(dateObj, "MMMM d', 'yyyy");
   });
-  eleventyConfig.addFilter("isoDate", (dateObj) => {
+  config.addFilter("isoDate", (dateObj) => {
     return format(dateObj, "yyyy-MM-dd");
   });
-  eleventyConfig.addFilter("isoDuration", (readingTime) => {
+  config.addFilter("isoDuration", (readingTime) => {
     return `PT${readingTime.split(" ")[0]}M`;
   });
-  eleventyConfig.addFilter("myRssDate", (dateObj) => {
+  config.addFilter("myRssDate", (dateObj) => {
     // Fri, 24 Jul 2020 00:00:00 +0000
     return format(dateObj, "E, dd LLL yyyy HH:mm:ss xx");
   });
-  eleventyConfig.addFilter("lastUpdated", (collection) => {
+  config.addFilter("lastUpdated", (collection) => {
     return new Date(
       Math.max(
         ...collection.map((item) => {
@@ -54,29 +67,29 @@ module.exports = function (eleventyConfig) {
     );
   });
   // Get the first `n` elements of a collection.
-  eleventyConfig.addFilter("head", (array, n) => {
+  config.addFilter("head", (array, n) => {
     if (n < 0) {
       return array.slice(n);
     }
     return array.slice(0, n);
   });
   // Return first segment of url path - used to highlight menu item for nested pages
-  eleventyConfig.addFilter("urlHead", (path) => {
+  config.addFilter("urlHead", (path) => {
     return path !== "/" ? path.split("/").slice(0, 2).join("/") + `/` : path; // url paths in 11ty ends with trailing slash
   });
   // generate text param for Twitter share button
-  eleventyConfig.addFilter("twitterShare", (path, quote) => {
+  config.addFilter("twitterShare", (path, quote) => {
     return `https://twitter.com/intent/tweet?text=${encodeURI(
       `${quote} https://pustelto.com${path}`
     )}`;
   });
   // Add ` - Tomas Pustelnik` to head title
-  eleventyConfig.addFilter("withAuthor", (title) => {
+  config.addFilter("withAuthor", (title) => {
     return title ? `${title} - Tomas Pustelnik's personal website` : undefined;
   });
 
   // Custom shortcodes
-  eleventyConfig.addShortcode("codepen", function (penId, title, tabs = ["css", "result"]) {
+  config.addShortcode("codepen", function (penId, title, tabs = ["css", "result"]) {
     return `<p class="codepen" data-height="324" data-theme-id="dark" data-default-tab="${tabs.join(
       ","
     )}" data-user="Pustelto" data-slug-hash="${penId}" data-preview="true" style="height: 324px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="${title}">
@@ -101,7 +114,7 @@ module.exports = function (eleventyConfig) {
     else return stats["jpg"].pop();
   }
 
-  eleventyConfig.addNunjucksAsyncShortcode("image", async function (src, alt, options) {
+  config.addNunjucksAsyncShortcode("image", async function (src, alt, options) {
     if (alt === undefined) {
       throw new Error(`Missing \`alt\` on resImage from: ${src}`);
     }
@@ -129,7 +142,7 @@ module.exports = function (eleventyConfig) {
       </picture>`;
   });
 
-  eleventyConfig.addNunjucksAsyncShortcode("figure", async function (src, alt, caption, options) {
+  config.addNunjucksAsyncShortcode("figure", async function (src, alt, caption, options) {
     if (alt === undefined) {
       throw new Error(`Missing \`alt\` on resImage from: ${src}`);
     }
@@ -165,7 +178,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/robots.txt");
 
   // Code transforms
-  eleventyConfig.addTransform("htmlmin", htmlMinTransform);
+  config.addTransform("htmlmin", htmlMinTransform);
 
   let markdownIt = require("markdown-it");
 
@@ -178,7 +191,7 @@ module.exports = function (eleventyConfig) {
   };
 
   // Markdown Parsing
-  eleventyConfig.setLibrary(
+  config.setLibrary(
     "md",
     markdownIt(options)
       .use(require("markdown-it-anchor"), {
@@ -192,6 +205,21 @@ module.exports = function (eleventyConfig) {
       .use(require("markdown-it-abbr"))
       .use(require("markdown-it-playground"))
   );
+
+  config.setBrowserSyncConfig({
+    callbacks: {
+      ready: function (err, bs) {
+        bs.addMiddleware("*", (req, res) => {
+          const content_404 = fs.readFileSync("_site/404.html");
+          // Add 404 http status code in request header.
+          res.writeHead(404, { "Content-Type": "text/html; charset=UTF-8" });
+          // Provides the 404 content without redirect.
+          res.write(content_404);
+          res.end();
+        });
+      },
+    },
+  });
 
   // You can return your Config object (optional).
   return {
