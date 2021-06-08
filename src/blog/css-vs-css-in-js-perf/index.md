@@ -33,7 +33,7 @@ Run test:
 
 1. Network (size of the JS and CSS assets, coverage, number of requests)
 2. Lighthouse audits (performance audit with mobile preset).
-3. Performace profiling (tests for page load, one for drag and drop interaction)
+3. Performance profiling (tests for page load, one for drag and drop interaction)
 
 ## Network comparison
 
