@@ -67,7 +67,7 @@ If we are talking about performance, it would be a shame not to use Lighthouse. 
 
 As you can see, Linaria is better in most of the Web Vitals (lost once in CLS). And sometimes by a large margin. For example, LCP is faster by 870ms on the home page and by 1.2s on the Search page. Not only does the page render with normal CSS much faster, but it requires fewer resources as well. Blocking time and time necessary to execute all the JS are smaller by 300ms and roughly 1.3 seconds respectively.
 
-## Performace profiling
+## Performance profiling
 
 Lighthouse can give you many insights on the performance. But to get into the details, the performance tab in the dev tools is the best bet. In this case, the performance tab confirms the Lighthouse results. You can see the details on the charts below.
 
