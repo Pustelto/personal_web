@@ -162,6 +162,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("src/blog/**/*.{gif}");
   eleventyConfig.addPassthroughCopy("src/favicon*");
+  eleventyConfig.addPassthroughCopy("src/robots.txt");
 
   // Code transforms
   eleventyConfig.addTransform("htmlmin", htmlMinTransform);
