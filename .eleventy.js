@@ -171,11 +171,11 @@ module.exports = function (config) {
   });
 
   // Copy assets
-  eleventyConfig.addPassthroughCopy("src/fonts");
-  eleventyConfig.addPassthroughCopy("src/images");
-  eleventyConfig.addPassthroughCopy("src/blog/**/*.{gif}");
-  eleventyConfig.addPassthroughCopy("src/favicon*");
-  eleventyConfig.addPassthroughCopy("src/robots.txt");
+  config.addPassthroughCopy("src/fonts");
+  config.addPassthroughCopy("src/images");
+  config.addPassthroughCopy("src/blog/**/*.{gif}");
+  config.addPassthroughCopy("src/favicon*");
+  config.addPassthroughCopy("src/robots.txt");
 
   // Code transforms
   config.addTransform("htmlmin", htmlMinTransform);
