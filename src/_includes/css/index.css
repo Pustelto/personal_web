@@ -23,5 +23,6 @@
 @import "_header-anchor.css";
 @import "_toc.css";
 @import "_a11y.css";
+@import "errPage.css";
 
 @import "_utils.css";
