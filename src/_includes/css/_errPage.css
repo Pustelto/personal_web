@@ -1,0 +1,13 @@
+.errHeader {
+  display: flex;
+  align-items: flex-start;
+}
+.errCode {
+  color: var(--brand);
+  font-family: monospace, monospace;
+  font-size: $font-XXL;
+  font-weight: 700;
+  margin-top: 4px;
+  margin-left: -4.2rem;
+  padding-right: var(--gapHalf);
+}
