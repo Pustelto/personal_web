@@ -23,7 +23,22 @@ async function createTemplate(data) {
 
 async function createSocialImages() {
   console.log("SOCIAL IMAGES GENERATION STARTED...");
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    args: [
+      "--disable-gpu",
+      "--renderer",
+      "--no-sandbox",
+      "--no-service-autorun",
+      "--no-experiments",
+      "--no-default-browser-check",
+      "--disable-dev-shm-usage",
+      "--disable-setuid-sandbox",
+      "--no-first-run",
+      "--no-zygote",
+      "--single-process",
+      "--disable-extensions",
+    ],
+  });
 
   try {
     const data = await getData();
