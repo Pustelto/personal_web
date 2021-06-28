@@ -21,7 +21,9 @@ module.exports = function (config) {
 
   // Event listeners
   config.on("afterBuild", async () => {
-    await createSocialImages();
+    if (process.env.ELEVENTY_ENV === "production") {
+      await createSocialImages();
+    }
   });
 
   // Custom collections

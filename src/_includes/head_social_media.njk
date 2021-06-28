@@ -3,11 +3,11 @@
 <meta property="og:type" content="website" />
 <meta property="og:title" content="{{title or metadata.title}}" />
 <meta property="og:description" content="{{excerpt or description or metadata.description}}" />
-<meta property="og:image" content="https://pustelto.com/images/share/{{( 'home' if not customShareImage else title  ) | slug}}.jpg" />
+<meta property="og:image" content="https://pustelto.com/images/share/{{( title if ( title and customShareImage ) else 'home'  ) | slug}}.jpg" />
 {# Twitter card - basic data are taken from og tags #}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{title or metadata.title}}" />
 <meta name="twitter:description" content="{{excerpt or description or metadata.description}}" />
 <meta name="twitter:site" content="@pustelto">
 <meta name="twitter:creator" content="@pustelto">
-<meta name="twitter:image" content="https://pustelto.com/images/share/{{( 'home' if not customShareImage else title  ) | slug}}.jpg">
+<meta name="twitter:image" content="https://pustelto.com/images/share/{{( title if ( title and customShareImage ) else 'home'  ) | slug}}.jpg">
