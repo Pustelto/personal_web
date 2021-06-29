@@ -51,7 +51,7 @@ async function createSocialImages() {
 
     await page.setViewport({
       width: 1200,
-      height: 630,
+      height: 628,
       deviceScaleFactor: 2,
     });
 
@@ -86,10 +86,9 @@ async function createSocialImages() {
 
       // Take a screenshot of the page
       image = await page.screenshot({
-        quality: 90,
         path: path.join(
           imagesFolderPath,
-          (imageData.filename || imageData.title.toLowerCase().split(" ").join("-")) + ".jpg"
+          (imageData.filename || imageData.title.toLowerCase().split(" ").join("-")) + ".png"
         ),
       });
     }

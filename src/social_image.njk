@@ -6,7 +6,7 @@ permalink: "og_images_data.json"
 [{% for pageData in collections.allPages %}
   {
     {% if not pageData.data.title %}"filename": "home",
-    {% endif %}"title": "{{pageData.data.title or metadata.title}}",{% if not pageData.data.title %}
+    {% endif %}"title": "{{( pageData.data.title or metadata.title ) | safe}}",{% if not pageData.data.title %}
     "description": "{{metadata.description}}",{% endif %}
     "tags": [{% if pageData.data.tags %}{% for tag in pageData.data.tags %}{% if tag != 'posts' %}
           "{{tag}}"{% if not loop.last %},{% endif %}{% endif %}{% endfor %}{% endif %}
