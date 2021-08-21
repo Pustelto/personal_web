@@ -5,6 +5,10 @@ twitter: "If you care about page performance, don't use build-time CSS-in-JS, se
 tags: ["CSS", "Performance", "Front-end"]
 date: 2021-04-09
 published: true
+translations:
+  zh:
+    url: https://juejin.cn/post/6990667421950410766/
+    lang: Chinese
 ---
 
 *[CRA]: Create React App

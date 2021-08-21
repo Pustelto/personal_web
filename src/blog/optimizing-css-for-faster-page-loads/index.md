@@ -5,6 +5,10 @@ tags: ["Performance", "Front-end", "CSS"]
 excerpt: "Learn how CSS affects page load times and how you can improve it by optimizing your CSS build pipeline and the way you load it."
 date: 2020-08-02
 published: true
+translations:
+  ja:
+    url: https://coliss.com/articles/build-websites/operation/css/optimizing-css-for-faster-page-loads.html
+    lang: Japanese
 ---
 
 Not long ago I decided to improve the loading times of my website. It already loads pretty fast, but I knew there was still room for improvement and one of them was CSS loading. I will walk you through the process and show you how you can improve your load times as well.
