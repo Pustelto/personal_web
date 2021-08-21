@@ -12,18 +12,29 @@ layout: layouts/page.njk
       {% include 'tags.njk' %}
     </div>
     <span class="article__date">
-      Published on <time itemprop="datePublished" datetime="{{date | isoDate}}"> {{date | readableDate}}</time>{% if modified %}, last modified on <time itemprop="dateModified" datetime="{{modified | isoDate}}">{{modified | readableDate}}</time>{% endif %}
+      Published on <time itemprop="datePublished" datetime="{{date | isoDate}}">
+        {{date | readableDate}}</time>
+      {% if modified %}, last modified on <time itemprop="dateModified" datetime="{{modified | isoDate}}">{{modified | readableDate}}</time>
+      {% endif %}
     </span>
   </div>
   <div class="article__meta u-margin-b-1">
-    <div class="article__date article__readingTime"><span aria-hidden>~</span><time itemprop="timeRequired" datetime="{{content | readingTime | isoDuration}}">{{ content | readingTime }}</time> reading time</div>
+    <div class="article__date article__readingTime">
+      <span aria-hidden>~</span>
+      <time itemprop="timeRequired" datetime="{{content | readingTime | isoDuration}}">{{ content | readingTime }}</time> reading time</div>
   </div>
 
   {% if canonical %}
-  <div class="article__meta u-margin-b-1">
-    <div class="article__canonical">This article was originaly published at <a href="{{ canonical }}">{{canonical}}</a></div>
-  </div>
+    <div class="article__meta u-margin-b-1">
+      <div class="article__canonical">This article was originaly published at <a href="{{ canonical }}">{{canonical}}</a>
+      </div>
+    </div>
   {% endif %}
+
+  {% if translations %}
+    <div class="article__meta u-margin-b-1">
+      <p class="article__canonical">You can read this article also in {% for lang, langData in translations %}{% if not loop.first %}{%if not loop.last%}, {% else %} and {%endif%}{%endif%}<a href="{{ langData.url }}" hreflang="{{ lang }}">{{langData.lang}}</a>{% endfor %}</p>
+    </div>{% endif %}
 
   <div itemprop="articleBody" class="article__content u-margin-b-2">
     {{content | safe}}
