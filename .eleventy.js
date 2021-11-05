@@ -178,6 +178,7 @@ module.exports = function (config) {
   config.addPassthroughCopy("src/blog/**/*.{gif}");
   config.addPassthroughCopy("src/favicon*");
   config.addPassthroughCopy("src/robots.txt");
+  config.addPassthroughCopy("src/_headers");
 
   // Code transforms
   config.addTransform("htmlmin", htmlMinTransform);

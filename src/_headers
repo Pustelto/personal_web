@@ -1,0 +1,14 @@
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  strict-transport-security: max-age=31536000
+  Permissions-Policy: interest-cohort=()
+  Referrer-Policy: strict-origin-when-cross-origin
+  Content-Security-Policy: script-src 'self' 'unsafe-hashes' 'sha256-MhtPZXr7+LpJUY5qtMutB+qWfQtMaPccfe7QXtCcEYc=' https://plausible.io *.codepen.io; frame-ancestors 'none';
+
+/*.avif
+  Content-Type: image/avif
+  Content-Disposition: inline
+
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
