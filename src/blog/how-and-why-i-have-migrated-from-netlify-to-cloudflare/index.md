@@ -5,6 +5,7 @@ twitter: "How and why I've migrated from Netlify to Cloudflare from @pustelto"
 excerpt: "Given Cloudflare's reputation of super-fast CDN, I decide to move my blog to Cloudflare Pages to found out if this will have some noticeable effect on the performance. Read on if you want to know the results and what I had to do to fully migrate."
 date: 2021-05-12
 published: true
+modified: 2021-11-06
 ---
 
 Up until recently, I have hosted my site on [Netlify][netlify]. They offer free hosting with great Github integration and a smooth developer experience. All this is supported by plenty of other great services. I was super happy with them. But then [Cloudflare][cloudflare] announced their new service [Pages][cloudlfare_pages]. So far, Cloudflare was known for its fast CDN and networking services. Given their reputation, I have decided to give it a shot. I was wondering if changing my hosting could have some noticeable impact on my page load times.
@@ -56,6 +57,32 @@ The next step was to move the domain to Cloudflare. I had to change my nameserve
 Once Cloudflare noticed correct nameservers, I could add a custom domain to my webpage, assign the worker to modify the headers, and handle the URL rewrites.
 
 ### Adding custom HTTP headers to Cloudflare Pages
+
+<aside><strong>UPDATE</strong> (6 November): Cloudflare now supports custom headers directly in the Pages using `_headers` file. For most cases that should be more than enough.</aside>
+
+If you want to set custom headers for your web page hosted on Cloudflare Pages, you simply have to add `_headers` file to the root of the build folder (pretty easy in Eleventy, just add `config.addPassthroughCopy("src/_headers");` into your `eleventy.js` file).
+
+Syntax of the `_headers` file is simple as well. You just need to specify the URL pattern and then custom headers below it.
+
+<figure>
+
+```ini
+/*.avif
+  Content-Type: image/avif
+  Content-Disposition: inline
+
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+```
+
+<figcaption>Setting custom via _headers file.</figcaption>
+</figure>
+
+Check out the [official documentation for headers](cloudflare_headers) or my own [_headers](my_headers) file.
+
+This should probably satisfy most of your needs when customizing headers. But if you need something more advanced, then you have to use Cloudflare Workers. Continue reading, if you are interested in that, otherwise feel free to skip to the next section.
+
+#### Headers customization using Cloudflare Workers
 
 Custom headers for Cloudflare Pages were probably the most complicated part of the entire migration. Compared to Netlify, Cloudflare doesn't have any direct tool to customize your headers. If you need this functionality, you have to use another service -- [Cloudflare Workers][cloudflare_workers]. You have to create a custom worker script to modify the headers. Luckily basic version of workers is free, and [Workers documentation][cloudflare_workers_docs] even include example showing [how to modify the headers][cloudlfare_workers_headers]. Just exactly what we need.
 
@@ -132,6 +159,10 @@ I hope this article will help you in case you decide to give Cloudflare Pages a 
 
 That's it, folks. Let me know on Twitter if you tested the Cloudflare Pages and what do you think? Or if you decided to stick with a different platform, let me know which one and why. I would love to see what are you using.
 
+## Updates
+
+**6 November 2021** - add info about new way how to set custom headers for Cloudflare Pages.
+
 *[FTW]: For The Win
 *[FCP]: First contentful paint
 *[LCP]: Largest contentful paint
@@ -148,3 +179,5 @@ That's it, folks. Let me know on Twitter if you tested the Cloudflare Pages and 
 [cloudflare_workers_docs]: https://developers.cloudflare.com/workers/
 [cloudlfare_workers_headers]: https://developers.cloudflare.com/workers/examples/alter-headers
 [webpagetest]: https://www.webpagetest.org
+[cloudflare_headers]: https://developers.cloudflare.com/pages/platform/headers
+[my_headers]: https://github.com/Pustelto/personal_web/blob/master/src/_headers

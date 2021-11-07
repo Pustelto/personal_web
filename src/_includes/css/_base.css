@@ -32,7 +32,7 @@
   --white: $white;
 
   /* sizing */
-  --maxWidth: 38rem;
+  --maxWidth: 44rem;
 
   --gapOne: 1.5rem;
   --gapHalf: calc(var(--gapOne) / 2);
@@ -115,6 +115,7 @@ code {
   background: #eceef9;
   border-radius: 0.2em;
   padding: 0.2ch;
+  font-size: 0.9em;
 }
 
 /*
@@ -133,6 +134,8 @@ p {
   margin-bottom: 1.65em; /* [1] */
 }
 
+figure > pre,
+figure > pre[class],
 figure > picture {
   margin-bottom: 0;
 }
