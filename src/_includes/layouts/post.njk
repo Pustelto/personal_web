@@ -44,31 +44,34 @@ layout: layouts/page.njk
       <div itemprop="articleBody" class="article__content u-margin-b-2">
         {{content | safe}}
       </div>
-    </div>
 
-    <div class="sharing">
-      <p>Thanks for reading the article. If you have any suggestions or ideas how to make the article better or you simply like it, feel free to share and discuss it on Twitter.</p>
-      <div class="sharing__buttons">
-        <a class="twitter-share-button" href="{{page.url | twitterShare(twitter)}}">
-          <i></i>
-          <span>Share and discuss</span></a>
-      </div>
-    </div>
+      <div class="sharing">
+        {% if not twitterCta %}
+          <p>Thanks for reading the article. If you have any suggestions or ideas how to make the article better or you simply like it, feel free to share and discuss it on Twitter.</p>
+        {% else %}
+          <p>{{twitterCta}}</p>
+        {% endif %}
+        <div class="sharing__buttons">
+          <a class="twitter-share-button" href="{{page.url | twitterShare(twitter)}}">
+            <i></i>
+            <span>Share and discuss</span></a>
+        </div>
+        </div>
 
-    <section class="author" aria-label="About the author">
-      <div class="author__imgWrapper">
-        <picture>
-          <source
+        <section class="author" aria-label="About the author">
+          <div class="author__imgWrapper">
+            <picture>
+              <source
         type="image/avif"
         srcset="/images/me.avif 80w, /images/me@2x.avif 160w, , /images/me@2x.avif 240w"
         sizes="5rem"
       >
-          <source
+              <source
         type="image/webp"
         srcset="/images/me.webp 80w, /images/me@2x.webp 160w, , /images/me@2x.webp 240w"
         sizes="5rem"
       >
-          <img
+              <img
       class="author__img"
         src="/images/me.jpg"
         alt=""
@@ -76,14 +79,14 @@ layout: layouts/page.njk
         sizes="5rem"
         loading="lazy"
       >
-        </picture>
-      </div>
-      <div class="author__data">
-        <p class="h6 author__name">
+            </picture>
+          </div>
+          <div class="author__data">
+            <p class="h6 author__name">
       Tomas Pustelnik
     </p>
-        <p class="author__bio">
+            <p class="author__bio">
     Front-end developer with focus on semantic HTML, CSS, performance and accessibility. Fan of great and clever design, tooling addict and neverending learner. Building <a href="https://qjub.app?ref=pustelto">Qjub</a> in my free time and writing on this blog.
     </p>
-      </div>
-    </section>
+          </div>
+        </section>
