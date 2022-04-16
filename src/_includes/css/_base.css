@@ -33,7 +33,6 @@
 
   /* sizing */
   --maxWidth: 44rem;
-
   --gapOne: 1.5rem;
   --gapHalf: calc(var(--gapOne) / 2);
 
@@ -112,6 +111,7 @@ kbd,
 pre,
 code {
   font-family: monospace, monospace;
+  font-size: 1.05rem;
   background: #eceef9;
   border-radius: 0.2em;
   padding: 0.2ch;
