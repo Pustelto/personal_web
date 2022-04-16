@@ -1,7 +1,7 @@
 ---
 title: 5 easy steps to improve accessibility.
 twitter: "5 easy steps to improve accessibility by @pustelto"
-twitterCta: "Let me know on Twitter what would you like to learn next about accessibility? Or what do you struggle most with? Looking forward for your answers."
+twitterCta: "Let me know on Twitter what would you like to learn next about accessibility? What do you struggle most with? Looking forward for your answers."
 tags: ["Front-end", "Accessibility"]
 excerpt: "Accessibility is a broad topic. But getting started doesn't have to be difficult. In this article I will show you five ways how to kick-start your accessibility efforts."
 date: 2022-04-16
