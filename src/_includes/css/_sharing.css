@@ -1,4 +1,5 @@
 .sharing {
+  margin-top: var(--gapOne);
   margin-bottom: var(--gapOne);
 }
 

@@ -1,0 +1,9 @@
+.footnotes {
+  border-top: 1px solid $light-gray;
+  padding: var(--gapOne) 0;
+}
+
+.footnotes-list {
+  padding: 0;
+  font-size: $font-S;
+}

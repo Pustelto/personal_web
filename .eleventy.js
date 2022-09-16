@@ -30,15 +30,21 @@ module.exports = function (config) {
   config.addCollection("allPages", function (collection) {
     return collection
       .getAll()
-      .filter((post) => (post.data.tags ? !post.data.tags.includes("project") : true));
+      .filter((post) =>
+        post.data.tags ? !post.data.tags.includes("project") : true
+      );
   });
 
   config.addCollection("blogposts", function (collection) {
-    return collection.getFilteredByTag("posts").filter((post) => post.data.published);
+    return collection
+      .getFilteredByTag("posts")
+      .filter((post) => post.data.published);
   });
 
   config.addCollection("featuredProjects", function (collection) {
-    return collection.getFilteredByTag("project").sort((a, b) => b.data.featured - a.data.featured);
+    return collection
+      .getFilteredByTag("project")
+      .sort((a, b) => b.data.featured - a.data.featured);
   });
 
   // Custom filters
@@ -91,17 +97,20 @@ module.exports = function (config) {
   });
 
   // Custom shortcodes
-  config.addShortcode("codepen", function (penId, title, tabs = ["css", "result"]) {
-    return `<p class="codepen" data-height="324" data-theme-id="dark" data-default-tab="${tabs.join(
-      ","
-    )}" data-user="Pustelto" data-slug-hash="${penId}" data-preview="true" style="height: 324px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="${title}">
+  config.addShortcode(
+    "codepen",
+    function (penId, title, tabs = ["css", "result"]) {
+      return `<p class="codepen" data-height="324" data-theme-id="dark" data-default-tab="${tabs.join(
+        ","
+      )}" data-user="Pustelto" data-slug-hash="${penId}" data-preview="true" style="height: 324px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="${title}">
     <span>See the Pen <a href="https://codepen.io/Pustelto/pen/${penId}">
     ${title}</a> by Tomas Pustelnik (<a href="https://codepen.io/Pustelto">@Pustelto</a>)
     on <a href="https://codepen.io">CodePen</a>.</span>
    </p>
    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
    `;
-  });
+    }
+  );
 
   async function optimImg(src, opts) {
     const finalOpts = {
@@ -121,7 +130,9 @@ module.exports = function (config) {
       throw new Error(`Missing \`alt\` on resImage from: ${src}`);
     }
 
-    let stats = await optimImg("src" + this.page.url + src, { outputDir: "_site" + this.page.url });
+    let stats = await optimImg("src" + this.page.url + src, {
+      outputDir: "_site" + this.page.url,
+    });
     let lowestSrc = stats.jpg[0];
     let sizes = "(max-width: 39.4375rem) 100vw, 608px";
 
@@ -129,7 +140,9 @@ module.exports = function (config) {
     return `<picture>
       ${Object.values(stats)
         .map((imageFormat) => {
-          return `  <source type="image/${imageFormat[0].format}" srcset="${imageFormat
+          return `  <source type="image/${
+            imageFormat[0].format
+          }" srcset="${imageFormat
             .map((entry) => `${entry.url} ${entry.width}w`)
             .join(", ")}" sizes="${sizes}">`;
         })
@@ -144,20 +157,26 @@ module.exports = function (config) {
       </picture>`;
   });
 
-  config.addNunjucksAsyncShortcode("figure", async function (src, alt, caption, options) {
-    if (alt === undefined) {
-      throw new Error(`Missing \`alt\` on resImage from: ${src}`);
-    }
+  config.addNunjucksAsyncShortcode(
+    "figure",
+    async function (src, alt, caption, options) {
+      if (alt === undefined) {
+        throw new Error(`Missing \`alt\` on resImage from: ${src}`);
+      }
 
-    let stats = await optimImg("src" + this.page.url + src, { outputDir: "_site" + this.page.url });
-    let lowestSrc = stats.jpg[0];
-    let sizes = "(max-width: 39.4375rem) 100vw, 608px";
+      let stats = await optimImg("src" + this.page.url + src, {
+        outputDir: "_site" + this.page.url,
+      });
+      let lowestSrc = stats.jpg[0];
+      let sizes = "(max-width: 39.4375rem) 100vw, 608px";
 
-    // Iterate over formats and widths
-    return `<figure><picture>
+      // Iterate over formats and widths
+      return `<figure><picture>
       ${Object.values(stats)
         .map((imageFormat) => {
-          return `  <source type="image/${imageFormat[0].format}" srcset="${imageFormat
+          return `  <source type="image/${
+            imageFormat[0].format
+          }" srcset="${imageFormat
             .map((entry) => `${entry.url} ${entry.width}w`)
             .join(", ")}" sizes="${sizes}">`;
         })
@@ -170,7 +189,8 @@ module.exports = function (config) {
           loading="lazy"
           decoding="async">
       </picture><figcaption>${caption}</figcaption></figure>`;
-  });
+    }
+  );
 
   // Copy assets
   config.addPassthroughCopy("src/fonts");
@@ -193,21 +213,25 @@ module.exports = function (config) {
     typographer: true,
   };
 
+  const md = markdownIt(options)
+    .use(require("markdown-it-anchor"), {
+      permalink: true,
+      permalinkSymbol: "#",
+    })
+    .use(require("markdown-it-toc-done-right"), {
+      containerClass: "toc",
+    })
+    .use(require("markdown-it-kbd"))
+    .use(require("markdown-it-abbr"))
+    .use(require("markdown-it-playground"))
+    .use(require("markdown-it-footnote"));
+
+  md.renderer.rules.footnote_block_open = () =>
+    '<section class="footnotes" aria-label="Footnotes">\n' +
+    '<ol class="footnotes-list">\n';
+
   // Markdown Parsing
-  config.setLibrary(
-    "md",
-    markdownIt(options)
-      .use(require("markdown-it-anchor"), {
-        permalink: true,
-        permalinkSymbol: "#",
-      })
-      .use(require("markdown-it-toc-done-right"), {
-        containerClass: "toc",
-      })
-      .use(require("markdown-it-kbd"))
-      .use(require("markdown-it-abbr"))
-      .use(require("markdown-it-playground"))
-  );
+  config.setLibrary("md", md);
 
   config.setBrowserSyncConfig({
     callbacks: {
