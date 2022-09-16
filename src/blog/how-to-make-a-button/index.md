@@ -1,6 +1,6 @@
 ---
-title: How to (not)make a button
-twitter: "How to (not)make a button with <div> and JavaScript"
+title: How to (not) make a button
+twitter: "How to (not) make a button with <div> and JavaScript"
 tags: ["HTML", "Accessibility", "Front-end"]
 excerpt: "How to properly turn a <code>div</code> into a button, so the result will be accessible and useable by everyone.TLDR: Use a native button."
 date: 2022-09-16
