@@ -1,9 +1,16 @@
-.header-anchor {
+.headerAnchor__wrapper {
+  position: relative;
+}
+
+.headerAnchor__link {
   display: none;
   width: 0.8em;
-  color: $light-gray;
+  color: var(--gray);
   text-decoration: none;
   text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
 
   @media (--tablet) {
     width: 1.1em;
@@ -14,6 +21,6 @@
   }
 }
 
-.article__content .header-anchor {
+.article__content .headerAnchor__link {
   display: inline-block;
 }

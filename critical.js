@@ -1,11 +1,9 @@
 const readdirp = require("readdirp");
-const critical = require("critical");
 
 const cfg = {
   fileFilter: ["*.html"],
   directoryFilter: ["!node_modules"],
   PUBLISH_DIR: "_site",
-  minify: true,
   extract: false,
   width: 920,
   height: 960,
@@ -21,6 +19,7 @@ const getHtmlFiles = async (directory, inputs = {}) => {
 };
 
 async function extractCriticalCSS({ cfg }) {
+  const critical = await import("critical");
   const htmlFiles = await getHtmlFiles(cfg.PUBLISH_DIR, cfg);
 
   try {
@@ -40,7 +39,6 @@ async function extractCriticalCSS({ cfg }) {
         src: filePath,
         target: filePath,
         inline: true,
-        minify: cfg.minify,
         extract: cfg.extract,
         width: cfg.width,
         height: cfg.height,

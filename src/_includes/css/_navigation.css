@@ -1,12 +1,36 @@
+.menu__list {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+}
+
 .menu__item {
   text-decoration: none;
   color: $gray;
   margin-left: calc(0.25 * var(--gapHalf));
   margin-right: calc(0.25 * var(--gapHalf));
+  padding: 0 calc(0.5 * var(--gapHalf));
+
+  &:hover,
+  &:focus {
+    color: $black;
+  }
 }
 
 .menu__item.is-active {
   color: $black;
-  text-decoration: underline;
-  font-weight: 500;
+  font-weight: 700;
+  position: relative;
+  /* text-shadow: 0 2px 0 white, -2px 2px 0 white, 2px 2px 0 white; */
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 3px;
+    background: $brand;
+    z-index: $zBelow;
+  }
 }

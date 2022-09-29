@@ -1,6 +1,8 @@
 {% set navPages = collections.all | eleventyNavigation %}
 <nav aria-label="main" class="menu">
+  <ul class="menu__list">
 {%- for entry in navPages %}
-    <a class="menu__item{% if entry.url == page.url | urlHead %} is-active{% endif %}" href="{{ entry.url | url }}" {% if entry.url == page.url | urlHead %} aria-current="page"{% endif %}>{{ entry.title }}</a>
+    <li><a class="menu__item{% if entry.url == page.url | urlHead %} is-active{% endif %}" href="{{ entry.url | url }}" {% if entry.url == page.url | urlHead %} aria-current="page"{% endif %}>{{ entry.title }}</a></li>
 {%- endfor %}
+  </ul>
 </nav>

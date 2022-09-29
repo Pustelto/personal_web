@@ -115,7 +115,7 @@ module.exports = function (config) {
   async function optimImg(src, opts) {
     const finalOpts = {
       widths: [296, 608, 888, 1216, 1824],
-      formats: ["webp", "jpg"],
+      formats: ["avif", "webp", "jpg"],
       urlPath: "./",
       outputDir: "_site/images",
       ...opts,
@@ -133,7 +133,7 @@ module.exports = function (config) {
     let stats = await optimImg("src" + this.page.url + src, {
       outputDir: "_site" + this.page.url,
     });
-    let lowestSrc = stats.jpg[0];
+    let lowestSrc = stats.jpeg[0];
     let sizes = "(max-width: 39.4375rem) 100vw, 608px";
 
     // Iterate over formats and widths
@@ -164,10 +164,11 @@ module.exports = function (config) {
         throw new Error(`Missing \`alt\` on resImage from: ${src}`);
       }
 
+      //TODO: extract to standalone function since it is shared with image short code
       let stats = await optimImg("src" + this.page.url + src, {
         outputDir: "_site" + this.page.url,
       });
-      let lowestSrc = stats.jpg[0];
+      let lowestSrc = stats.jpeg[0];
       let sizes = "(max-width: 39.4375rem) 100vw, 608px";
 
       // Iterate over formats and widths
@@ -204,6 +205,7 @@ module.exports = function (config) {
   config.addTransform("htmlmin", htmlMinTransform);
 
   let markdownIt = require("markdown-it");
+  let mdAnchor = require("markdown-it-anchor");
 
   let options = {
     html: true,
@@ -214,9 +216,14 @@ module.exports = function (config) {
   };
 
   const md = markdownIt(options)
-    .use(require("markdown-it-anchor"), {
-      permalink: true,
-      permalinkSymbol: "#",
+    .use(mdAnchor, {
+      permalink: mdAnchor.permalink.linkAfterHeader({
+        style: "visually-hidden",
+        class: "headerAnchor__link",
+        assistiveText: (title) => `Permalink to “${title}”`,
+        visuallyHiddenClass: "visually-hidden",
+        wrapper: ['<div class="headerAnchor__wrapper">', "</div>"],
+      }),
     })
     .use(require("markdown-it-toc-done-right"), {
       containerClass: "toc",

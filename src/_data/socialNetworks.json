@@ -10,5 +10,9 @@
   {
     "name": "LinkedIn",
     "url": "https://www.linkedin.com/in/pustelto/?locale=en_US"
+  },
+  {
+    "name": "RSS",
+    "url": "https://pustelto.com/feed.xml"
   }
 ]

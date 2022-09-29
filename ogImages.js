@@ -9,11 +9,15 @@ async function getData() {
 }
 
 async function createTemplate(data) {
-  return `<!DOCTYPE html><html lang="en"><meta charset="UTF-8" /><meta content="width=device-width,initial-scale=1" name="viewport" /><link href=https://fonts.gstatic.com rel=preconnect><link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700;900&display=swap" rel="stylesheet" /> <body> <style> body { margin: 0; } .wrapper { width: 1200px; height: 630px; padding: 80px 100px; box-sizing: border-box; display: grid; grid-template-rows: 70px min-content 1fr 46px; grid-gap: 20px; font-family: "Source Sans Pro"; } .name { font-size: 36px; font-weight: 700; line-height: 1.5; margin-top: -13px; align-self: end; } .name:after { content: ""; display: block; height: 5px; width: 85px; background: #30a5bf; margin-top: 20px; margin-bottom: 0; } .title { font-size: 76px; font-weight: 900; margin: 0; letter-spacing: 0.1px; line-height: 1.1; margin-bottom: 10px; } .tags { font-size: 32px; line-height: 1.5; display: flex; list-style: none; margin: 0; padding: 0; color: #6a6a6a; } .tags li:not(:first-child):before { content: "|"; display: inline-block; margin: 0 0.75ch; } .link { font-size: 32px; color: #6a6a6a; line-height: 1.5; margin-top: 10px; } </style>
+  return `<!DOCTYPE html><html lang="en"><meta charset="UTF-8" /><meta content="width=device-width,initial-scale=1" name="viewport" /><link href=https://fonts.gstatic.com rel=preconnect><link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700;900&display=swap" rel="stylesheet" /> <body> <style> body { margin: 0; } .wrapper { width: 1200px; height: 630px; padding: 80px 100px; box-sizing: border-box; display: grid; grid-template-rows: 70px min-content 1fr 46px; grid-gap: 20px; font-family: "Source Sans Pro"; } .name { font-size: 36px; font-weight: 700; line-height: 1.5; margin-top: -13px; align-self: end; } .name:after { content: ""; display: block; height: 7px; width: 105px; background: #1d4ed8; margin-top: 20px; margin-bottom: 0; } .title { font-size: 76px; font-weight: 900; margin: 0; letter-spacing: 0.1px; line-height: 1.1; margin-bottom: 10px; } .tags { font-size: 32px; line-height: 1.5; display: flex; list-style: none; margin: 0; padding: 0; color: #6a6a6a; } .tags li:not(:first-child):before { content: "|"; display: inline-block; margin: 0 0.75ch; } .link { font-size: 32px; color: #6a6a6a; line-height: 1.5; margin-top: 10px; } </style>
   <div class="wrapper">
     <span class="name">${!data.description ? "Tomas Pustelnik" : ""}</span>
     <h1 class="title">${data.title}</h1>
-    ${data.description ? '<span class="tags">' + data.description + "</span>" : ""}
+    ${
+      data.description
+        ? '<span class="tags">' + data.description + "</span>"
+        : ""
+    }
     <ul class="tags">${data.tags.map((tag) => `<li>${tag}</li>`).join("")}</ul>
     <span class="link">pustelto.com</span>
   </div>
@@ -88,7 +92,8 @@ async function createSocialImages() {
       image = await page.screenshot({
         path: path.join(
           imagesFolderPath,
-          (imageData.filename || imageData.title.toLowerCase().split(" ").join("-")) + ".png"
+          (imageData.filename ||
+            imageData.title.toLowerCase().split(" ").join("-")) + ".png"
         ),
       });
     }

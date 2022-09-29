@@ -7,14 +7,6 @@
   margin-bottom: var(--gapOne);
   font-weight: 700;
 
-  & > a {
-    text-decoration: none;
-
-    &:hover {
-      color: inherit;
-    }
-  }
-
   @media (--tablet) {
     margin-bottom: 0;
     height: var(--gapOne);
@@ -26,5 +18,14 @@
       background-color: $gray;
       margin: 0 var(--gapHalf);
     }
+  }
+}
+
+.logo__link {
+  color: var(--black);
+  text-decoration: none;
+
+  &:hover {
+    color: inherit;
   }
 }

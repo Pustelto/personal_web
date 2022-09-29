@@ -11,7 +11,7 @@ translations:
     lang: Chinese
 ---
 
-*[CRA]: Create React App
+\*[CRA]: Create React App
 
 CSS-in-JS has taken a solid place in front-end tooling, and it seems this trend will continue in the near future. Especially in the React world. For example, out of 11492 people who participate in [State of CSS](https://2020.stateofcss.com/en-US/) survey in 2020 only 14.3% didn't hear of [Styled Components](https://styled-components.com/) (a dominant CSS-in-JS library). And more than 40% of participants have used the library.
 
