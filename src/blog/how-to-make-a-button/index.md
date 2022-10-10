@@ -78,6 +78,8 @@ Next, we have to assign a `keydown` event listener to our custom button. HTML bu
 ```javascript
 function onKeyDownHandler(event) {
   if (event.key === "Enter" || event.key === " " /* space */) {
+    // We have to disable default space behavior which is scrolling page down.
+    event.preventDefault();
     onClickButtonHandler();
   }
 }
@@ -100,6 +102,10 @@ Enter triggers the native button on the `keydown` event, but Space triggers the 
 
 ```javascript
 function onKeyDownHandler(event) {
+  if (event.key === " ") {
+    // We have to disable default space behavior which is scrolling page down.
+    event.preventDefault();
+  }
   if (event.key === "Enter") {
     onClickButtonHandler();
   }
@@ -167,6 +173,10 @@ function isDisabled(eventTarget) {
 }
 
 function onKeyDownHandler(event) {
+  if (event.key === " ") {
+    // We have to disable default space behavior which is scrolling page down.
+    event.preventDefault();
+  }
   if (event.key === "Enter" && !isDisabled(event.target)) {
     onClickButtonHandler();
   }
@@ -213,3 +223,8 @@ Want to learn more? Check out these amazing resources:
   - [Building a Button Part 1: Press Events](https://react-spectrum.adobe.com/blog/building-a-button-part-1.html)
   - [Building a Button Part 2: Hover Interactions](https://react-spectrum.adobe.com/blog/building-a-button-part-2.html)
   - [Building a Button Part 3: Keyboard Focus Behavior](https://react-spectrum.adobe.com/blog/building-a-button-part-3.html)
+
+## Updates
+
+**10 October 2022** - Added `e.preventDefault()` to event handlers. [Aaron](https://twitter.com/_aaronbnb) corretly pointed out, that I forgot to
+disable native space behavior to scroll the page down.
