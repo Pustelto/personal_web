@@ -226,5 +226,4 @@ Want to learn more? Check out these amazing resources:
 
 ## Updates
 
-**10 October 2022** - Added `e.preventDefault()` to event handlers. [Aaron](https://twitter.com/_aaronbnb/status/1578267248606646272) corretly pointed out, that I forgot to
-disable native space behavior to scroll the page down.
+**10 October 2022** - Added `e.preventDefault()` to event handlers. [Aaron](https://twitter.com/_aaronbnb/status/1578267248606646272) corretly pointed out, that I forgot to disable native space behavior to scroll the page down.
