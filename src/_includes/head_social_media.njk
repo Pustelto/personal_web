@@ -2,7 +2,7 @@
 <meta property="og:url" content="{{metadata.url}}{{page.url if page.url != '/' else ''}}" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="{{title or metadata.title}}" />
-<meta property="og:description" content="{{excerpt or description or metadata.description}}" />
+<meta property="og:description" content="{{excerpt|striptags or description or metadata.description}}" />
 <meta property="og:image" content="{{metadata.url}}images/share/{{( title if ( title and customShareImage ) else 'home'  ) | slug}}.png" />
 {# Twitter card - basic data are taken from og tags #}
 <meta name="twitter:card" content="summary_large_image">

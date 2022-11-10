@@ -47,6 +47,12 @@ module.exports = function (config) {
       .sort((a, b) => b.data.featured - a.data.featured);
   });
 
+  config.addCollection("talks", function (collection) {
+    return collection
+      .getFilteredByTag("talk")
+      .sort((a, b) => b.data.eventDate - a.data.eventDate);
+  });
+
   // Custom filters
   // First three are taken from taken from https://github.com/11ty/eleventy-base-blog/blob/master/.eleventy.js
   config.addFilter("toDate", (dateString) => {

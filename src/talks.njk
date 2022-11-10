@@ -1,0 +1,13 @@
+---
+title: Speaking
+layout: layouts/page.njk
+eleventyNavigation:
+  key: Speaking
+  order: 3
+description: Public talks I have given at various meetups or conferences.
+---
+<h1>Public speaking</h1>
+{% set listing = collections.talks %}
+{% set headingLevel = 'h2' %}
+{% include 'talk_listing.njk' %}
+

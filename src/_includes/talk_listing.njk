@@ -1,0 +1,24 @@
+<ul class="listing">
+  {% for talk in listing %}
+  <li class="listing__item">
+    <article class="article">
+      <{{headingLevel if headingLevel else 'h3' }} class="h3 article__header">
+        <a href="{{ talk.data.recordingUrl }}" class="article__link">
+        {% if talk.data.titleNative %}<span
+          lang={{talk.data.talkLang.code}}>{{talk.data.titleNative}}</span> <br/> {% endif %}<span lang="en">{{ talk.data.title }} {% if talk.data.titleNative %}({{talk.data.talkLang.lang}}) {% endif %}</span>
+        </a>
+      </{{headingLevel if headingLevel else 'h3' }}>
+
+      <div class="article__meta u-margin-b-1">
+        <span class="article__date">
+          <a href="{{talk.data.eventUrl}}">{{talk.data.event}}</a> on <time datetime="{{talk.data.eventDate | isoDate}}"> {{talk.data.eventDate | readableDate}}</time>
+        </span>
+      </div>
+
+      <div class="article__excerpt">
+        {{ talk.templateContent | safe }}
+      </div>
+    </article>
+  </li>
+  {% endfor %}
+</ul>
