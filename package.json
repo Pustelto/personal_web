@@ -14,7 +14,6 @@
   "dependencies": {
     "@11ty/eleventy": "1.0.2",
     "@11ty/eleventy-img": "2.0.1",
-    "@hail2u/css-mqpacker": "github:hail2u/node-css-mqpacker#v8.0.1",
     "@pustelto/css-split": "0.1.1",
     "cssnano": "5.1.13",
     "cssnano-preset-advanced": "5.3.8",
@@ -46,6 +45,7 @@
     "babel-plugin-named-asset-import": "0.3.8",
     "copy-webpack-plugin": "11.0.0",
     "critical": "5.0.2",
+    "postcss-merge-queries": "1.0.3",
     "readdirp": "3.6.0",
     "terser-webpack-plugin": "5.3.6",
     "webpack": "5.74.0"
