@@ -26,7 +26,6 @@ module.exports = class {
       require("postcss-import"),
       require("postcss-custom-media"),
       require("postcss-strip-units"),
-      require("@hail2u/css-mqpacker"),
       require("cssnano")({
         preset: "advanced",
       }),
