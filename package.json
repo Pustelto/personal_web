@@ -33,7 +33,7 @@
     "postcss-import": "15.0.0",
     "postcss-strip-units": "2.0.1",
     "precss": "4.0.0",
-    "puppeteer": "10.0.0"
+    "puppeteer": "18.0.5"
   },
   "devDependencies": {
     "@11ty/eleventy-navigation": "0.1.3",
