@@ -1,5 +1,15 @@
 .article__link {
+  color: var(--black);
   text-decoration: none;
+
+  &:focus,
+  &:hover {
+    color: var(--brand);
+  }
+
+  &:active {
+    color: var(--brand-dark);
+  }
 }
 
 .article__header {

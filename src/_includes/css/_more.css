@@ -7,4 +7,14 @@
 .more__link {
   display: inline-block;
   text-decoration: underline;
+  color: var(--black);
+
+  &:focus,
+  &:hover {
+    color: var(--brand);
+  }
+
+  &:active {
+    color: var(--brand-dark);
+  }
 }

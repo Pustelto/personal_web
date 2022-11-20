@@ -1,9 +1,9 @@
 ---
 layout: layouts/page.njk
+customShareImage: false
 eleventyNavigation:
   key: Home
   order: 1
-customShareImage: false
 ---
 <div class="u-margin-b-3 tablet-u-margin-b-4">
   <picture>
@@ -55,7 +55,7 @@ customShareImage: false
 </div>
 
 <div class="u-margin-b-3  tablet-u-margin-b-4">
-  <h2>Blog posts</h2>
+  <h2>Latest articles</h2>
   {% set listing = collections.blogposts | head(-2) | reverse %}
   {% include 'post_listing.njk' %}
   {% if collections.blogposts | length > 2 %}

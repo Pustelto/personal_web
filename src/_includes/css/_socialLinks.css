@@ -11,4 +11,9 @@
   height: calc(1.5 * var(--gapOne));
   width: calc(1.5 * var(--gapOne));
   margin: 0 calc(0.25 * var(--gapOne));
+
+  :hover,
+  :focus {
+    color: $brand;
+  }
 }

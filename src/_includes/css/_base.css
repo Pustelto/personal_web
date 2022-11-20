@@ -21,14 +21,17 @@
   box-sizing: border-box;
   font-weight: 400;
   /* Define font-stacks */
-  --fonts-fallback: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu,
-    Cantarell, "Helvetica Neue", sans-serif;
+  --fonts-fallback: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   /* --fonts: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu,
     Cantarell, "Helvetica Neue", sans-serif; */
 
   /* Define app colors */
   --black: $black;
   --brand: $brand;
+  --brand-dark: $brand-dark;
+  --light-gray: $light-gray;
+  --gray: $gray;
   --white: $white;
 
   /* sizing */
@@ -47,9 +50,21 @@
   box-sizing: inherit;
 }
 
+/*
+ * Using `focus-visible` with fallback for unsupporting browsers.
+ * @see https://css-tricks.com/focus-visible-and-backwards-compatibility/
+ **/
 *:focus {
   outline: 2px solid var(--brand);
   outline-offset: 3px;
+}
+
+*:focus:not(:focus-visible) {
+  outline: 2px solid transparent;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--brand);
 }
 
 body,
@@ -129,6 +144,7 @@ pre,
 table,
 ul,
 ol,
+[role="region"],
 p {
   margin: 0;
   margin-bottom: 1.65em; /* [1] */
@@ -160,11 +176,23 @@ small {
 }
 
 a {
-  color: inherit;
   transition: color 200ms ease-out;
+}
 
-  &:hover {
+a:not([class]) {
+  color: $brand;
+
+  &:hover,
+  &:focus {
     color: $brand;
+  }
+
+  &:active {
+    color: $brand-dark;
+  }
+
+  &:visited {
+    color: $visited;
   }
 }
 

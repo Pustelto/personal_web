@@ -4,8 +4,10 @@ $scale: 1.5;
 $black: #0b0d0d;
 $light-gray: #dedcdc;
 $gray: #6a6a6a;
-$brand: #30a5bf;
+$brand: #1d4ed8;
+$brand-dark: #1e40af;
 $white: #ffffff;
+$visited: #7c3aed;
 
 /* Font sizes */
 $font-S: 0.875rem;

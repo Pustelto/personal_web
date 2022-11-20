@@ -1,19 +1,38 @@
-.header-anchor {
-  display: none;
+.headerAnchor__wrapper {
+  position: relative;
+}
+
+.headerAnchor__link {
+  bottom: 100%;
+  left: -4px;
+  position: absolute;
   width: 0.8em;
-  color: $light-gray;
+  color: var(--gray);
   text-decoration: none;
   text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
 
   @media (--tablet) {
     width: 1.1em;
     margin-left: -1.1em;
-    position: absolute;
     left: 0;
     top: 0;
+    bottom: 0;
   }
 }
 
-.article__content .header-anchor {
+.article__content .headerAnchor__link {
   display: inline-block;
+}
+
+@media (--tablet) {
+  h2 + .headerAnchor__link {
+    top: 13%;
+  }
+
+  h3 + .headerAnchor__link {
+    top: 7%;
+  }
 }

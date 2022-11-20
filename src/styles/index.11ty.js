@@ -26,6 +26,7 @@ module.exports = class {
       require("postcss-import"),
       require("postcss-custom-media"),
       require("postcss-strip-units"),
+      require("postcss-merge-queries"),
       require("cssnano")({
         preset: "advanced",
       }),
