@@ -1,6 +1,6 @@
 ---
-title: I have switch from VS Code to VIM and I will never go back
-twitter: "I have switch from VS Code to VIM and I will never go back. Read on to find out why."
+title: I have switched from VS Code to VIM and I will never go back
+twitter: "I have switched from VS Code to VIM and I will never go back. Read on to find out why."
 tags: ["Front-end", "VIM", "Tooling"]
 excerpt: "I have decided to switch from VS Code to VIM and in this article I will explain my reasons behind this decision."
 date: 2023-01-16
