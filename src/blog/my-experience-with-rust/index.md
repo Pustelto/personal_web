@@ -27,7 +27,7 @@ I work a lot with Nx in the terminal, but I don't always remember all the availa
 - There were a lot of interesting concepts in Rust that I could use to improve my skills, such as JSON parsing, file manipulation (read and write), and handling user input.
 - It allowed me to get my hands dirty and learn as much as possible.
 
-You can check out the Rx code on my Github, but be warned that it is not production-ready code.
+You can check out the [Rx code on my Github](https://github.com/pustelto/rx), but be warned that it is not production-ready code.
 
 ## What I love
 
