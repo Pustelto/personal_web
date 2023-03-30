@@ -11,7 +11,6 @@ recordingUrl: https://www.youtube.com/watch?v=lyOXs6XH-oA
 thumbnail:
   type: youtube
   url: https://www.youtube.com/watch?v=lyOXs6XH-oA
-tags: ["talk"]
 ---
 
 Short talk about new tools in CSS to manipulate specificity. Namely I have shown `:is` and `:where` pseudo-selectors and cascade-layers - how and where to use them.
