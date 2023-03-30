@@ -1,6 +1,6 @@
 ---
 title: Rust through the eyes of FE developer
-twitter: "I have tried Rust for a month and I have summarized my experience with it."
+twitter: "@pustelto has tried Rust for a month and he have summarized his experience with it: "
 tags: ["Rust", "CLI", "Tooling", "Learn in Public"]
 excerpt: "Rust is a programming language that has gained a lot of popularity recently. I have decided to play with it for a month. This article is a summary of my experience when building a command-line tool and shows what I loved about the language, as well as what I struggled with."
 date: 2023-03-30

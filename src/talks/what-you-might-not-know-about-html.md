@@ -11,7 +11,6 @@ recordingUrl: https://www.youtube.com/watch?v=lNiy6yNcxyE&ab_channel=ReactGirlsP
 thumbnail:
   type: youtube
   url: https://www.youtube.com/watch?v=lNiy6yNcxyE&ab_channel=ReactGirlsPrague
-tags: ["talk"]
 ---
 
 Same talk I had at Webexpo about current possibilities of HTML. This time at ReactGirls meetup in Prague.
