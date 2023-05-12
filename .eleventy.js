@@ -9,7 +9,7 @@ const Image = require("@11ty/eleventy-img");
 const htmlMinTransform = require("./src/transforms/html-min-transform.js");
 const createSocialImages = require("./ogImages");
 
-module.exports = function (config) {
+module.exports = function(config) {
   // Activate deep merge for data cascade
   config.setDataDeepMerge(true);
 
@@ -27,30 +27,30 @@ module.exports = function (config) {
   });
 
   // Custom collections
-  config.addCollection("allPages", function (collection) {
+  config.addCollection("allPages", function(collection) {
     return collection
       .getAll()
       .filter((post) =>
         post.data.tags
           ? !post.data.tags.includes("project") ||
-            !post.data.tags.includes("talks")
+          !post.data.tags.includes("talks")
           : true
       );
   });
 
-  config.addCollection("blogposts", function (collection) {
+  config.addCollection("blogposts", function(collection) {
     return collection
       .getFilteredByTag("posts")
       .filter((post) => post.data.published);
   });
 
-  config.addCollection("featuredProjects", function (collection) {
+  config.addCollection("featuredProjects", function(collection) {
     return collection
       .getFilteredByTag("project")
       .sort((a, b) => b.data.featured - a.data.featured);
   });
 
-  config.addCollection("talks", function (collection) {
+  config.addCollection("talks", function(collection) {
     return collection
       .getFilteredByTag("talk")
       .sort((a, b) => b.data.eventDate - a.data.eventDate);
@@ -108,7 +108,7 @@ module.exports = function (config) {
   // Custom shortcodes
   config.addShortcode(
     "codepen",
-    function (penId, title, tabs = ["css", "result"]) {
+    function(penId, title, tabs = ["css", "result"]) {
       return `<p class="codepen" data-height="324" data-theme-id="dark" data-default-tab="${tabs.join(
         ","
       )}" data-user="Pustelto" data-slug-hash="${penId}" data-preview="true" style="height: 324px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="${title}">
@@ -134,7 +134,7 @@ module.exports = function (config) {
     else return stats["jpg"].pop();
   }
 
-  config.addNunjucksAsyncShortcode("image", async function (src, alt, options) {
+  config.addNunjucksAsyncShortcode("image", async function(src, alt, options) {
     if (alt === undefined) {
       throw new Error(`Missing \`alt\` on resImage from: ${src}`);
     }
@@ -149,11 +149,10 @@ module.exports = function (config) {
     return `<picture>
       ${Object.values(stats)
         .map((imageFormat) => {
-          return `  <source type="image/${
-            imageFormat[0].format
-          }" srcset="${imageFormat
-            .map((entry) => `${entry.url} ${entry.width}w`)
-            .join(", ")}" sizes="${sizes}">`;
+          return `  <source type="image/${imageFormat[0].format
+            }" srcset="${imageFormat
+              .map((entry) => `${entry.url} ${entry.width}w`)
+              .join(", ")}" sizes="${sizes}">`;
         })
         .join("\n")}
         <img
@@ -168,7 +167,7 @@ module.exports = function (config) {
 
   config.addNunjucksAsyncShortcode(
     "figure",
-    async function (src, alt, caption, options) {
+    async function(src, alt, caption, options) {
       if (alt === undefined) {
         throw new Error(`Missing \`alt\` on resImage from: ${src}`);
       }
@@ -183,14 +182,13 @@ module.exports = function (config) {
       // Iterate over formats and widths
       return `<figure><picture>
       ${Object.values(stats)
-        .map((imageFormat) => {
-          return `  <source type="image/${
-            imageFormat[0].format
-          }" srcset="${imageFormat
-            .map((entry) => `${entry.url} ${entry.width}w`)
-            .join(", ")}" sizes="${sizes}">`;
-        })
-        .join("\n")}
+          .map((imageFormat) => {
+            return `  <source type="image/${imageFormat[0].format
+              }" srcset="${imageFormat
+                .map((entry) => `${entry.url} ${entry.width}w`)
+                .join(", ")}" sizes="${sizes}">`;
+          })
+          .join("\n")}
         <img
           alt="${alt}"
           src="${lowestSrc.url}"
@@ -251,7 +249,7 @@ module.exports = function (config) {
 
   config.setBrowserSyncConfig({
     callbacks: {
-      ready: function (err, bs) {
+      ready: function(err, bs) {
         bs.addMiddleware("*", (req, res) => {
           const content_404 = fs.readFileSync("_site/404.html");
           // Add 404 http status code in request header.

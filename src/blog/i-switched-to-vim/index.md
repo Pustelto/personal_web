@@ -54,7 +54,7 @@ I don't think I will ever switch back to VS Code (or a similar IDE). Here is a q
 - Editor in the terminal.
   - I can easily edit any file from everywhere. This seems like a minor thing, but it actually is a great boost for productivity. Yes, I know I could open files in VS Code from terminal, but it took some time as well. Now I just type `vim docker-compose.yml`, and I can start editing. And I have all my keyboard shortcuts and plugins ready.
 
-## Ugly parts
+### Ugly parts
 
 - I miss multi-cursor sometimes, but less often than I would expect. I expect this will get less relevant over time as I learn how to properly use VIM for this kind o stuff (macros, search and replace, global command, etc.).
 - I still haven't finished my setup. Less used things do not have a proper config or do not have a keybinding.
