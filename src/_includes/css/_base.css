@@ -35,7 +35,7 @@
   --white: $white;
 
   /* sizing */
-  --maxWidth: 44rem;
+  --maxWidth: 46rem;
   --gapOne: 1.5rem;
   --gapHalf: calc(var(--gapOne) / 2);
 
@@ -221,7 +221,7 @@ figcaption {
   text-align: center;
 }
 
-blockquote {
+blockquote:not([class]) {
   position: relative;
   font-style: italic;
   font-weight: 500;

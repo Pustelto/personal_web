@@ -1,0 +1,31 @@
+.about__hi {
+  font-size: $font-XL;
+}
+
+.about__mission {
+  display: grid;
+  grid-template-columns: 7fr 1fr 10fr;
+  grid-template-rows: max-content;
+  align-items: center;
+  margin: 0 calc(-6 * var(--gapOne));
+}
+
+.about__missionImg {
+  grid-column: 1/3;
+  grid-row: 1/2;
+  width: 100%;
+  /* height: 100%; */
+}
+
+.about__missionText {
+  grid-column: 2/4;
+  grid-row: 1/2;
+  background: var(--white);
+  padding: calc(1.5 * var(--gapOne)) var(--gapOne);
+  padding-right: 0;
+  margin: 0;
+  font-style: italic;
+  font-weight: 500;
+  font-size: $font-XXL;
+  transform: translateY(calc(2 * var(--gapOne)));
+}
