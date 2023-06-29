@@ -1,21 +1,21 @@
 .u-margin-b-0 {
-  margin-bottom: 0;
+  margin-bottom: 0 !important;
 }
 
 .u-margin-b-1 {
-  margin-bottom: calc(var(--gapOne) * 1);
+  margin-bottom: calc(var(--gapOne) * 1) !important;
 }
 
 .u-margin-b-2 {
-  margin-bottom: calc(var(--gapOne) * 2);
+  margin-bottom: calc(var(--gapOne) * 2) !important;
 }
 
 .u-margin-b-3 {
-  margin-bottom: calc(var(--gapOne) * 3);
+  margin-bottom: calc(var(--gapOne) * 3) !important;
 }
 
 @media (--tablet) {
   .tablet-u-margin-b-4 {
-    margin-bottom: calc(var(--gapOne) * 4);
+    margin-bottom: calc(var(--gapOne) * 4) !important;
   }
 }

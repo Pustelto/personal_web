@@ -21,6 +21,7 @@ $font-Display: 3.375rem;
 /* Media queries */
 @custom-media --mobile screen and (min-width: 30rem);
 @custom-media --tablet screen and (min-width: 45rem);
+@custom-media --screen screen and (min-width: 70rem);
 @custom-media --onlyTablet screen and (max-width: 44.9375rem);
 
 /* z-index */

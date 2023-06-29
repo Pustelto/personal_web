@@ -7,7 +7,11 @@
   margin-bottom: var(--gapOne);
   font-weight: 700;
 
-  @media (--tablet) {
+  @media screen and (min-width: 720px) and (max-width: 941px) {
+    margin-bottom: var(--gapHalf);
+  }
+
+  @media screen and (min-width: 941px) {
     margin-bottom: 0;
     height: var(--gapOne);
 

@@ -2,6 +2,16 @@
   list-style: none;
   padding-left: 0;
   display: flex;
+
+  @media screen and (max-width: 420px) {
+    flex-wrap: wrap;
+    line-height: 2.2;
+    margin-bottom: var(--gapHalf);
+  }
+
+  @media screen and (min-width: 720px) and (max-width: 941px) {
+    margin-left: calc(-1 * 0.75 * var(--gapHalf));
+  }
 }
 
 .menu__item {
