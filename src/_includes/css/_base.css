@@ -35,7 +35,7 @@
   --white: $white;
 
   /* sizing */
-  --maxWidth: 44rem;
+  --maxWidth: 46rem;
   --gapOne: 1.5rem;
   --gapHalf: calc(var(--gapOne) / 2);
 
@@ -82,7 +82,7 @@ button {
 
 body {
   margin: 0;
-  padding: 0;
+  padding: 0 var(--gapHalf);
   overflow-x: hidden;
 
   @include getFontSize($font-M, $font-L);
@@ -90,12 +90,9 @@ body {
   font-weight: 400;
   color: var(--black);
 
-  @media (--onlyTablet) {
-    padding: 0 var(--gapHalf);
-  }
-
   @media (--tablet) {
     font-size: $font-L;
+    padding: 0 var(--gapOne);
   }
 }
 
@@ -112,7 +109,7 @@ main {
   margin: 0 auto;
   max-width: var(--maxWidth);
   min-height: calc(100vh - var(--header-height) - var(--footer-height));
-  padding-top: calc(var(--gapOne) * 1);
+  padding-top: calc(var(--gapOne) * 2);
   padding-bottom: calc(var(--gapOne) * 2);
 
   @media (--tablet) {
@@ -221,7 +218,7 @@ figcaption {
   text-align: center;
 }
 
-blockquote {
+blockquote:not([class]) {
   position: relative;
   font-style: italic;
   font-weight: 500;
@@ -243,4 +240,11 @@ blockquote {
     top: -10px;
     line-height: 1;
   }
+}
+
+hr {
+  margin-top: calc(var(--gapOne) * 2);
+  margin-bottom: calc(var(--gapOne) * 2);
+  border: 0;
+  border-bottom: 1px solid $light-gray;
 }

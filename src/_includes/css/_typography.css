@@ -76,3 +76,7 @@ h6,
     font-size: $font-L;
   }
 }
+
+.perex {
+  font-size: $font-XL;
+}
