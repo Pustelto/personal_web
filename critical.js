@@ -1,11 +1,11 @@
-const readdirp = require("readdirp");
+const readdirp = require('readdirp');
 
 const cfg = {
-  fileFilter: ["*.html"],
-  directoryFilter: ["!node_modules"],
-  PUBLISH_DIR: "_site",
+  fileFilter: ['*.html'],
+  directoryFilter: ['!node_modules'],
+  PUBLISH_DIR: '_site',
   extract: false,
-  width: 920,
+  width: 960,
   height: 960,
 };
 
@@ -15,11 +15,11 @@ const getHtmlFiles = async (directory, inputs = {}) => {
     directoryFilter: inputs.directoryFilter,
   });
 
-  return files.map((file) => file.fullPath);
+  return files.map(file => file.fullPath);
 };
 
 async function extractCriticalCSS({ cfg }) {
-  const critical = await import("critical");
+  const critical = await import('critical');
   const htmlFiles = await getHtmlFiles(cfg.PUBLISH_DIR, cfg);
 
   try {
@@ -52,9 +52,9 @@ async function extractCriticalCSS({ cfg }) {
       });
     }
 
-    console.log("Critical CSS successfully inlined!");
+    console.log('Critical CSS successfully inlined!');
   } catch (error) {
-    console.log("Failed to inline critical CSS.", { error });
+    console.log('Failed to inline critical CSS.', { error });
     return error;
   }
 }
