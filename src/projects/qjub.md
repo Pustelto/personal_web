@@ -1,7 +1,7 @@
 ---
-title: Qjub
+title: Qjub (Discontinued)
 url: https://qjub.app
-tags: ["Side project", "Productivity", "Knowledge base", "Information sharing"]
+tags: ['Side project', 'Productivity', 'Knowledge base', 'Information sharing']
 featured: 59
 ---
 
