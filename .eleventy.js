@@ -215,10 +215,10 @@ module.exports = function(config) {
     .use(mdAnchor, {
       permalink: mdAnchor.permalink.linkAfterHeader({
         style: 'visually-hidden',
-        class: 'headerAnchor__link',
+        class: 'headingAnchor__link',
         assistiveText: title => `Permalink to “${title}”`,
         visuallyHiddenClass: 'visually-hidden',
-        wrapper: ['<div class="headerAnchor__wrapper">', '</div>'],
+        wrapper: ['<div class="headingAnchor__wrapper">', '</div>'],
       }),
     })
     .use(require('markdown-it-toc-done-right'), {
