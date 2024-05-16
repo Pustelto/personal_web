@@ -1,8 +1,8 @@
-.headerAnchor__wrapper {
+.headingAnchor__wrapper {
   position: relative;
 }
 
-.headerAnchor__link {
+.headingAnchor__link {
   bottom: 100%;
   left: -4px;
   position: absolute;
@@ -23,16 +23,16 @@
   }
 }
 
-.article__content .headerAnchor__link {
+.article__content .headingAnchor__link {
   display: inline-block;
 }
 
 @media (--tablet) {
-  h2 + .headerAnchor__link {
+  h2 + .headingAnchor__link {
     top: 13%;
   }
 
-  h3 + .headerAnchor__link {
+  h3 + .headingAnchor__link {
     top: 7%;
   }
 }
