@@ -353,7 +353,7 @@ const LogoutConfirmation = () => {
 
 ## Session refreshing
 
-The last thing we have to solve is session persistence and token refreshing.
+The last thing we have to solve is session persistence and token refreshing. Background scripts can become inactive and any [global or in memory variables will be lost](https://developer.chrome.com/docs/extensions/develop/concepts/service-workers/lifecycle#idle-shutdown). We have to persist the session in the extension's storage and refresh the token when needed.
 
 For Clipio I refresh the token every time users open the extension and logout the user if the refresh method returns any error.
 
@@ -373,7 +373,7 @@ supabase.auth.onAuthStateChange((event, session) => {
 });
 ```
 
-This will correctly handle all cases when refreshing of token and persist the latest refresh token for the future.
+This will correctly handle all cases when refreshing of token and persist the tokens for the future.
 
 ## Conclusion
 
