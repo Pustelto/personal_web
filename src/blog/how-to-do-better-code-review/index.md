@@ -1,42 +1,29 @@
 ---
-title: How to do a better code review
+title: 'How to do an efficient and valuable code review'
 twitter: ''
-tags: []
+tags: [Productivity, 'Soft-skills']
 excerpt: ''
 date: 2024-10-30
 published: true
 ---
 
-Do you like code reviews?
+Do you like code reviews? Or do you hate them?
 
-Have you ever received a code review that left you scratching your head, wondering if the reviewer even looked at your code? Or worse, have you been on the other side, struggling to provide valuable feedback? You're not alone.
+Have you ever received a code review that left you scratching your head, wondering if the reviewer even looked at your code? Or worse, have you been on the other side, struggling to provide valuable feedback? Well, you're not alone.
 
-Code reviews are often a pain in the ass.
+Code reviews are often a pain in the ass. They are a form of a asynchronous dialog. Which makes them really difficult to nail. Lost information, misunderstanding, unclear intent. All these things can slow down the review and lead to a ping-pong of messages. In this article I will share some tips that help me to do a code reviews, or prepare the merge requests for the review.
 
----
-
-Code reviews are form of a dialog. And asynchronous at the top. Which makes them really difficult. There can easily get some information lost in the process either from the author or the reviewer.
-
-As the reviewer I often miss a lot of context about the changes in the code and description is often very vague and I dread at every Slack notification with request to do a code review. With anticipation of a long, hard-to-review PR without meaningful description. Or if I'm on the other side of the dialog I'm nervouse how some people will resonpond to my code, if they will nitpick on small things or forget to check their ego and flood the review with a bunch of useless comments about their prefered styles of coding.
-
-## TLDR
-
-> Be specific, say what, why and how. Try to help, not show your ego.
-
-## Why are code reviews hard?
+> **TLDR:** Be specific. Always say What, Why and How. Try to help, not show your ego.
 
 ## Purpose of the code reviews
 
-If the code reviews are so hard, you might be wondering why to do them in the first place? The code reviews provide few benefits to the team:
+If the code reviews are so hard, why to do them in the first place? The code reviews provide few benefits to the team:
 
-- Get a fresh pair of eyes to check the code - because sometimes you are so immersed in the work you might forgot some bad code behind.
-- Learn about the code and share knowledge -
-- Provide more context about the code
+- **Get a fresh pair of eyes to check the code** - because sometimes you are so immersed in the work you might leave bad code behind or miss something important.
+- **Learn about the code and share knowledge** - other teammates can learn from your code domain knowledge and patterns or help with their knowledge via comments.
+- **Provide more context about the code** - especially as a senior you might have extra knowledge relevant to the change and code review is an ideal place to share it.
 
-Some might want to add two more points below. But I believe those should be handled by linters, formatter and tests. Not humans.
-
-- Ensure consistency and good patterns
-- Fix bugs
+Some might argue that we are doing code reviews to ensure catch bugs and bad patterns. But I believe those should be handled by linters, formatter and tests. Not humans.
 
 <aside>
 
@@ -44,66 +31,98 @@ Some might want to add two more points below. But I believe those should be hand
 
 </aside>
 
-## Tips for Authors: Preparing for a Smooth Review
+## How to prepare code for a smooth review
 
-As an author, you play a crucial role in facilitating an effective review process. By following these guidelines, you can help reviewers provide valuable feedback and streamline the entire process.
+As an author, you play a crucial role in facilitating an effective review process. By following the tips below, you can help reviewers provide valuable feedback, save a lot of time and streamline the entire process.
 
-### Create Smaller, Focused PRs
+### 1. Create smaller, focused PRs
+
+{% image "long_mr_meme.jpg", "Review 10 lines of code: find 10 issues, review 500 lines of code: looks good to me." %}
 
 Breaking down your changes into smaller, more manageable pull requests can significantly improve the review process. Smaller PRs are easier to read and understand, increasing the likelihood of a quicker review. Consider using feature flags to merge changes more frequently while keeping new functionality hidden until it's ready for release.
 
-### Provide Detailed Descriptions
+<aside>
 
-A well-crafted PR description is essential for context. Include the what, how, and why of your changes. For example:
+<span aria-hidden="true">🎓&nbsp;</span>**TIP**: I huge boost to my effort making a short merge requests was an article with a great tip about [Git's native feature to enable 'stacked branches'](https://www.codetinkerer.com/2023/10/01/stacked-branches-with-vanilla-git.html) from Michael Kropat. Together with [Lazygit](https://github.com/jesseduffield/lazygit) this is an amazing combo I highly recommend you to try.
 
-> What: Added a new user authentication module
-> How: Implemented JWT-based authentication with refresh tokens
-> Why: To improve security and allow for more granular access control
+</aside>
 
-This level of detail helps reviewers understand the purpose and impact of your changes quickly.
+### 2. Provide good descriptions
 
-### Highlight Specific Areas for Feedback
+Before you open a book, you will always read the summary at the back of the cover.
 
-Guide your reviewers by pointing out areas where you'd particularly appreciate their input. For instance:
+A well-crafted PR description is just like that. It's essential for the context. You should include the what, how, and why of your changes. The description should be a first guide for the reviewers, that will show them what has changes and what they should focus on.
 
-> I've implemented a new caching mechanism in the UserService class. I'm not entirely sure if this is the most efficient approach. Any suggestions for improvement would be greatly appreciated.
+Of course a great PR description depends on the context of the changes. Are you changing color of a button? Then a one liner is probably enough. Have you spend 2 days hunting down a nasty bug? Then you should probably write an indepth description of the bug, your process and why does the one deleted line fixing it.
 
-### Be Open to Constructive Criticism
+<aside>
 
-Approach feedback with an open mind. Remember that the goal is to improve the code, not to defend every decision. Be prepared to explain your choices, but also be willing to consider alternative approaches suggested by reviewers.
+<span aria-hidden="true">🎓&nbsp;</span>**TIP**: Are you making UI changes? Add screenshots or videos of the changes. This can help reviewers understand the visual impact of your changes and see it without running the code locally. A preview link is helpful too, if you use service that supports it.
 
-## Tips for Reviewers: Providing Effective Feedback
+</aside>
+
+### 3. Highlight Specific Areas for Feedback
+
+You, as an author, can add comments to the code as well. Use this power.
+
+Otherwise the reviewers might end up nitpicking unimportant things and missing the important parts of the code. Guide your reviewers by pointing out areas where you'd particularly appreciate their input.
+
+Tell them what is important.
+
+**Example:**
+_I've implemented a new caching mechanism in the UserService class. However I'm not entirely sure if this is the best way how to do it in our codebase and I don't like it. But I couldn't figure out a better way. Any suggestions for improvement would be greatly appreciated._
+
+## How to provide a good code review
 
 As a reviewer, your role is to provide constructive feedback that improves code quality and fosters a positive team environment. Here are some guidelines to help you give more effective reviews:
 
-### Ask Questions for Clarity
+### 1. Does my comment bring value?
 
-If something isn't clear, don't hesitate to ask for clarification. This can lead to valuable discussions and improvements in the code or documentation. For example:
+Before you submit a comment, ask yourself if it adds value to the discussion. If it doesn't, consider whether it's worth mentioning at all. Avoid nitpicking on trivial issues that don't impact the code's functionality or readability, but are solely your personal preference.
 
-> I'm curious about the choice of using a LinkedList here instead of an ArrayList. Could you explain the reasoning behind this decision?
+I'm asking this question before each comment and trust me, there is a huge amount of those I have never sent. Just because you would solve the problem differently doesn't mean the other solution is wrong.
 
-### Provide Context and Explanations
+### 2. Ask Questions for Clarity
 
-When suggesting changes, explain the reasoning behind your recommendations. This helps the author understand the "why" and not just the "what". For instance:
+If something isn't clear, don't hesitate to ask for clarification. This can lead to valuable discussions and improvements in the code or documentation.
 
-> Consider using a more descriptive variable name here, such as 'userAuthenticationToken' instead of 'uat'. Clear naming can significantly improve code readability and make it easier for future developers (including ourselves) to understand the code's intent.
+**Example:**
+_Why are you binding DOM event to the element using it's reference, instead of using React's native handling? Is there any particular reason?_
 
-### Balance Criticism with Praise
+### 3. Provide Context and Explanations
 
-Acknowledge good practices and clever solutions. This creates a positive atmosphere and encourages the author. For example:
+When suggesting a change, explain the reasoning behind your recommendations. This helps the author understand the "why" and not just the "what". And don't forget to suggest "how" as well. What I really hate is when someone says "I don't like this." without any explanation or suggestion how to improve it. And I'm guess I'm not the only one.
 
-> Great job on implementing this feature! I particularly like how you've handled error cases. The custom exceptions make the error flow very clear. For further improvement, consider adding unit tests for these error scenarios.
+**Example:**
+_This reduce method is too complex and very hard to read. I would suggest to either move it to separate function covered by test, so others can use those tests to better understand the method. Or you can instead use more functional approach and transform it to several atomic steps use combination of `filter` and `flatMap/map` functions._
 
-### Focus on Code, Not the Coder
+### 4. Balance Criticism with Praise
 
-Keep your comments focused on the code itself, not the person who wrote it. Instead of saying "You didn't handle this edge case," try "This edge case doesn't seem to be handled. Consider adding a check for..."
+{% image "something-positive.png", "Developer trying to say something positive during code review: At least we don't have to obfuscate the code" %}
 
-### Prioritize Your Feedback
+Acknowledge good practices and clever solutions. Especially if you added a bunch of change requests. This creates a positive atmosphere and encourages the author.
+
+**Example:**
+_Great job on implementing this feature! I particularly like how you've handled error cases. The custom exceptions make the error flow very clear._
+
+### 5. Focus on Code, Not the Coder
+
+Keep your comments focused on the code itself, not the person who wrote it. Instead of saying _"You didn't handle this edge case,"_ try _"This edge case doesn't seem to be handled. Consider adding a check for..."_
+
+### 6. Prioritize Your Feedback
 
 Distinguish between must-fix issues and nice-to-have improvements. This helps the author focus on critical changes first. You can use labels or prefixes to indicate the importance of your comments, such as:
 
-> Critical: This method may cause a null pointer exception under certain conditions.
-> Suggestion: Consider using a StringBuilder for better performance in this loop.
-> Nitpick: There's an extra space at the end of this line.
+- **Critical**: This method may cause a null pointer exception under certain conditions.
+- **Suggestion**: Consider using a lazy evaluation for better performance in this function.
+- **Nitpick**: `for...of` loop would be probably better in this case instead of `while`.
 
-By following these guidelines, both authors and reviewers can contribute to a more productive and positive code review process, ultimately leading to better code quality and stronger team collaboration.
+<aside>
+
+<span aria-hidden="true">🎓&nbsp;</span>**TIP**: Netlify published a nice [article about their approach to code reviews](https://www.netlify.com/blog/2020/03/05/feedback-ladders-how-we-encode-code-reviews-at-netlify/) some time ago. I can highly recommend it as an inspiration.
+
+</aside>
+
+## Conclusion
+
+Code review can sometimes take a lot of time before all the unclear comments are solved. By following guidelines mentioned in this article, you can make the process more efficient, valuable and enjoyable for everyone involved.
