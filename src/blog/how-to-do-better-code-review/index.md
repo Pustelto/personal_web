@@ -1,9 +1,9 @@
 ---
 title: 'How to do an efficient and valuable code review'
-twitter: ''
+twitter: 'How to make code reviews less painful? Be specific. Always say What, Why, and How. Try to help, not show your ego. Read more:'
 tags: [Productivity, 'Soft-skills']
-excerpt: ''
-date: 2024-10-30
+excerpt: "Tips to make code reviews more effective and enjoyable. Learn how to prepare code and give valuable feedback that don't sucks."
+date: 2024-12-02
 published: true
 ---
 
@@ -13,7 +13,7 @@ Have you ever received a code review that left you scratching your head, wonderi
 
 Code reviews are often a pain in the ass. They are a form of a asynchronous dialog. Which makes them really difficult to nail. Lost information, misunderstanding, unclear intent. All these things can slow down the review and lead to a ping-pong of messages. In this article I will share some tips that help me to do a code reviews, or prepare the merge requests for the review.
 
-> **TLDR:** Be specific. Always say What, Why and How. Try to help, not show your ego.
+> **TLDR:** Be specific. Always say What, Why, and How. Try to help, not show your ego.
 
 ## Purpose of the code reviews
 
