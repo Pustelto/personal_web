@@ -1,13 +1,15 @@
 ---
-title: 'How to handle the errors'
+title: '4+1 ways how to handle errors in your code'
 twitter: ''
-tags: ['Front-end', 'JS', 'Software engineering']
+tags: ['JS', 'Software engineering']
 excerpt: ''
 date: 2025-03-23
 published: true
 ---
 
-We've all seen it—code that happily assumes everything will go perfectly. Developers love the "happy path" and often neglect what happens when things go wrong. But reality isn’t so kind. Servers crash, APIs fail, us developers do mistake, and users do unexpected things.
+We've all seen it—code that happily assumes everything will go perfectly. Developers love the "happy path" and often neglect what happens when things go wrong. But reality isn't so kind. Servers crash, APIs fail, us developers do mistake, and users do unexpected things.
+
+In this article, I will walk you through several ways how to handle errors in your code.
 
 [[toc]]
 
@@ -16,15 +18,14 @@ We've all seen it—code that happily assumes everything will go perfectly. Deve
 So, why do we still treat error handling as an afterthought? When we ignore proper error handling, the impact is felt everywhere:
 
 - **Terrible UI/UX** – Users have no clue what what is happening in the system, what went wrong or how to fix it.
-- **Brittle applications** – Minor failures cause complete breakdowns instead of graceful recoveries. Your entire app doesn’t have to crash, just because you are missing some optional value for one table cell.
-- **System instability** – With no unified approach, errors propagate unpredictably - sometimes they are silenced and ignored, sometimes a tiny issue makes the app unusable.
+- **System instability** – With no unified approach to error handling major errors can be silenced and ignored, or tiny issues make the app unusable.
 - **Debugging nightmares** – Hunting down silent failures is frustrating and time-consuming.
 
 So, how do developers actually deal with errors? Let's break down the common (and sometimes hilariously bad) approaches. Note: I have seen all these approach in my career (and I admit I used some of the bad ones as well).
 
 ## The many ways how handle errors
 
-### Ignoring Errors and Hoping for the Best
+### 1. Ignoring Errors and Hoping for the Best
 
 > "If I don't see it, it doesn’t exist." approach.
 
@@ -32,7 +33,7 @@ Sure not all errors are equal.
 
 Some errors, like failed analytics events, are harmless and can be ignored — at least from user perspective, but you should always log it into your error tracking solution. However, ignoring critical errors can be catastrophic. Silent failed API calls can lead to users losing data or progress. Generic error message doesn’t help users to recover, as they don’t know what is really happening. And they even can’t report this bug to you correctly, because they don’t have any extra info.
 
-### Returning weird values
+### 2. Returning weird values
 
 A practice I have seen more times that I would like to.
 
@@ -46,9 +47,9 @@ _If it failed, what went wrong?_
 
 You see, just approach produce a bunch of questions and a lot of confusion. If something goes wrong, be explicit about it. This approach is also making type-checking a nightmare when you return some structured data on success and a random value on failure.
 
-### Throwing errors without proper handling
+### 3. Throwing errors without proper handling
 
-Ok, we said that ignoring errors or returning weird values is bad. So let’s just throw an error and call it a day, right?
+Ok, so ignoring errors or returning weird values is bad. Let’s just throw an error and move on, right?
 
 Well, not really.
 
@@ -56,7 +57,7 @@ While throwing an error if things go wrong is not bad by itself. Without a solid
 
 Especially if you are writing a code that will be consumed or reused by others this is not a good way how to deal with errors. That’s because IDE will not tell you if the function can fail or not, it will just show a return value (happy path). The devs can easily miss that the function might throw an error and ignore the error handling (they need to know the internal implementation).
 
-### Using `try...catch` blocks
+### 4. Using `try...catch` blocks
 
 Using `try...catch` around code that might fail is a good start, but the difficult question is: **What happens after catching the error?**
 
@@ -70,7 +71,7 @@ We have several options and which one we will use heavily depends on the context
 
 Let’s stop at the third point and discuss it a little bit more in detail. Because we can actually treat errors like — well — not errors. Instead of throwing an error and spreading a panic through the entire system, we can choose to treat errors as a normal data. As if you would return an object with user’s data from the API. Or a string from a function.
 
-### **Treat Errors as Data**
+### 5. **Treat Errors as Data**
 
 Throwing error is a side effect that break function purity. A best approach I found is **treating errors as data** — acknowledge that something can go wrong and properly describe it. This ensures that functions always return something predictable and prevents unexpected crashes in the app.
 
