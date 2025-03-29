@@ -1,8 +1,8 @@
 ---
 title: '4+1 ways how to handle errors in your code'
-twitter: "Errors will happen in our apps. So let's stop ignoring them and instead be ready to deal with them. Discover 4+1 approaches to error handling that can transform your code from fragile to robust."
+twitter: "Errors will happen in our apps. So let's stop ignoring them and instead be ready to deal with them. Discover 4+1 approaches to error handling, from worst to best."
 tags: ['JS', 'Software engineering']
-excerpt: "Errors will happen in our apps. So let's stop ignoring them and instead be ready to deal with them. Discover 4+1 approaches to error handling that can transform your code from fragile to robust."
+excerpt: "Errors will happen in our apps. So let's stop ignoring them and instead be ready to deal with them. Discover 4+1 approaches to error handling, from worst to best."
 date: 2025-03-29
 published: true
 ---
@@ -43,11 +43,11 @@ A practice I've seen more times than I’d like.
 
 Some developers return `false` or `-1` to indicate failure instead of using proper error handling. This creates confusion because the caller has no idea what `false` means in that context.
 
-*Is the result `false`?*
+_Is the result `false`?_
 
-*Or did the function fail?*
+_Or did the function fail?_
 
-*If it failed, what went wrong?*
+_If it failed, what went wrong?_
 
 This approach produces a bunch of questions and confusion. If something goes wrong, be explicit. This also makes type-checking a nightmare when success returns structured data and failure returns a random value.
 
@@ -77,7 +77,7 @@ Options vary based on context:
 
 Let’s stop at the last point: Return structured error objects and have a closer look. We can actually treat errors like — well — not errors.
 
-Instead of throwing and spreading panic, we can treat them as normal data. Like returning a string or an object from a function. 
+Instead of throwing and spreading panic, we can treat them as normal data. Like returning a string or an object from a function.
 
 ### Bonus: Treat errors as data
 
@@ -93,7 +93,7 @@ This approach has several pros: It's explicit, transparent, and eliminates surpr
 
 This helps us write better, more robust code.
 
-Here is an example from my work. I had to handle an API response, nothing fancy, just showing the data or the error state. The problem was that I had to use a different UI for various error states and, in some cases,  make another request. But I had no clue what errors could be returned from the API. I had to manually simulate various conditions to see possible values. And I'm not sure that I have handled all the cases. If the error as a data approach was used, I would see what errors are possible and how to handle them.
+Here is an example from my work. I had to handle an API response, nothing fancy, just showing the data or the error state. The problem was that I had to use a different UI for various error states and, in some cases, make another request. But I had no clue what errors could be returned from the API. I had to manually simulate various conditions to see possible values. And I'm not sure that I have handled all the cases. If the error as a data approach was used, I would see what errors are possible and how to handle them.
 
 #### Examples of error-as-data patterns
 
@@ -104,7 +104,6 @@ A function always returns an object with optional `error` and `data` properties.
 If there is no error, we can safely use `data`. Otherwise, we handle the error our way.
 
 ```tsx
-
 function fetchUsers() {
   const { error, data } = await apiClient(`/users/`);
   if (error) {
@@ -146,9 +145,7 @@ if (result.isOk()) {
 }
 
 // OR using helpers
-return result
-    .map(val => firstLettersToUppercase(val))
-    .map(val => val.replace(' ', '_'));
+return result.map(val => firstLettersToUppercase(val)).map(val => val.replace(' ', '_'));
 // If the reading of a file was successful, we can map over the result
 // and transform it with the provided function.
 // In case of an error, the map will be ignored. We can chain and compose multiple steps
@@ -176,5 +173,3 @@ When you model errors as data:
 - Your team shares a clear idea of what failure looks like.
 
 So next time you're choosing how to handle failure, remember: a bit of verbosity beats a silent crash.
-
-
