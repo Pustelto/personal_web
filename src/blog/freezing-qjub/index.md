@@ -1,7 +1,7 @@
 ---
 title: Freezing development of Qjub
-twitter: "What and why of freezing additional develoment of Qjub from @pustelto"
-tags: ["Qjub", "Side project", "Founder's log"]
+twitter: 'What and why of freezing additional develoment of Qjub from @pustelto'
+tags: ['Qjub', 'Side project', 'Indiehacking']
 excerpt: "It wasn't an easy decision, but it will allow me to move forward. Here is what it means and why I choose to do so."
 date: 2021-01-10
 published: true
