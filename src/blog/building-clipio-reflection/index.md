@@ -1,9 +1,9 @@
 ---
 title: 'Clipio reflectoin journey'
-twitter: ''
-tags: ['']
-excerpt: ''
-date: 2025-05-23
+twitter: 'A reflection of solo building and launching Clipio. The good, the bad, and lessons learned.'
+tags: ['Clipio', 'Learn in Public', 'Side project', 'Indiehacking']
+excerpt: 'After over a year of development, I finally launched Clipio. This article is a reflection about my journey with highs and lows and lessons I have learned the hard way.'
+date: 2025-05-14
 published: true
 ---
 
@@ -91,6 +91,6 @@ At one point, I spent hours debugging weird build issues — Nx configs, Tailwin
 
 ## Conclusion
 
-Building a Clipio was a great experience and I have learned a lot. Especially today with AI everywhere this was a great way to broaden my skills and validate that I can build something people will want to use.
+Building a Clipio was a great experience and I have learned a lot. Especially today, with the AI hype this was a great way to broaden my skills and validate that I can build something people will want to use.
 
-And of course I have made a mistakes along the way. But I have learned a valuable lessons thanks to that. And I have wrote this article to reflect on this journey and share the lessons with you so you can learn from my mistakes as well.
+Of course I have made a mistakes along the way, but I have learned a valuable lessons thanks to that. I have wrote this article to reflect on this journey and share those lessons with you so you can learn from my mistakes as well.
