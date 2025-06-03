@@ -1,6 +1,6 @@
 ---
 title: 'Reflecting on my indiehacking journey building Clipio'
-twitter: 'A reflection of solo building and launching Clipio. The good, the bad, and lessons learned.'
+twitter: 'A reflection of solo building and launching Clipio. The good, the bad, and lessons learned from @pustelto.'
 tags: ['Clipio', 'Learn in Public', 'Side project', 'Indiehacking']
 excerpt: 'After over a year of development, I finally launched Clipio. This article is a reflection about my journey with highs and lows and lessons I have learned the hard way.'
 date: 2025-06-03
