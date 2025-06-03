@@ -1,9 +1,9 @@
 ---
-title: 'Clipio reflectoin journey'
+title: 'Reflecting on my indiehacking journey building Clipio'
 twitter: 'A reflection of solo building and launching Clipio. The good, the bad, and lessons learned.'
 tags: ['Clipio', 'Learn in Public', 'Side project', 'Indiehacking']
 excerpt: 'After over a year of development, I finally launched Clipio. This article is a reflection about my journey with highs and lows and lessons I have learned the hard way.'
-date: 2025-05-14
+date: 2025-06-03
 published: true
 ---
 
@@ -17,7 +17,7 @@ Not an impressive numbers.
 
 But here’s the thing: I don’t count it as a total failure either, because I have learner a ton of things I wouldn’t otherwise.
 
-## This good things
+## The good things
 
 Let’s be real: the money didn’t pour in. But Clipio still gave me something more important — **validation, exprience and connections**.
 
@@ -49,9 +49,9 @@ It feels awkward and is heavily outside of my comfort zone. I tried with things,
 
 Aside from that I had a hard time putting together a good value proposition to actually get the interest and explain the value to the potential users. I fully realized this when preparing for ProductHunt launch when I spend unreasonable amount of time creating description for the launch. This can signal that the product is not a good fit as well and might need some pivot.
 
-**Lesson:** Think about value proposition first and validate that. Try to create fake ProductHunt lunch to realize what am I actually offering and selling.
+**Lesson:** Think about value proposition first and validate that. Nex time I will try to create fake ProductHunt lunch () to realize what am I actually offering and selling.
 
-### 3. I build a product for bad audience
+### 3. I have built a product for bad audience
 
 I use Clipio and it solves my own problem. That’s the first step to build good and successful product. But you still need to sell it. Pair that with my marketing skills and that’s where I met some troubles.
 
@@ -83,7 +83,7 @@ You should really try to ship some thing as fast as possible and get feedback/va
 
 **Lesson:** You’ll always underestimate how long it takes. Be ready to cut scope and compromise. Use existing tools, even if imperfect.
 
-### 6. I Got Stuck on Tooling
+### 5. I Got Stuck on Tooling
 
 At one point, I spent hours debugging weird build issues — Nx configs, Tailwind quirks, Vite version mismatches, etc. So instead of a productive day I was fighting issues without any value.
 
@@ -93,4 +93,4 @@ At one point, I spent hours debugging weird build issues — Nx configs, Tailwin
 
 Building a Clipio was a great experience and I have learned a lot. Especially today, with the AI hype this was a great way to broaden my skills and validate that I can build something people will want to use.
 
-Of course I have made a mistakes along the way, but I have learned a valuable lessons thanks to that. I have wrote this article to reflect on this journey and share those lessons with you so you can learn from my mistakes as well.
+Of course I have made a mistakes along the way, but I have learned a valuable lessons thanks to that. I have wrote this article to reflect on this journey and share those lessons with you so you can learn from my mistakes.
