@@ -61,7 +61,7 @@ I use Clipio and it solves my own problem. That’s the first step to build good
 
 Having poor overlap between my audience and my target group didn’t really help with marketing the product. And I also had a problem deciding whether I want to pivot and start writing for Notion users or stick with my current audience and not market my product very well.
 
-🚧**TODO**:Visual idea: two circles — one for my network, one for my product's audience. The intersection? Almost nonexistent.
+{% figure "audience-overlap.png", "Diagram with two circles, one representing my network, second representing target audience for Clipio. There is only small overlap between those two.", "I had only small overlap between my network and Clipio target audience, making marketing harder." %}
 
 Don’t get me wrong. I totally believe you can build a great product even for group outside of your network. But it will be harder.
 
