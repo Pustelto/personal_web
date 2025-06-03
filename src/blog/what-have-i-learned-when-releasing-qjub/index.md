@@ -1,8 +1,8 @@
 ---
-title: "What have I learned when releasing Qjub"
-twitter: "Launching a side project was not an easy task, I have put together few tips I have learned in the process"
-tags: ["Qjub", "Side project", "Founder's log"]
-excerpt: "I have finally released Qjub in private beta. It was a great feeling to finally kick it off the door. And a big relief as well. However, getting to that moment was not an easy task. I would like to share my experience and the lessons I learned with you."
+title: 'What have I learned when releasing Qjub'
+twitter: 'Launching a side project was not an easy task, I have put together few tips I have learned in the process'
+tags: ['Qjub', 'Side project', 'Indiehacking']
+excerpt: 'I have finally released Qjub in private beta. It was a great feeling to finally kick it off the door. And a big relief as well. However, getting to that moment was not an easy task. I would like to share my experience and the lessons I learned with you.'
 date: 2020-06-05
 published: true
 ---
