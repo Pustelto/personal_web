@@ -44,46 +44,18 @@ Some more variants of the of the header:
 
 Linear app works and looks great anywhere &mdash; from smartphones to large screens. Most of it is achieved through traditional CSS media queries. Either used directly in CSS or via React hooks (using [matchMedia](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia) DOM API in the background).
 
-- TODO: Video of responsivenes
+<iframe
+  src="https://player.cloudinary.com/embed/?cloud_name=dtncnogka&public_id=linear-header-video_pszzhf&profile=custom"
+  width="1280"
+  style="height: auto; width: 100%; aspect-ratio: 2082 / 380; border-radius: 0.3rem; margin-bottom: 1.65rem"
+  allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+  allowfullscreen
+  frameborder="0"
+></iframe>
 
-But Linear goes beyond traditional CSS breakpoints. I have found `ResponsiveSlot` component in the header component (used in the _Side_ slot), which looks roughly like this:
+But Linear goes beyond traditional CSS breakpoints.
 
-ZKR8TI CODE
-
-```jsx
-function ResponsiveSlot({ name, priority, innerRef, className, children }) {
-  const defaultRef = useRef(null);
-  const slotRef = props.innerRef || defaultRef;
-  const responsiveSlotManager = useContext(ResponsiveSlotManagerContext);
-  const { name, priority } = props;
-  const isVisible = context.isVisible(name);
-
-  useLayoutEffect(() => {
-    if (!slotRef.current) return;
-
-    responsiveSlotManager.registerSlot(name, props.priority, slotRef);
-    return () => {
-      responsiveSlotManager.unregisterSlot(name);
-    };
-  }, [name]);
-
-  // Other hooks to update the slot's properties left for brevity
-
-  if (isVisible === false) {
-    return null;
-  }
-
-  return props.innerRef ? (
-    <>{props.children}</>
-  ) : (
-    <div ref={slotRef} className={className}>
-      {props.children}
-    </div>
-  );
-}
-```
-
-The purpose of the `ResponsiveSlot` component is to hide its content based on available space in the wrapping `ResponsiveSlotContainer` component.
+There is `ResponsiveSlot` component used in the header (in the _Side_ slot). The purpose of this component is to hide its content based on available space in the wrapping `ResponsiveSlotContainer` component.
 
 It doesn't use breakpoints. Instead it calculates available space using system of resize observers and hides the content of the slot based on its priority.
 
@@ -132,14 +104,26 @@ Here is how it works:
 - If there is change in conditions &mdash; resize event detected by observer, change of priority or registering of new slot, etc. &mdash; the manager will recalculate available space. And if needed starts hiding lower-priority items dynamically (renders `null`). Independent of breakpoint or position across all the header elements.
 - This avoids rigid media queries (works more like container query) and ensures that essential controls are always visible.
 
-- TODO: video of my demo/implementation
-- TODO: My linear playground (embed or link)
+<iframe
+  src="https://player.cloudinary.com/embed/?cloud_name=dtncnogka&public_id=linear-responsive-slot-demo_ajsoce&profile=custom"
+  width="1280"
+  style="height: auto; width: 100%; aspect-ratio: 2340 / 718; border-radius: 0.3rem; margin-bottom: 1.65rem"
+  allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+  allowfullscreen
+  frameborder="0"
+></iframe>
 
-Overengineered? Maybe. But definitely clever and beautiful. It shows Linear's attention to detail and design. Ensuring that relevant stuff is visible and less important goes away if there is not enough room.
+[Play with this demo in the CodeSandbox.](https://codesandbox.io/embed/fvsqm7?view=preview&hidenavigation=1)
 
-Sadly, I found only few usages across the app in the code. And after careful analysis I believe those cases are not working due to CSS setup (missing `min-width: 0` on the top container). Not sure if this is a bug or this funtionality is intentionally not used (if someone from Linear reads this, please let me know). So I have to made a few adjustements to make it actually work as it is supposed to in my demo.
+Over-engineered?
 
-But while not heavily used (or working), it’s a **great example of React composition** on a bigger scale. It works out of the box, you just wrap some component in header with `ResponsiveSlot` and that's it. No props drilling, or complex state management, And since the context is initialized in the Header component, you don't have to deal with extra providers and similar. You just use the `ResponsiveSlot` as any other component.
+Maybe. But definitely clever and beautiful. It shows Linear's attention to detail and design. Ensuring that relevant stuff is visible and less important goes away if there is not enough room.
+
+Sadly, I found only few usages across the app in the code. And after careful analysis I&nbsp;believe those cases are not working due to CSS setup. There is missing `min-width: 0` on the top container, which forbids it to shrink below the size of the inner one. Effectively never triggering the hiding.
+
+Not sure if this is a bug or if this is intentional (if someone from Linear reads this, please let me know). So I have to made a few adjustments to make it actually work as it is supposed to in my demo.
+
+Nevertheless, it’s a **great example of React composition** on a bigger scale. It works out of the box, you just wrap some component in header with `ResponsiveSlot` and that's it. No props drilling, or complex state management, And since the context is initialized in the Header component, you don't have to deal with extra providers and similar. You just use the `ResponsiveSlot` as any other component.
 
 ### 2. Local State with MobX
 
@@ -200,7 +184,14 @@ function ResponsiveSlotProvider({ children }) {
 
 Tabs in the header don't look special at first glance, but the fun you have too many to fit into the view. The tabs that won't fit are hidden and instead a button to open a popover with the complete list of tabs appears.
 
-TODO: video tabs resizingu
+<iframe
+  src="https://player.cloudinary.com/embed/?cloud_name=dtncnogka&public_id=linear-tabs_b4fsmq&profile=custom"
+  width="1280"
+  style="height: auto; width: 100%; aspect-ratio: 1392 / 397; border-radius: 0.3rem; margin-bottom: 1.65rem"
+  allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+  allowfullscreen
+  frameborder="0"
+></iframe>
 
 There are few details I really like:
 
@@ -210,11 +201,13 @@ There are few details I really like:
 
 I have seen and even build dynamic hiding of the list based on available size of the container. Most of the time the solutions weren't perfect and at certain edge cases they broke. But I didn't manage to break it even once in Linear (I really tried). And the solution is very performance effective as well.
 
-- It uses CSS to control positioning and visibility to make the extra tabs invisible (through `visibility: hidden`), but they are still in DOM and occupy exact same spot.
+- Tabs are hidden using CSS `visibility: hidden` to make the extra tabs invisible, but they are still in DOM and occupy exact same spot (overflow is set to hidden).
   - This avoid extra layout flickering, that might appear in solutions that really remove the items from DOM (or use `display: none`).
   - It also makes it easy to enable drag and drop and show entire list for reordering.
 - Popover Trigger (that **2 more** button) is then absolutely positioning after last visible item, and it's size is take into the calculations when the app decide if another tab should be hidden or shown.
 - The width calculation happens if the active tab or the actual tabs changes (and it happens in the `useLayoutEffect` hook). And then when the size of the tabs container changes (using resize observer for that).
+
+Below is a code that calculates which tabs should be hidden and what should be the position and size of the popover trigger button at the end:
 
 ```jsx
 function calculateTabLayout(containerRef, activeFacetIndex) {
@@ -284,7 +277,7 @@ function calculateTabLayout(containerRef, activeFacetIndex) {
 I have picked bunch of interesting ideas and inspiration just from the header, that I will definitely use in the future (and some I have already used).
 
 1. Dynamic hidding of components based on available space - smart usage of CSS instead of relying on JS too much for.
-1. Example that a MobX state doesn't have to be always global, but you can encapsulate it in context.
+1. Example that a MobX state doesn't have to be always global, but you can encapsulate it in context (which makes testing setup so much easier)
 1. Composition is one of the key principles in React and Linear does it really well:
    - Small utility hooks (for measuring element size, checking visibility etc.)
    - Components to drive animations or handle heavy-lifting for menus and actions.
