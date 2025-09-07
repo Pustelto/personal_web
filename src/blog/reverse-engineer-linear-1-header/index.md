@@ -1,8 +1,8 @@
 ---
 title: 'Reverse engineering Linear - part 1: Header'
-description: "I have used AI to reverse engineered Linear app to learn from top-tier software engineers. I found some interesting patterns on a place I wouldn't expected them - a header."
-excerpt: "I have used AI to reverse engineered Linear app to learn from top-tier software engineers. I found some interesting patterns on a place I wouldn't expected them - a header."
-twitter: 'Using AI to reverse engineer Linear app to learn from top-tier software engineers. First part of the series showing 3 interesting patterns from a header from @pustelto.'
+description: "I have used AI to reverse engineer Linear app to learn from top-tier software engineers. I found some interesting patterns on a place I wouldn't expected them - a header."
+excerpt: "I have used AI to reverse engineer Linear app to learn from top-tier software engineers. I found some interesting patterns on a place I wouldn't expected them - a header."
+twitter: 'Using AI to reverse engineer Linear app to learn from top-tier software engineers. First part of the series showing 3 interesting patterns in a header from @pustelto.'
 tags: ['React', 'Linear', 'Front-end', 'Software engineering']
 date: 2025-09-07
 published: true
