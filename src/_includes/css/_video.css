@@ -1,0 +1,24 @@
+figure.video {
+	margin: 1rem 0;
+}
+
+figure.video video {
+	border-radius: 0.5rem;
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+figure.video figcaption {
+	font-size: 0.9rem;
+	opacity: 0.8;
+	margin-top: 0.5rem;
+	font-style: italic;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	figure.video video {
+		/* Respect user's motion preferences */
+		animation: none;
+	}
+}

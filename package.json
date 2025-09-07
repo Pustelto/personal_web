@@ -8,7 +8,9 @@
     "start": "npm run dev",
     "dev": "npx @11ty/eleventy --serve",
     "build": "ELEVENTY_ENV=production npx @11ty/eleventy && node split-css.js",
-    "postbuild": "node critical.js"
+    "postbuild": "node critical.js",
+    "prepare:videos": "node scripts/prepare-videos.js",
+    "videos": "npm run prepare:videos"
   },
   "author": "",
   "license": "MIT",
@@ -46,6 +48,9 @@
     "babel-plugin-named-asset-import": "0.3.8",
     "copy-webpack-plugin": "11.0.0",
     "critical": "5.0.4",
+    "fluent-ffmpeg": "2.1.2",
+    "fs-extra": "11.1.1",
+    "globby": "13.2.2",
     "postcss-merge-queries": "1.0.3",
     "prettier": "2.8.8",
     "readdirp": "3.6.0",

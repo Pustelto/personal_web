@@ -21,8 +21,8 @@
   box-sizing: border-box;
   font-weight: 400;
   /* Define font-stacks */
-  --fonts-fallback: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --fonts-fallback: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu,
+    Cantarell, 'Helvetica Neue', sans-serif;
   /* --fonts: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu,
     Cantarell, "Helvetica Neue", sans-serif; */
 
@@ -141,7 +141,7 @@ pre,
 table,
 ul,
 ol,
-[role="region"],
+[role='region'],
 p {
   margin: 0;
   margin-bottom: 1.65em; /* [1] */
@@ -193,6 +193,15 @@ a:not([class]) {
   }
 }
 
+pre[class*='language-'] {
+  padding: calc(var(--gapOne) * 2);
+
+  @media screen and (min-width: 980px) {
+    margin-left: calc(var(--gapOne) * -3);
+    margin-right: calc(var(--gapOne) * -3);
+  }
+}
+
 img {
   display: block;
   width: 100%;
@@ -205,6 +214,11 @@ img {
 
 picture {
   display: block;
+
+  @media screen and (min-width: 980px) {
+    margin-left: calc(var(--gapOne) * -3);
+    margin-right: calc(var(--gapOne) * -3);
+  }
 }
 
 figure {
@@ -230,7 +244,7 @@ blockquote:not([class]) {
   padding-right: calc(var(--gapOne) * 2);
 
   &:before {
-    content: "\201D";
+    content: '\201D';
     font-size: 8rem;
     color: var(--brand);
     opacity: 0.65;

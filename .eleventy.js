@@ -9,7 +9,7 @@ const Image = require('@11ty/eleventy-img');
 const htmlMinTransform = require('./src/transforms/html-min-transform.js');
 const createSocialImages = require('./ogImages');
 
-module.exports = function(config) {
+module.exports = function (config) {
   // Activate deep merge for data cascade
   config.setDataDeepMerge(true);
 
@@ -27,7 +27,7 @@ module.exports = function(config) {
   });
 
   // Custom collections
-  config.addCollection('allPages', function(collection) {
+  config.addCollection('allPages', function (collection) {
     return collection
       .getAll()
       .filter(post =>
@@ -37,15 +37,15 @@ module.exports = function(config) {
       );
   });
 
-  config.addCollection('blogposts', function(collection) {
+  config.addCollection('blogposts', function (collection) {
     return collection.getFilteredByTag('posts').filter(post => post.data.published);
   });
 
-  config.addCollection('featuredProjects', function(collection) {
+  config.addCollection('featuredProjects', function (collection) {
     return collection.getFilteredByTag('project').sort((a, b) => b.data.featured - a.data.featured);
   });
 
-  config.addCollection('talks', function(collection) {
+  config.addCollection('talks', function (collection) {
     return collection.getFilteredByTag('talk').sort((a, b) => b.data.eventDate - a.data.eventDate);
   });
 
@@ -99,7 +99,7 @@ module.exports = function(config) {
   });
 
   // Custom shortcodes
-  config.addShortcode('codepen', function(penId, title, tabs = ['css', 'result']) {
+  config.addShortcode('codepen', function (penId, title, tabs = ['css', 'result']) {
     return `<p class="codepen" data-height="324" data-theme-id="dark" data-default-tab="${tabs.join(
       ',',
     )}" data-user="Pustelto" data-slug-hash="${penId}" data-preview="true" style="height: 324px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="${title}">
@@ -109,6 +109,50 @@ module.exports = function(config) {
    </p>
    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
    `;
+  });
+
+  config.addShortcode('video', function (options) {
+    const {
+      mp4,
+      webm,
+      poster,
+      width = 1280,
+      height,
+      captions,
+      captionText,
+      controls = true,
+      autoplay = false,
+      muted = false,
+    } = options;
+
+    if (!mp4) {
+      throw new Error('Missing required `mp4` parameter in video shortcode');
+    }
+
+    const track = captions
+      ? `<track kind="captions" src="${captions.src}" srclang="${captions.srclang}" label="${
+          captions.label
+        }" ${captions.default ? 'default' : ''}>`
+      : '';
+
+    const webmSource = webm ? `<source src="${webm}" type="video/webm">` : '';
+
+    const attributes = [];
+    if (controls) attributes.push('controls');
+    if (autoplay) attributes.push('autoplay');
+    if (muted) attributes.push('muted');
+    attributes.push('playsinline');
+    attributes.push('preload="metadata"');
+    if (poster) attributes.push(`poster="${poster}"`);
+    attributes.push(`width="${width}"`);
+    attributes.push(`height="${height}"`);
+    attributes.push(
+      `style="aspect-ratio:${width}/${height}; max-width:100%; height:auto; display:block;"`,
+    );
+
+    return `<figure class="video"><video ${attributes.join(
+      ' ',
+    )}>${webmSource}<source src="${mp4}" type="video/mp4">${track}Your browser does not support the video tag.</video>${captionText ? `<figcaption>${captionText}</figcaption>` : ''}</figure>`;
   });
 
   async function optimImg(src, opts) {
@@ -124,7 +168,7 @@ module.exports = function(config) {
     else return stats['jpg'].pop();
   }
 
-  config.addNunjucksAsyncShortcode('image', async function(src, alt, options) {
+  config.addNunjucksAsyncShortcode('image', async function (src, alt, options) {
     if (alt === undefined) {
       throw new Error(`Missing \`alt\` on resImage from: ${src}`);
     }
@@ -158,7 +202,7 @@ module.exports = function(config) {
       </picture>`;
   });
 
-  config.addNunjucksAsyncShortcode('figure', async function(src, alt, caption, options) {
+  config.addNunjucksAsyncShortcode('figure', async function (src, alt, caption, options) {
     if (alt === undefined) {
       throw new Error(`Missing \`alt\` on resImage from: ${src}`);
     }
@@ -193,6 +237,7 @@ module.exports = function(config) {
   config.addPassthroughCopy('src/fonts');
   config.addPassthroughCopy('src/images');
   config.addPassthroughCopy('src/blog/**/*.{gif}');
+  config.addPassthroughCopy('src/blog/**/*.{mp4,webm,vtt}');
   config.addPassthroughCopy('src/favicon*');
   config.addPassthroughCopy('src/robots.txt');
   config.addPassthroughCopy('src/_headers');
@@ -237,7 +282,7 @@ module.exports = function(config) {
 
   config.setBrowserSyncConfig({
     callbacks: {
-      ready: function(err, bs) {
+      ready: function (err, bs) {
         bs.addMiddleware('*', (req, res) => {
           const content_404 = fs.readFileSync('_site/404.html');
           // Add 404 http status code in request header.
