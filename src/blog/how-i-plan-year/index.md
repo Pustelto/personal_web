@@ -1,8 +1,8 @@
 ---
 title: 'How I plan my year (after ruthlessly simplifying the process for 5 years)'
 description: ''
-excerpt: ''
-twitter: ''
+excerpt: 'After 5 years of yearly planning retreats, I finally found a process that works. No elaborate frameworks or dozens of goals. Just reflection, relaxation, and a shift from specific targets to sustainable systems.'
+twitter: 'After 5 years of simplifying my yearly planning process, I finally found what works. Less templates, more thinking. From @pustelto.'
 tags: ['Productivity', 'Year review']
 date: 2026-01-19
 published: true
