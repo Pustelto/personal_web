@@ -1,4 +1,5 @@
 const readdirp = require('readdirp');
+const puppeteer = require('puppeteer');
 
 const cfg = {
   fileFilter: ['*.html'],
@@ -48,7 +49,14 @@ async function extractCriticalCSS({ cfg }) {
         // Bump penthouse’s page load timeout to 2 minutes to avoid crashes
         // which could cause lingering processes as it’s possible some pages
         // can take a long time to load.
-        penthouse: { timeout: 120000 },
+        // Penthouse bundles puppeteer 2, whose Chromium no longer runs on
+        // Cloudflare's build image, so we hand it a browser from puppeteer 19.
+        penthouse: {
+          timeout: 120000,
+          puppeteer: {
+            getBrowser: () => puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] }),
+          },
+        },
       });
     }
 

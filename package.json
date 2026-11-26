@@ -57,6 +57,11 @@
     "terser-webpack-plugin": "5.3.6",
     "webpack": "5.75.0"
   },
+  "pnpm": {
+    "overrides": {
+      "@pustelto/css-split>jsdom": "16.7.0"
+    }
+  },
   "browserslist": [
     "defaults",
     "not ie 11",
